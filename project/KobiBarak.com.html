@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>קובי ברק — יזם, בונה מערכות AI ומוצרים דיגיטליים</title>
+<link rel="icon" href="assets/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    font-family: 'Rubik', sans-serif;
+    background: #0A0A0A; color: #fff;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden; line-height: 1.6;
+    direction: rtl; text-align: right;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- Tag / eyebrow ---------- */
+  .kb-tag {
+    display: inline-block; padding: 7px 18px;
+    background: rgba(79,26,214,0.1);
+    border: 1px solid rgba(79,26,214,0.22);
+    border-radius: 999px; font-size: 13px; font-weight: 500;
+    color: #9B7AE8; margin-bottom: 18; letter-spacing: 0.01em;
+  }
+
+  /* ---------- Headings ---------- */
+  .kb-heading {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 600; line-height: 1.18;
+    letter-spacing: -0.015em; color: #fff;
+    text-wrap: pretty;
+  }
+  .kb-sub {
+    font-size: clamp(15px, 2vw, 18px); line-height: 1.65;
+    color: rgba(255,255,255,0.5); max-width: 640px; margin-top: 16px;
+  }
+
+  /* ---------- Cards ---------- */
+  .kb-card {
+    border-radius: 20px; padding: 28px;
+    transition: transform 0.32s cubic-bezier(.22,1,.36,1),
+                border-color 0.32s ease, box-shadow 0.32s ease;
+  }
+  .kb-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(79,26,214,0.3) !important;
+    box-shadow: 0 14px 40px rgba(79,26,214,0.1);
+  }
+  .kb-card-glass {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .kb-card-outlined {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .kb-card-solid {
+    background: rgba(255,255,255,0.055);
+    border: 1px solid transparent;
+  }
+
+  /* ---------- Buttons ---------- */
+  .kb-btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 28px; border-radius: 999px;
+    background: #4F1AD6; color: white;
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px; font-weight: 600; border: none; cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.32s ease;
+    box-shadow: 0 8px 24px rgba(79,26,214,0.3);
+  }
+  .kb-btn-primary:hover { transform: scale(1.03); box-shadow: 0 12px 32px rgba(79,26,214,0.45); }
+  .kb-btn-primary:active { transform: scale(0.97); }
+
+  .kb-btn-outline {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 28px; border-radius: 999px;
+    background: transparent; color: white;
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px; font-weight: 600;
+    border: 1.5px solid rgba(255,255,255,0.18); cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.32s ease;
+  }
+  .kb-btn-outline:hover { transform: scale(1.03); border-color: rgba(79,26,214,0.5); }
+  .kb-btn-outline:active { transform: scale(0.97); }
+
+  /* ---------- Chips ---------- */
+  .kb-chip {
+    display: inline-block; padding: 5px 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 999px; font-size: 12px; font-weight: 500;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ---------- Subtle link ---------- */
+  .kb-subtle-link {
+    display: inline-block; margin-top: 40px;
+    color: rgba(255,255,255,0.4); font-size: 15px; font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 4px;
+    transition: color 0.2s;
+  }
+  .kb-subtle-link:hover { color: rgba(255,255,255,0.7); }
+
+  /* ---------- Icon link (project external) ---------- */
+  .kb-icon-link {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: grid; place-items: center; flex-shrink: 0;
+    transition: background 0.2s;
+  }
+
+  /* ---------- Project row ---------- */
+  .kb-project-row {
+    display: flex; align-items: center; gap: 24px;
+    padding: 24px 28px;
+  }
+
+  /* ---------- Nav links ---------- */
+  .kb-nav-link {
+    color: rgba(255,255,255,0.55); font-size: 14px; font-weight: 500;
+    text-decoration: none; transition: color 0.2s; padding: 4px 0;
+  }
+  .kb-nav-link:hover { color: #fff; }
+
+  /* ---------- Footer ---------- */
+  .kb-footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+  }
+  .kb-footer-link {
+    font-size: 14px; color: rgba(255,255,255,0.4);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .kb-footer-link:hover { color: rgba(255,255,255,0.8); }
+
+  /* ---------- Mobile hamburger button ---------- */
+  .kb-mobile-btn { display: none; }
+
+  /* ---------- Scrollbar ---------- */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 768px) {
+    .kb-desktop-nav { display: none !important; }
+    .kb-mobile-btn { display: flex !important; }
+    .kb-project-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .kb-footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .kb-scroll-hint { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="kb-anim.jsx"></script>
+<script type="text/babel" src="kb-upper.jsx"></script>
+<script type="text/babel" src="kb-lower.jsx"></script>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"accentColor":"#4F1AD6","cardStyle":"glass","showParticles":true}/*EDITMODE-END*/;
+
+function App() {
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const a = tweaks.accentColor;
+
+  return (
+    <div>
+      <SiteNav accent={a} />
+      <HeroSection accent={a} showParticles={tweaks.showParticles} />
+      <PositioningSection />
+      <DrivesSection />
+      <AreasSection accent={a} cardStyle={tweaks.cardStyle} />
+      <ProcessSection accent={a} />
+      <ProjectsSection accent={a} />
+      <AboutSection accent={a} />
+      <CTASection accent={a} />
+      <SiteFooter />
+
+      <TweaksPanel title="התאמות">
+        <TweakSection title="צבע מוביל">
+          <TweakColor name="accentColor" value={tweaks.accentColor}
+            onChange={v => setTweak('accentColor', v)}
+            options={['#4F1AD6', '#6C3FE0', '#5B7BF7', '#1BB78A']} />
+        </TweakSection>
+        <TweakSection title="סגנון כרטיסים">
+          <TweakRadio name="cardStyle" value={tweaks.cardStyle}
+            onChange={v => setTweak('cardStyle', v)}
+            options={['glass', 'outlined', 'solid']} />
+        </TweakSection>
+        <TweakSection title="חלקיקים">
+          <TweakToggle name="showParticles" value={tweaks.showParticles}
+            onChange={v => setTweak('showParticles', v)} label="הצגת חלקיקים" />
+        </TweakSection>
+      </TweaksPanel>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

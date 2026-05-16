@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>קובי ברק — יזם, בונה מערכות AI ומוצרים דיגיטליים</title>
+<link rel="icon" href="assets/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    font-family: 'Rubik', sans-serif;
+    background: #060606; color: #fff;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden; line-height: 1.6;
+    direction: rtl; text-align: right;
+  }
+  /* Noise overlay */
+  body::after {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat; background-size: 180px;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ═══ AURORA BLOBS ═══ */
+  .aurora-b {
+    position: absolute; border-radius: 50%; pointer-events: none;
+    filter: blur(80px); will-change: transform;
+  }
+  .aurora-b1 { width: 55vw; height: 55vh; top: 5%; left: 15%; animation: auroraA 14s ease-in-out infinite; }
+  .aurora-b2 { width: 45vw; height: 45vh; top: 25%; right: 8%; animation: auroraB 18s ease-in-out infinite; }
+  .aurora-b3 { width: 35vw; height: 35vh; bottom: 5%; left: 35%; animation: auroraC 20s ease-in-out infinite; }
+  @keyframes auroraA {
+    0%,100% { transform: translate(0,0) scale(1); opacity: 1; }
+    33% { transform: translate(4vw,-3vh) scale(1.12); opacity: 0.8; }
+    66% { transform: translate(-3vw,5vh) scale(0.92); opacity: 1; }
+  }
+  @keyframes auroraB {
+    0%,100% { transform: translate(0,0) scale(1); opacity: 0.9; }
+    50% { transform: translate(-5vw,4vh) scale(1.08); opacity: 1; }
+  }
+  @keyframes auroraC {
+    0%,100% { transform: translate(0,0) scale(1); }
+    40% { transform: translate(6vw,-2vh) scale(1.1); }
+    70% { transform: translate(-2vw,3vh) scale(0.95); }
+  }
+  @keyframes ctaPulse {
+    0%,100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+
+  /* ═══ HERO NAME — shimmer sweep ═══ */
+  .kb-hero-name {
+    font-size: clamp(56px, 10vw, 96px);
+    font-weight: 800; line-height: 1; letter-spacing: -0.03em;
+    margin-top: 18px; position: relative;
+  }
+  .kb-shimmer {
+    background: linear-gradient(
+      110deg,
+      #ffffff 0%, #ffffff 35%,
+      var(--shimmer-c, rgba(79,26,214,0.55)) 50%,
+      #ffffff 65%, #ffffff 100%
+    );
+    background-size: 260% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmerSweep 5s ease-in-out infinite;
+  }
+  @keyframes shimmerSweep {
+    0%   { background-position: 120% center; }
+    40%  { background-position: -40% center; }
+    100% { background-position: -40% center; }
+  }
+
+  /* ═══ TAG with glow ═══ */
+  .kb-tag-glow {
+    display: inline-block; padding: 7px 18px;
+    border: 1px solid; border-radius: 999px;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.01em;
+    color: rgba(255,255,255,0.65); margin-bottom: 18px;
+    box-shadow: 0 0 16px var(--tag-c, rgba(79,26,214,0.15));
+    transition: box-shadow 0.3s;
+  }
+
+  /* ═══ HEADINGS ═══ */
+  .kb-heading {
+    font-size: clamp(32px, 5vw, 54px);
+    font-weight: 700; line-height: 1.15;
+    letter-spacing: -0.018em; color: #fff;
+    text-wrap: pretty;
+  }
+  .kb-sub {
+    font-size: clamp(15px, 1.8vw, 18px); line-height: 1.65;
+    color: rgba(255,255,255,0.42); max-width: 620px; margin-top: 16px;
+  }
+
+  /* ═══ CARDS — animated gradient border on hover ═══ */
+  @property --border-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+  .kb-card {
+    border-radius: 20px; padding: 28px; position: relative;
+    transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease;
+  }
+  .kb-card:hover { transform: translateY(-5px); }
+  .kb-card-glass { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+  .kb-card-outlined { background: transparent; border: 1px solid rgba(255,255,255,0.09); }
+  .kb-card-solid { background: rgba(255,255,255,0.05); border: 1px solid transparent; }
+
+  /* Gradient top line on hover */
+  .kb-card-fancy { overflow: hidden; }
+  .kb-card-fancy::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--fancy-c, #4F1AD6), rgba(111,211,255,0.45));
+    opacity: 0; transition: opacity 0.35s;
+  }
+  .kb-card-fancy:hover::after { opacity: 1; }
+  .kb-card:hover { box-shadow: 0 20px 50px rgba(79,26,214,0.08); }
+  .kb-card-glass:hover { border-color: rgba(79,26,214,0.22); }
+  .kb-card-outlined:hover { border-color: rgba(79,26,214,0.28); }
+
+  /* ═══ CTA PILL ═══ */
+  .kb-cta-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 30px; border-radius: 999px; color: white;
+    font-family: 'Rubik', sans-serif; font-size: 15px; font-weight: 600;
+    border: none; cursor: pointer; position: relative;
+    transition: transform 0.18s ease, box-shadow 0.35s ease;
+  }
+  .kb-cta-pill::before {
+    content: ''; position: absolute; inset: 0; border-radius: 999px;
+    background: linear-gradient(rgba(255,255,255,0.15), transparent 50%);
+    pointer-events: none;
+  }
+  .kb-cta-pill:hover { transform: scale(1.04); }
+  .kb-cta-pill:active { transform: scale(0.97); }
+
+  /* ═══ GHOST BUTTON ═══ */
+  .kb-btn-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 28px; border-radius: 999px;
+    background: transparent; color: white;
+    font-family: 'Rubik', sans-serif; font-size: 15px; font-weight: 500;
+    border: 1.5px solid rgba(255,255,255,0.12); cursor: pointer;
+    transition: transform 0.18s ease, border-color 0.35s ease, background 0.35s ease;
+  }
+  .kb-btn-ghost:hover { transform: scale(1.03); border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); }
+  .kb-btn-ghost:active { transform: scale(0.97); }
+
+  /* ═══ CHIPS ═══ */
+  .kb-chip {
+    display: inline-block; padding: 4px 13px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 999px; font-size: 12px; font-weight: 500;
+    color: rgba(255,255,255,0.38); transition: border-color 0.2s;
+  }
+
+  /* ═══ SUBTLE LINK ═══ */
+  .kb-subtle-link {
+    display: inline-block; margin-top: 44px;
+    color: rgba(255,255,255,0.32); font-size: 15px; font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 4px;
+    transition: color 0.25s, border-color 0.25s;
+  }
+  .kb-subtle-link:hover { color: var(--link-c, rgba(255,255,255,0.65)); border-color: var(--link-c, rgba(255,255,255,0.3)); }
+
+  /* ═══ NAV ═══ */
+  .kb-nav-link {
+    color: rgba(255,255,255,0.45); font-size: 14px; font-weight: 500;
+    text-decoration: none; transition: color 0.25s; padding: 4px 0;
+    position: relative;
+  }
+  .kb-nav-link::after {
+    content: ''; position: absolute; bottom: 0; right: 0; width: 0; height: 1px;
+    background: currentColor; transition: width 0.3s cubic-bezier(.22,1,.36,1);
+  }
+  .kb-nav-link:hover { color: #fff; }
+  .kb-nav-link:hover::after { width: 100%; }
+
+  /* ═══ PROJECT ROW ═══ */
+  .kb-project-row { display: flex; align-items: center; gap: 24px; }
+
+  /* ═══ SCROLL HINT ═══ */
+  .kb-scroll-line {
+    width: 1px; height: 36px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.2), transparent);
+    animation: scrollPulse 2.5s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%,100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.7; transform: scaleY(1.2); }
+  }
+
+  /* ═══ FOOTER ═══ */
+  .kb-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+  .kb-footer-link {
+    font-size: 14px; color: rgba(255,255,255,0.32);
+    text-decoration: none; transition: color 0.25s;
+  }
+  .kb-footer-link:hover { color: rgba(255,255,255,0.75); }
+
+  /* ═══ MOBILE ═══ */
+  .kb-mobile-btn { display: none; }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 3px; }
+
+  @media (max-width: 768px) {
+    .kb-desktop-nav { display: none !important; }
+    .kb-mobile-btn { display: flex !important; }
+    .kb-project-row { flex-direction: column; align-items: stretch !important; gap: 14px; }
+    .kb-footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    .kb-scroll-hint { display: none !important; }
+    .kb-timeline-hide { display: none !important; }
+    .kb-hero-name { font-size: clamp(44px, 12vw, 72px) !important; }
+  }
+
+  /* Selection */
+  ::selection { background: rgba(79,26,214,0.35); color: #fff; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="kb-fx.jsx"></script>
+<script type="text/babel" src="kb-top.jsx"></script>
+<script type="text/babel" src="kb-btm.jsx"></script>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"accentColor":"#4F1AD6","cardStyle":"glass","showParticles":true,"mouseGlow":true}/*EDITMODE-END*/;
+
+function App() {
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const a = tweaks.accentColor;
+
+  return (
+    <div>
+      {tweaks.mouseGlow && <MouseGlow color={accentAlpha(a, 0.055)} />}
+      <SiteNav accent={a} />
+      <HeroSection accent={a} showParticles={tweaks.showParticles} />
+      <Divider accent={a} width={100} />
+      <PositioningSection accent={a} />
+      <DrivesSection accent={a} />
+      <AreasSection accent={a} cardStyle={tweaks.cardStyle} />
+      <Divider accent={a} width={140} />
+      <ProcessSection accent={a} />
+      <Divider accent={a} width={120} />
+      <ProjectsSection accent={a} />
+      <Divider accent={a} width={100} />
+      <AboutSection accent={a} />
+      <CTASection accent={a} />
+      <SiteFooter accent={a} />
+
+      <TweaksPanel title="התאמות">
+        <TweakSection title="צבע מוביל">
+          <TweakColor name="accentColor" value={tweaks.accentColor}
+            onChange={v => setTweak('accentColor', v)}
+            options={['#4F1AD6', '#6C3FE0', '#5B7BF7', '#1BB78A']} />
+        </TweakSection>
+        <TweakSection title="כרטיסים">
+          <TweakRadio name="cardStyle" value={tweaks.cardStyle}
+            onChange={v => setTweak('cardStyle', v)}
+            options={['glass', 'outlined', 'solid']} />
+        </TweakSection>
+        <TweakSection title="אפקטים">
+          <TweakToggle name="showParticles" value={tweaks.showParticles}
+            onChange={v => setTweak('showParticles', v)} label="חלקיקים" />
+          <TweakToggle name="mouseGlow" value={tweaks.mouseGlow}
+            onChange={v => setTweak('mouseGlow', v)} label="זוהר עכבר" />
+        </TweakSection>
+      </TweaksPanel>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

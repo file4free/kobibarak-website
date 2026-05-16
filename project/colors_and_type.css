@@ -1,0 +1,324 @@
+/* ==========================================================================
+   Barak AI — Design System Tokens
+   Colors & Typography
+   ========================================================================== */
+
+/* ---------- Webfonts (Heebo for Hebrew + Latin, Rubik fallback) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ============================================================
+     COLOR PRIMITIVES — the gradient core of the brand
+     The logo runs cyan → blue → indigo → violet. Every accent
+     surface in Barak AI imagery is a slice of this ramp.
+     ============================================================ */
+  --b-cyan-300: #6FD3FF;     /* logo top highlight */
+  --b-cyan-400: #4FB3E8;     /* lightning glow */
+  --b-blue-400: #5B7BF7;     /* mid logo blue */
+  --b-blue-500: #4A6CF7;     /* primary CTA blue */
+  --b-blue-600: #3D54E0;     /* hover / pressed */
+  --b-indigo-600: #4D3BD8;   /* logo lower body */
+  --b-indigo-700: #3D2FCC;
+  --b-violet-600: #6C3FE0;   /* neon accent (dark posters) */
+  --b-magenta-500: #C04CE8;  /* secondary glow accent */
+
+  /* Brand gradients — the single most-recognizable visual */
+  --grad-brand: linear-gradient(180deg, #6FD3FF 0%, #5B7BF7 45%, #4D3BD8 100%);
+  --grad-brand-h: linear-gradient(90deg, #6FD3FF 0%, #5B7BF7 45%, #4D3BD8 100%);
+  --grad-cta: linear-gradient(135deg, #5B7BF7 0%, #4D3BD8 100%);
+  --grad-cta-soft: linear-gradient(135deg, #8BA4FF 0%, #7762E8 100%);
+  --grad-neon: linear-gradient(135deg, #4FB3E8 0%, #6C3FE0 50%, #C04CE8 100%);
+
+  /* ============================================================
+     NEUTRAL — Light theme
+     ============================================================ */
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #F7F8FF;   /* lavender-tinted page bg */
+  --neutral-100: #EEF1FB;   /* card on light */
+  --neutral-200: #E1E6F5;
+  --neutral-300: #C8CFE5;
+  --neutral-400: #9099B8;
+  --neutral-500: #6A7290;
+  --neutral-600: #4A5072;
+  --neutral-700: #2E3357;
+  --neutral-800: #1A1E40;
+  --neutral-900: #0F1140;   /* primary heading on light */
+
+  /* ============================================================
+     NEUTRAL — Dark theme (the "neon poster" surface)
+     ============================================================ */
+  --dark-bg:       #050615;   /* page */
+  --dark-surface:  #0B0E2E;   /* card base */
+  --dark-surface-2:#13183F;   /* elevated card */
+  --dark-stroke:   #2A2F66;   /* hairline border w/ glow */
+  --dark-stroke-2: #3D3FA0;   /* highlighted border */
+  --dark-text:     #FFFFFF;
+  --dark-text-2:   #B8BCE0;
+  --dark-text-3:   #6E72A0;
+
+  /* ============================================================
+     SEMANTIC TOKENS — Light surface
+     ============================================================ */
+  --bg:            var(--neutral-50);
+  --bg-elevated:   var(--neutral-0);
+  --bg-card:       var(--neutral-0);
+  --bg-subtle:     var(--neutral-100);
+
+  --fg:            var(--neutral-900);   /* h1, primary */
+  --fg-2:          var(--neutral-700);   /* body */
+  --fg-3:          var(--neutral-500);   /* secondary / meta */
+  --fg-4:          var(--neutral-400);   /* placeholder, disabled */
+  --fg-on-brand:   #FFFFFF;
+
+  --border:        var(--neutral-200);
+  --border-strong: var(--neutral-300);
+
+  --primary:       var(--b-blue-500);
+  --primary-hover: var(--b-blue-600);
+  --primary-soft:  #E7ECFF;
+  --accent:        var(--b-indigo-600);
+
+  /* Status — used sparingly, brand stays primary */
+  --success:       #1BB78A;
+  --warning:       #F2B544;
+  --danger:        #E5484D;
+  --info:          var(--b-cyan-400);
+
+  /* ============================================================
+     SHADOWS / ELEVATION
+     Light surfaces use soft blue-tinted shadows; dark surfaces
+     use neon glows tied to the brand ramp.
+     ============================================================ */
+  --shadow-sm: 0 1px 2px rgba(15, 17, 64, 0.06);
+  --shadow-md: 0 4px 12px rgba(74, 108, 247, 0.10), 0 1px 2px rgba(15, 17, 64, 0.04);
+  --shadow-lg: 0 12px 32px rgba(77, 59, 216, 0.14), 0 2px 6px rgba(15, 17, 64, 0.06);
+  --shadow-xl: 0 24px 60px rgba(77, 59, 216, 0.20);
+
+  --glow-brand:  0 0 0 1px rgba(91, 123, 247, 0.35), 0 0 32px rgba(91, 123, 247, 0.45);
+  --glow-cyan:   0 0 24px rgba(79, 179, 232, 0.55);
+  --glow-violet: 0 0 28px rgba(108, 63, 224, 0.55);
+
+  /* ============================================================
+     RADII — Generous. Cards are 16-24px; pills are 999px.
+     ============================================================ */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
+  --radius-pill: 999px;
+
+  /* ============================================================
+     SPACING (4px base)
+     ============================================================ */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ============================================================
+     TYPOGRAPHY
+     Heebo is the workhorse for Hebrew + Latin (it has Hebrew
+     glyphs designed to match the Latin proportions). Rubik is
+     a fallback / display alternative. JetBrains Mono for code.
+     ============================================================ */
+  --font-display: "Heebo", "Rubik", "Helvetica Neue", Arial, sans-serif;
+  --font-body:    "Heebo", "Rubik", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Type scale (px) — mobile-first, large display sizes for posters */
+  --fs-xs:   12px;
+  --fs-sm:   14px;
+  --fs-base: 16px;
+  --fs-md:   18px;
+  --fs-lg:   20px;
+  --fs-xl:   24px;
+  --fs-2xl:  30px;
+  --fs-3xl:  38px;
+  --fs-4xl:  48px;
+  --fs-5xl:  64px;
+  --fs-6xl:  84px;
+
+  --lh-tight:  1.1;
+  --lh-snug:   1.25;
+  --lh-normal: 1.5;
+  --lh-loose:  1.7;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+  --tracking-wider:  0.12em;   /* used for the "קול. חכם. אנושי. עסקי." footer */
+
+  /* ============================================================
+     MOTION
+     ============================================================ */
+  --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:      120ms;
+  --dur-base:      200ms;
+  --dur-slow:      360ms;
+}
+
+/* ---------- Dark theme override (apply on .dark or [data-theme="dark"]) ---------- */
+.dark, [data-theme="dark"] {
+  --bg:            var(--dark-bg);
+  --bg-elevated:   var(--dark-surface);
+  --bg-card:       var(--dark-surface);
+  --bg-subtle:     var(--dark-surface-2);
+
+  --fg:            var(--dark-text);
+  --fg-2:          var(--dark-text-2);
+  --fg-3:          var(--dark-text-3);
+  --fg-4:          #4A4F7A;
+
+  --border:        var(--dark-stroke);
+  --border-strong: var(--dark-stroke-2);
+
+  --primary-soft:  rgba(91, 123, 247, 0.15);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(91, 123, 247, 0.10);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(91, 123, 247, 0.14);
+  --shadow-xl: 0 24px 70px rgba(0, 0, 0, 0.7), 0 0 60px rgba(108, 63, 224, 0.18);
+}
+
+/* ==========================================================================
+   SEMANTIC TYPE STYLES — drop these classes on elements directly
+   ========================================================================== */
+
+.t-display-1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(48px, 7vw, var(--fs-6xl));
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg);
+}
+.t-display-2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(38px, 5.5vw, var(--fs-5xl));
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg);
+}
+.t-h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-4xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg);
+}
+.t-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg);
+}
+.t-h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-snug);
+  color: var(--fg);
+}
+.t-h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-xl);
+  line-height: var(--lh-snug);
+  color: var(--fg);
+}
+.t-lead {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--fs-lg);
+  line-height: var(--lh-normal);
+  color: var(--fg-2);
+}
+.t-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color: var(--fg-2);
+}
+.t-body-sm {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+  color: var(--fg-2);
+}
+.t-meta {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  color: var(--fg-3);
+}
+.t-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-xs);
+  line-height: 1;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.t-tagline {
+  /* The brand's "קול. חכם. אנושי. עסקי." treatment — wide-tracked, dotted */
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--fs-sm);
+  letter-spacing: var(--tracking-wider);
+  color: var(--fg-3);
+}
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--fg-2);
+}
+
+/* Gradient text utility — used on the bold accent words in headlines
+   like "כבר כאן" or "Barak AI" wordmark in dark posters */
+.t-grad {
+  background: var(--grad-brand-h);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.t-grad-cta {
+  background: var(--grad-cta);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* RTL helpers — Barak AI is Hebrew-first */
+[dir="rtl"], .rtl { direction: rtl; text-align: right; }
+
+/* Base body defaults */
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
