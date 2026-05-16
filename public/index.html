@@ -1,0 +1,1388 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>קובי ברק — יזם, בונה מערכות AI ומוצרים דיגיטליים</title>
+<meta name="description" content="קובי ברק — יזם, בונה מערכות AI ומוצרים דיגיטליים. מערכות AI לעסקים, אוטומציות, סוכנים קוליים.">
+<link rel="icon" href="project/assets/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    font-family: 'Rubik', sans-serif;
+    background: #050505;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    line-height: 1.6;
+    direction: rtl;
+    text-align: right;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.024;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 180px;
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: rgba(79,26,214,0.35); }
+
+  /* ═══ AURORA ═══ */
+  .aurora-b { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(80px); will-change: transform; }
+  .aurora-b1 { width: 55vw; height: 55vh; top: 5%; left: 15%; animation: auA 16s ease-in-out infinite; }
+  .aurora-b2 { width: 45vw; height: 45vh; top: 25%; right: 8%; animation: auB 20s ease-in-out infinite; }
+  .aurora-b3 { width: 35vw; height: 35vh; bottom: 5%; left: 35%; animation: auC 22s ease-in-out infinite; }
+  @keyframes auA { 0%,100%{transform:translate(0,0) scale(1);opacity:1}33%{transform:translate(4vw,-3vh) scale(1.12);opacity:.8}66%{transform:translate(-3vw,5vh) scale(.92);opacity:1} }
+  @keyframes auB { 0%,100%{transform:translate(0,0) scale(1);opacity:.9}50%{transform:translate(-5vw,4vh) scale(1.08);opacity:1} }
+  @keyframes auC { 0%,100%{transform:translate(0,0) scale(1)}40%{transform:translate(6vw,-2vh) scale(1.1)}70%{transform:translate(-2vw,3vh) scale(.95)} }
+  @keyframes ctaPulse { 0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.1);opacity:1} }
+  @keyframes glowPulse { 0%,100%{opacity:.8;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)} }
+
+  /* ═══ FLOATING SHAPES ═══ */
+  .float-shape { position: absolute; pointer-events: none; animation: floatPath 20s ease-in-out infinite; }
+  @keyframes floatPath {
+    0%,100%{transform:translate(0,0) rotate(0deg)}
+    25%{transform:translate(12px,-18px) rotate(5deg)}
+    50%{transform:translate(-8px,10px) rotate(-3deg)}
+    75%{transform:translate(15px,8px) rotate(4deg)}
+  }
+
+  /* ═══ NAV ═══ */
+  .kb-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 64px;
+    padding: 0 clamp(20px,4vw,48px);
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all 0.45s cubic-bezier(.22,1,.36,1);
+  }
+  .kb-nav-logo { font-weight: 700; font-size: 19px; letter-spacing: -0.01em; }
+  .kb-nav-link {
+    color: rgba(255,255,255,0.4); font-size: 14px; font-weight: 500;
+    transition: color 0.25s; position: relative; padding: 4px 0;
+  }
+  .kb-nav-link::after {
+    content: ''; position: absolute; bottom: 0; right: 0; width: 0; height: 1px;
+    background: currentColor; transition: width 0.3s cubic-bezier(.22,1,.36,1);
+  }
+  .kb-nav-link:hover { color: #fff; }
+  .kb-nav-link:hover::after { width: 100%; }
+
+  /* ═══ PILLS / BUTTONS ═══ */
+  .kb-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 28px; border-radius: 999px; color: white;
+    font-family: 'Rubik', sans-serif; font-size: 14px; font-weight: 600;
+    border: none; cursor: pointer; position: relative;
+    transition: transform 0.2s ease, box-shadow 0.35s ease;
+    white-space: nowrap;
+  }
+  .kb-pill::before {
+    content: ''; position: absolute; inset: 0; border-radius: 999px;
+    background: linear-gradient(rgba(255,255,255,0.14), transparent 50%);
+    pointer-events: none;
+  }
+  .kb-pill:hover { transform: scale(1.04); }
+  .kb-pill:active { transform: scale(0.97); }
+
+  .kb-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 26px; border-radius: 999px; background: transparent; color: white;
+    font-family: 'Rubik', sans-serif; font-size: 14px; font-weight: 500;
+    border: 1.5px solid rgba(255,255,255,0.1); cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.35s ease, background 0.35s ease;
+    white-space: nowrap;
+  }
+  .kb-ghost:hover { transform: scale(1.03); border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.03); }
+
+  /* ═══ EYEBROW TAG ═══ */
+  .kb-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px; border-radius: 999px; font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,0.55); margin-bottom: 16px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  }
+  .kb-eyebrow-dot {
+    width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+    animation: dotPulse 2.5s ease-in-out infinite;
+  }
+  @keyframes dotPulse { 0%,100%{opacity:1;box-shadow:0 0 6px currentColor}50%{opacity:.5;box-shadow:0 0 12px currentColor} }
+
+  /* ═══ TYPOGRAPHY ═══ */
+  .kb-h2 { font-size: clamp(32px,5vw,56px); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; text-wrap: pretty; }
+  .kb-sub { font-size: clamp(14px,1.7vw,17px); line-height: 1.65; color: rgba(255,255,255,0.38); max-width: 580px; margin-top: 14px; }
+  .kb-hero-name { font-size: clamp(60px,12vw,110px); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; margin-top: 16px; position: relative; }
+
+  /* ═══ CHIPS ═══ */
+  .kb-chip {
+    display: inline-block; padding: 3px 12px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 999px; font-size: 12px; font-weight: 500;
+    color: rgba(255,255,255,0.35); transition: border-color 0.2s;
+  }
+
+  /* ═══ SCROLL HINT ═══ */
+  .kb-scroll-hint {
+    position: absolute; bottom: -80px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kb-scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.18), transparent);
+    animation: scrollPulse 2.8s ease-in-out infinite;
+  }
+  @keyframes scrollPulse { 0%,100%{opacity:.25;transform:scaleY(1)}50%{opacity:.6;transform:scaleY(1.25)} }
+
+  /* ═══ BENTO GRID ═══ */
+  .bento-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  .bento-card {
+    border-radius: 20px; overflow: hidden; position: relative;
+    background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.055);
+    transition: border-color 0.35s ease;
+  }
+  .bento-card:hover { border-color: rgba(255,255,255,0.12); }
+  .bento-glow { position: absolute; top: 0; left: 0; right: 0; height: 2px; opacity: 0; transition: opacity 0.35s; }
+  .bento-card:hover .bento-glow { opacity: 1; }
+
+  /* ═══ MARQUEE ═══ */
+  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-33.333%)} }
+  .marquee-item {
+    font-size: clamp(14px,1.8vw,18px); font-weight: 500;
+    color: rgba(255,255,255,0.12); letter-spacing: 0.02em; white-space: nowrap;
+    transition: color 0.3s;
+  }
+  .marquee-item:hover { color: rgba(255,255,255,0.35); }
+
+  /* ═══ PROJECTS ═══ */
+  .featured-project {
+    display: block; border-radius: 24px; padding: 36px 32px;
+    border: 1px solid rgba(255,255,255,0.06); position: relative; overflow: hidden;
+    transition: all 0.4s cubic-bezier(.22,1,.36,1); text-decoration: none; color: #fff;
+  }
+  .proj-badge { padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.03em; }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(min(100%,260px),1fr)); gap: 14px; }
+  .project-card {
+    border-radius: 20px; padding: 24px 26px; position: relative; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.35s cubic-bezier(.22,1,.36,1);
+  }
+
+  /* ═══ PROCESS ═══ */
+  .process-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; position: relative; z-index: 1; }
+  .process-line-wrap {
+    position: absolute; top: 30px;
+    right: calc(16.67% + 4px); left: calc(16.67% + 4px);
+    height: 2px; border-radius: 1px; overflow: hidden; z-index: 0;
+  }
+  .process-line { height: 100%; transform-origin: right; transition: transform 1.3s cubic-bezier(.22,1,.36,1) 0.3s; }
+  .process-circle {
+    width: 60px; height: 60px; border-radius: 50%; margin: 0 auto;
+    display: grid; place-items: center; font-size: 20px; font-weight: 800; color: #fff;
+  }
+
+  /* ═══ STATS ═══ */
+  .stats-row {
+    display: flex; justify-content: space-evenly; margin: 52px auto 40px;
+    flex-wrap: wrap; max-width: 1100px; padding: 0 24px;
+  }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: clamp(42px,6vw,64px); font-weight: 800; line-height: 1; letter-spacing: -0.03em; direction: ltr; display: inline-block; }
+  .stat-label { font-size: 14px; color: rgba(255,255,255,0.35); margin-top: 6px; font-weight: 500; }
+
+  /* ═══ VALUES ═══ */
+  .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 8px; align-items: start; }
+  .value-card {
+    border-radius: 20px;
+    background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.055);
+    transition: border-color 0.35s; overflow: visible;
+  }
+  .value-card:hover { border-color: rgba(255,255,255,0.12); }
+  .value-num { font-size: 44px; font-weight: 800; line-height: 1; }
+
+  /* ═══ CTA ═══ */
+  .cta-box {
+    max-width: 940px; margin: 0 auto; border-radius: 28px;
+    padding: clamp(48px,7vw,88px) clamp(24px,4vw,56px);
+    border: 1px solid; position: relative; overflow: hidden;
+  }
+
+  /* ═══ FOOTER ═══ */
+  .kb-footer { padding: 64px 24px 28px; border-top: 1px solid rgba(255,255,255,0.04); }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+  .footer-heading { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.45); margin-bottom: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .footer-link { font-size: 14px; color: rgba(255,255,255,0.28); transition: color 0.25s; }
+  .footer-link:hover { color: rgba(255,255,255,0.7); }
+  .footer-bottom {
+    margin-top: 48px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.04);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    font-size: 12px; color: rgba(255,255,255,0.18);
+  }
+
+  /* ═══ LIGHT MODE ═══ */
+  body {
+    --kb-fg: #fff; --kb-fg2: rgba(255,255,255,0.7); --kb-fg3: rgba(255,255,255,0.45);
+    --kb-fg4: rgba(255,255,255,0.35);
+    --kb-card-bg: rgba(255,255,255,0.025); --kb-card-border: rgba(255,255,255,0.055);
+    --kb-surface: rgba(255,255,255,0.04); --kb-surface-border: rgba(255,255,255,0.06);
+    transition: background 0.6s ease, color 0.6s ease;
+  }
+  body.kb-dark { background: #050505; color: #fff; }
+  body.kb-light {
+    background: #F7F8FF; color: #0F1140;
+    --kb-fg: #0F1140; --kb-fg2: rgba(15,17,64,0.65); --kb-fg3: rgba(15,17,64,0.5);
+    --kb-fg4: rgba(15,17,64,0.38);
+    --kb-card-bg: #fff; --kb-card-border: rgba(15,17,64,0.08);
+    --kb-surface: rgba(15,17,64,0.03); --kb-surface-border: rgba(15,17,64,0.06);
+  }
+  body.kb-light::after { opacity: 0.008; }
+  body.kb-light ::selection { background: rgba(79,26,214,0.2); }
+
+  body.kb-light .kb-nav-link { color: rgba(15,17,64,0.45); }
+  body.kb-light .kb-nav-link:hover { color: #0F1140; }
+  body.kb-light .kb-eyebrow { background: rgba(79,26,214,0.06); border-color: rgba(79,26,214,0.12); color: rgba(15,17,64,0.55); }
+  body.kb-light .kb-chip { background: rgba(15,17,64,0.04); border-color: rgba(15,17,64,0.08); color: rgba(15,17,64,0.5); }
+  body.kb-light .kb-ghost { border-color: rgba(15,17,64,0.15); color: #0F1140; }
+  body.kb-light .kb-ghost:hover { border-color: rgba(79,26,214,0.3); background: rgba(79,26,214,0.04); }
+  body.kb-light .kb-h2 { color: #0F1140; }
+  body.kb-light .kb-sub { color: rgba(15,17,64,0.5); }
+  body.kb-light .bento-card { background: #fff; border-color: rgba(15,17,64,0.08); box-shadow: 0 2px 8px rgba(15,17,64,0.06); }
+  body.kb-light .bento-card:hover { border-color: rgba(79,26,214,0.2); box-shadow: 0 12px 32px rgba(79,26,214,0.1); }
+  body.kb-light .value-card { background: #fff; border-color: rgba(15,17,64,0.08); box-shadow: 0 2px 8px rgba(15,17,64,0.06); }
+  body.kb-light .value-card:hover { border-color: rgba(79,26,214,0.2); }
+  body.kb-light .marquee-item { color: rgba(15,17,64,0.1); }
+  body.kb-light .marquee-item:hover { color: rgba(15,17,64,0.3); }
+  body.kb-light .featured-project { background: #fff !important; border-color: rgba(15,17,64,0.08) !important; box-shadow: 0 2px 12px rgba(15,17,64,0.08) !important; color: #0F1140 !important; }
+  body.kb-light .featured-project:hover { background: rgba(79,26,214,0.03) !important; }
+  body.kb-light .project-card { background: #fff !important; border-color: rgba(15,17,64,0.08) !important; box-shadow: 0 2px 8px rgba(15,17,64,0.06) !important; color: #0F1140 !important; }
+  body.kb-light .project-card:hover { background: rgba(79,26,214,0.02) !important; }
+  body.kb-light .footer-link { color: rgba(15,17,64,0.4); }
+  body.kb-light .footer-link:hover { color: rgba(15,17,64,0.8); }
+  body.kb-light .footer-heading { color: rgba(15,17,64,0.55); }
+  body.kb-light .footer-bottom { color: rgba(15,17,64,0.25); border-color: rgba(15,17,64,0.06); }
+  body.kb-light .kb-footer { border-color: rgba(15,17,64,0.06); }
+  body.kb-light .stat-label { color: rgba(15,17,64,0.45); }
+  body.kb-light .kb-scroll-line { background: linear-gradient(180deg,rgba(15,17,64,0.15),transparent); }
+  body.kb-light h1, body.kb-light h2, body.kb-light h3 { color: #0F1140 !important; }
+  body.kb-light p { color: rgba(15,17,64,0.55) !important; }
+  body.kb-light .process-circle { color: #fff !important; }
+  body.kb-light .kb-pill { color: #fff !important; }
+  body.kb-light .cta-box h2 { color: #0F1140 !important; }
+  body.kb-light .cta-box p { color: rgba(15,17,64,0.5) !important; }
+  body.kb-light .cta-box { background: rgba(79,26,214,0.04) !important; border-color: rgba(79,26,214,0.1) !important; }
+  body.kb-light .proj-badge { color: inherit !important; }
+
+  .kb-nav, .bento-card, .value-card, .featured-project, .project-card,
+  .kb-footer, .kb-chip, .kb-ghost, .marquee-item, .footer-link, .footer-bottom,
+  .kb-eyebrow, .stat-label, .kb-h2, .kb-sub, .kb-nav-link, h1, h2, h3, p {
+    transition-property: background, color, border-color, box-shadow, -webkit-text-fill-color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+  }
+
+  /* ═══ THEME TOGGLE ═══ */
+  .kb-theme-toggle {
+    width: 38px; height: 38px; border-radius: 50%; border: none;
+    background: rgba(255,255,255,0.06); color: white; cursor: pointer;
+    display: grid; place-items: center; transition: all 0.35s ease;
+    margin-inline-start: 8px; flex-shrink: 0;
+  }
+  .kb-theme-toggle:hover { background: rgba(255,255,255,0.12); transform: rotate(20deg); }
+  body.kb-light .kb-theme-toggle { background: rgba(15,17,64,0.06); color: #0F1140; }
+  body.kb-light .kb-theme-toggle:hover { background: rgba(15,17,64,0.1); }
+
+  /* ═══ MOBILE ═══ */
+  .kb-mobile-only { display: none; }
+  .kb-mobile-overlay {
+    position: fixed; top: 64px; left: 0; right: 0; bottom: 0; z-index: 99;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+  }
+  .kb-mobile-link { font-size: 26px; font-weight: 600; }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 2px; }
+
+  @media (max-width: 768px) {
+    .kb-desktop-only { display: none !important; }
+    .kb-mobile-only { display: flex !important; }
+    .bento-grid { grid-template-columns: 1fr !important; }
+    .bento-cell { grid-column: span 1 !important; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: 1fr; gap: 40px; }
+    .process-line-wrap { display: none; }
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    .stats-row { gap: 28px; }
+    .kb-scroll-hint { display: none !important; }
+    .kb-hero-name { font-size: clamp(48px,14vw,80px) !important; }
+    .featured-project { padding: 24px 20px; }
+    .values-grid { grid-template-columns: 1fr; }
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .bento-grid { grid-template-columns: repeat(2,1fr); }
+    .bento-cell[style*="span 2"] { grid-column: span 2; }
+  }
+</style>
+</head>
+<body class="kb-dark">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script type="text/babel">
+// ═══════════════════════════════════════════════════════════
+// ENGINE — effects, hooks, animation primitives
+// ═══════════════════════════════════════════════════════════
+const { useState, useEffect, useRef, useCallback, useMemo } = React;
+
+function accentAlpha(hex, alpha) {
+  const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+function useInView(opts = {}) {
+  const ref = useRef(null);
+  const [vis, setVis] = useState(false);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setVis(true); if (opts.once !== false) obs.unobserve(el); }
+    }, { threshold: opts.threshold || 0.08, rootMargin: opts.rootMargin || '0px' });
+    obs.observe(el); return () => obs.disconnect();
+  }, []);
+  return [ref, vis];
+}
+
+function useScrollY() {
+  const [y, setY] = useState(0);
+  useEffect(() => {
+    const h = () => setY(window.scrollY);
+    window.addEventListener('scroll', h, { passive: true });
+    return () => window.removeEventListener('scroll', h);
+  }, []);
+  return y;
+}
+
+function FadeSlide({ children, delay = 0, y = 24, style = {}, className = '' }) {
+  const [ref, vis] = useInView();
+  return <div ref={ref} className={className} style={{
+    ...style,
+    opacity: vis ? 1 : 0,
+    transform: vis ? 'translateY(0)' : `translateY(${y}px)`,
+    transition: `opacity 0.82s cubic-bezier(.22,1,.36,1) ${delay}s, transform 0.82s cubic-bezier(.22,1,.36,1) ${delay}s`,
+  }}>{children}</div>;
+}
+
+function StaggerWords({ text, delay = 0, style = {} }) {
+  const [show, setShow] = useState(false);
+  useEffect(() => { const t = setTimeout(() => setShow(true), delay * 1000); return () => clearTimeout(t); }, [delay]);
+  const words = text.split(' ');
+  return <span style={{ display: 'inline' }}>
+    {words.map((w, i) => (
+      <span key={i} style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'top' }}>
+        <span style={{
+          display: 'inline-block', ...style,
+          transform: show ? 'translateY(0)' : 'translateY(115%)',
+          opacity: show ? 1 : 0,
+          filter: show ? 'blur(0)' : 'blur(5px)',
+          transition: `transform 0.72s cubic-bezier(.22,1,.36,1) ${i * 0.09}s, opacity 0.6s ease ${i * 0.09}s, filter 0.6s ease ${i * 0.09}s`,
+        }}>{w}&nbsp;</span>
+      </span>
+    ))}
+  </span>;
+}
+
+function RevealText({ text, style = {} }) {
+  const ref = useRef(null);
+  const [progress, setProgress] = useState(0);
+  const words = text.split(' ');
+  useEffect(() => {
+    const fn = () => {
+      const el = ref.current; if (!el) return;
+      const r = el.getBoundingClientRect(), vh = window.innerHeight;
+      setProgress(Math.max(0, Math.min(1, (vh * 0.75 - r.top) / (vh * 0.42))));
+    };
+    window.addEventListener('scroll', fn, { passive: true }); fn();
+    return () => window.removeEventListener('scroll', fn);
+  }, []);
+  return <p ref={ref} style={{ ...style }}>
+    {words.map((w, i) => {
+      const wp = Math.max(0, Math.min(1, (progress * words.length - i) * 1.1));
+      return <span key={i} style={{
+        display: 'inline-block',
+        opacity: 0.04 + wp * 0.96,
+        transform: `translateY(${(1 - wp) * 4}px)`,
+        filter: `blur(${(1 - wp) * 1.5}px)`,
+        transition: 'all 0.12s ease-out',
+      }}>{w}&nbsp;</span>;
+    })}
+  </p>;
+}
+
+function TiltCard({ children, style = {}, className = '', intensity = 5 }) {
+  const ref = useRef(null);
+  const onMove = (e) => {
+    const el = ref.current; if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    el.style.transform = `perspective(800px) rotateY(${x * intensity}deg) rotateX(${-y * intensity}deg) translateY(-5px)`;
+    el.style.boxShadow = `${-x * 20}px ${y * 20}px 40px rgba(0,0,0,0.15)`;
+  };
+  const onLeave = () => { if (ref.current) { ref.current.style.transform = ''; ref.current.style.boxShadow = ''; } };
+  return <div ref={ref} className={className} style={{
+    ...style,
+    transition: 'transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s ease',
+  }} onMouseMove={onMove} onMouseLeave={onLeave}>{children}</div>;
+}
+
+function MagneticWrap({ children, strength = 0.25 }) {
+  const ref = useRef(null);
+  const onMove = (e) => {
+    const el = ref.current; if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.transform = `translate(${(e.clientX - (rect.left + rect.width / 2)) * strength}px, ${(e.clientY - (rect.top + rect.height / 2)) * strength}px)`;
+  };
+  const onLeave = () => { if (ref.current) ref.current.style.transform = ''; };
+  return <div ref={ref} style={{ display: 'inline-block', transition: 'transform 0.3s cubic-bezier(.22,1,.36,1)' }}
+    onMouseMove={onMove} onMouseLeave={onLeave}>{children}</div>;
+}
+
+function ScrollProgress({ accent }) {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    const fn = () => { const h = document.documentElement.scrollHeight - window.innerHeight; setP(h > 0 ? window.scrollY / h : 0); };
+    window.addEventListener('scroll', fn, { passive: true }); return () => window.removeEventListener('scroll', fn);
+  }, []);
+  return <div style={{
+    position: 'fixed', top: 0, left: 0, right: 0, height: 2, zIndex: 200,
+    background: `linear-gradient(90deg, ${accent}, ${accentAlpha('#6FD3FF', 0.7)})`,
+    transformOrigin: 'right', transform: `scaleX(${p})`,
+    boxShadow: `0 0 12px ${accentAlpha(accent, 0.5)}`,
+  }} />;
+}
+
+function MouseGlow({ color }) {
+  const [pos, setPos] = useState({ x: -999, y: -999 });
+  useEffect(() => {
+    const fn = (e) => setPos({ x: e.clientX, y: e.clientY });
+    window.addEventListener('mousemove', fn, { passive: true });
+    return () => window.removeEventListener('mousemove', fn);
+  }, []);
+  return <div style={{
+    position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0,
+    background: `radial-gradient(600px circle at ${pos.x}px ${pos.y}px, ${color}, transparent 70%)`,
+  }} />;
+}
+
+function AuroraBg({ accent }) {
+  return <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+    <div className="aurora-b aurora-b1" style={{ background: `radial-gradient(ellipse, ${accentAlpha(accent, 0.16)}, transparent 70%)` }} />
+    <div className="aurora-b aurora-b2" style={{ background: `radial-gradient(ellipse, ${accentAlpha('#6FD3FF', 0.07)}, transparent 70%)` }} />
+    <div className="aurora-b aurora-b3" style={{ background: `radial-gradient(ellipse, ${accentAlpha('#C04CE8', 0.055)}, transparent 70%)` }} />
+  </div>;
+}
+
+function ConstellationCanvas({ color, lineColor, count = 50 }) {
+  const cvs = useRef(null), pts = useRef([]), raf = useRef(null), mouse = useRef({ x: -999, y: -999 });
+  useEffect(() => {
+    const c = cvs.current; if (!c) return;
+    const ctx = c.getContext('2d'), dpr = window.devicePixelRatio || 1;
+    const resize = () => {
+      c.width = c.offsetWidth * dpr; c.height = c.offsetHeight * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    resize(); window.addEventListener('resize', resize);
+    const onM = (e) => { const r = c.getBoundingClientRect(); mouse.current = { x: e.clientX - r.left, y: e.clientY - r.top }; };
+    window.addEventListener('mousemove', onM, { passive: true });
+    const W = () => c.offsetWidth, H = () => c.offsetHeight;
+    pts.current = Array.from({ length: count }, () => ({
+      x: Math.random() * W(), y: Math.random() * H(),
+      r: 0.7 + Math.random() * 1.3, a: 0.12 + Math.random() * 0.4,
+      vy: -(0.03 + Math.random() * 0.18), vx: (Math.random() - 0.5) * 0.12,
+    }));
+    const LD = 110, MD = 170, lc = lineColor || color;
+    const draw = () => {
+      const w = W(), h = H(); ctx.clearRect(0, 0, w, h);
+      const ps = pts.current, mx = mouse.current.x, my = mouse.current.y;
+      ps.forEach(p => {
+        p.y += p.vy; p.x += p.vx;
+        if (p.y < -12) { p.y = h + 12; p.x = Math.random() * w; }
+        if (p.x < -12) p.x = w + 12;
+        if (p.x > w + 12) p.x = -12;
+      });
+      for (let i = 0; i < ps.length; i++) {
+        for (let j = i + 1; j < ps.length; j++) {
+          const dx = ps[i].x - ps[j].x, dy = ps[i].y - ps[j].y, d = Math.sqrt(dx*dx + dy*dy);
+          if (d < LD) {
+            ctx.beginPath(); ctx.moveTo(ps[i].x, ps[i].y); ctx.lineTo(ps[j].x, ps[j].y);
+            ctx.strokeStyle = lc; ctx.globalAlpha = (1 - d / LD) * 0.1; ctx.lineWidth = 0.5; ctx.stroke();
+          }
+        }
+        const mdx = ps[i].x - mx, mdy = ps[i].y - my, md = Math.sqrt(mdx*mdx + mdy*mdy);
+        if (md < MD && mx > 0) {
+          ctx.beginPath(); ctx.moveTo(ps[i].x, ps[i].y); ctx.lineTo(mx, my);
+          ctx.strokeStyle = lc; ctx.globalAlpha = (1 - md / MD) * 0.18; ctx.lineWidth = 0.5; ctx.stroke();
+        }
+      }
+      ps.forEach(p => {
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = color; ctx.globalAlpha = p.a; ctx.fill();
+      });
+      ctx.globalAlpha = 1; raf.current = requestAnimationFrame(draw);
+    };
+    draw();
+    return () => { window.removeEventListener('resize', resize); window.removeEventListener('mousemove', onM); cancelAnimationFrame(raf.current); };
+  }, [color, count, lineColor]);
+  return <canvas ref={cvs} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }} />;
+}
+
+function Counter({ to, duration = 2.2, suffix = '', prefix = '' }) {
+  const [ref, vis] = useInView();
+  const [val, setVal] = useState(0);
+  useEffect(() => {
+    if (!vis) return; let start = null;
+    const step = (ts) => {
+      if (!start) start = ts;
+      const p = Math.min(1, (ts - start) / (duration * 1000));
+      setVal(Math.round((1 - Math.pow(1 - p, 3)) * to));
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [vis, to, duration]);
+  return <span ref={ref}>{prefix}{val}{suffix}</span>;
+}
+
+function FloatingShapes({ accent }) {
+  return <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+    <div className="float-shape" style={{ width: 90, height: 90, borderRadius: '50%', border: `1px solid ${accentAlpha(accent, 0.05)}`, top: '15%', left: '10%', animationDuration: '24s' }} />
+    <div className="float-shape" style={{ width: 4, height: 4, borderRadius: '50%', background: accentAlpha('#6FD3FF', 0.15), top: '28%', right: '15%', animationDuration: '19s', animationDelay: '-5s' }} />
+    <div className="float-shape" style={{ width: 18, height: 18, borderRadius: '50%', border: `1px solid ${accentAlpha('#C04CE8', 0.05)}`, bottom: '22%', left: '20%', animationDuration: '26s', animationDelay: '-9s' }} />
+    <div className="float-shape" style={{ width: 3, height: 3, borderRadius: '50%', background: accentAlpha(accent, 0.12), top: '58%', right: '9%', animationDuration: '21s', animationDelay: '-3s' }} />
+    <div className="float-shape" style={{ width: 140, height: 140, borderRadius: '50%', border: `1px solid ${accentAlpha(accent, 0.02)}`, bottom: '8%', right: '22%', animationDuration: '32s', animationDelay: '-14s' }} />
+    <div className="float-shape" style={{ width: 4, height: 4, borderRadius: '50%', background: accentAlpha('#6FD3FF', 0.18), top: '72%', left: '7%', animationDuration: '17s', animationDelay: '-6s' }} />
+    <div className="float-shape" style={{ width: 50, height: 50, borderRadius: '50%', border: `1px solid ${accentAlpha(accent, 0.035)}`, top: '8%', right: '35%', animationDuration: '28s', animationDelay: '-10s' }} />
+  </div>;
+}
+
+function MarqueeStrip({ items, speed = 35, reverse = false }) {
+  const content = [...items, ...items, ...items];
+  return <div style={{ overflow: 'hidden', whiteSpace: 'nowrap', maskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)' }}>
+    <div style={{ display: 'inline-flex', gap: 32, animation: `marquee ${speed}s linear infinite ${reverse ? 'reverse' : ''}`, paddingInlineStart: 32 }}>
+      {content.map((item, i) => <span key={i} className="marquee-item">{item}</span>)}
+    </div>
+  </div>;
+}
+
+function Divider({ accent, width = 100 }) {
+  const [ref, vis] = useInView();
+  return <div ref={ref} style={{
+    height: 1, maxWidth: width, margin: '0 auto',
+    background: `linear-gradient(90deg, transparent, ${accentAlpha(accent, 0.28)}, transparent)`,
+    opacity: vis ? 1 : 0, transform: vis ? 'scaleX(1)' : 'scaleX(0)',
+    transition: 'all 1s cubic-bezier(.22,1,.36,1) 0.1s',
+  }} />;
+}
+
+function LIcon({ name, size = 22 }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current; if (!el || !window.lucide) return;
+    el.innerHTML = '';
+    const i = document.createElement('i'); i.setAttribute('data-lucide', name); el.appendChild(i);
+    try { window.lucide.createIcons({ nodes: [i] }); } catch (e) {}
+    const svg = el.querySelector('svg');
+    if (svg) { svg.setAttribute('width', size); svg.setAttribute('height', size); }
+  }, [name, size]);
+  return <span ref={ref} style={{ display: 'inline-flex', alignItems: 'center', lineHeight: 0, color: 'inherit' }} />;
+}
+
+// ═══════════════════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════════════════
+function SiteNav({ accent, dark, onToggleTheme }) {
+  const scrollY = useScrollY();
+  const [open, setOpen] = useState(false);
+  const s = scrollY > 40;
+  const links = [
+    { label: 'מה אני בונה', href: '#bento' },
+    { label: 'פרויקטים', href: '#projects' },
+    { label: 'אודות', href: '#about' },
+    { label: 'יצירת קשר', href: 'https://barak-ai.co.il/contact', ext: true },
+  ];
+  return (
+    <nav className="kb-nav" style={{
+      background: s ? (dark ? 'rgba(6,6,6,0.8)' : 'rgba(247,248,255,0.82)') : 'transparent',
+      backdropFilter: s ? 'blur(20px) saturate(1.4)' : 'none',
+      WebkitBackdropFilter: s ? 'blur(20px) saturate(1.4)' : 'none',
+      borderBottom: s ? `1px solid ${dark ? 'rgba(255,255,255,0.04)' : 'rgba(15,17,64,0.06)'}` : '1px solid transparent',
+    }}>
+      <a href="#hero" className="kb-nav-logo">
+        <span style={{
+          background: `linear-gradient(135deg, ${dark ? '#fff' : '#0F1140'} 40%, ${accent})`,
+          WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+          fontWeight: 800, fontSize: 17, letterSpacing: '0.04em', textTransform: 'uppercase',
+        }}>KOBIBARAK.COM</span>
+      </a>
+
+      <div className="kb-desktop-only" style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
+        {links.map(l => (
+          <a key={l.href} href={l.href} className="kb-nav-link" {...(l.ext ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>
+        ))}
+      </div>
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <button className="kb-theme-toggle" onClick={onToggleTheme} aria-label="מצב תצוגה">
+          {dark ? (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          ) : (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          )}
+        </button>
+        <MagneticWrap strength={0.2}>
+          <a href="https://barak-ai.co.il/contact" target="_blank" rel="noopener"
+            className="kb-desktop-only kb-pill"
+            style={{ background: accent, boxShadow: `0 0 22px ${accentAlpha(accent, 0.35)}` }}>
+            בואו נדבר
+          </a>
+        </MagneticWrap>
+        <button className="kb-mobile-only" onClick={() => setOpen(!open)} aria-label="תפריט"
+          style={{ background: 'none', border: 'none', color: dark ? 'white' : '#0F1140', cursor: 'pointer', padding: 6 }}>
+          <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round">
+            {open
+              ? <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></>
+              : <><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></>}
+          </svg>
+        </button>
+      </div>
+
+      {open && (
+        <div className="kb-mobile-overlay" style={{
+          background: dark ? 'rgba(5,5,5,0.97)' : 'rgba(247,248,255,0.97)',
+          backdropFilter: 'blur(24px)',
+        }}>
+          {links.map(l => (
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)}
+              className="kb-mobile-link"
+              style={{ color: dark ? 'white' : '#0F1140' }}
+              {...(l.ext ? { target: '_blank', rel: 'noopener' } : {})}>
+              {l.label}
+            </a>
+          ))}
+          <a href="https://barak-ai.co.il/contact" target="_blank" rel="noopener"
+            className="kb-pill" style={{ background: accent, marginTop: 12 }}>
+            בואו נדבר
+          </a>
+        </div>
+      )}
+    </nav>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════
+// HERO
+// ═══════════════════════════════════════════════════════════
+function HeroSection({ accent, dark }) {
+  const scrollY = useScrollY();
+  const heroOpacity = Math.max(0, 1 - scrollY / 700);
+  const fg = dark ? '#fff' : '#0F1140';
+  const fg2 = dark ? 'rgba(255,255,255,0.7)' : 'rgba(15,17,64,0.65)';
+  const fg3 = dark ? 'rgba(255,255,255,0.35)' : 'rgba(15,17,64,0.45)';
+
+  return (
+    <section id="hero" style={{
+      position: 'relative', minHeight: '100dvh',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      textAlign: 'center', padding: '140px 24px 100px', overflow: 'hidden',
+    }}>
+      {dark && <AuroraBg accent={accent} />}
+      {dark && <FloatingShapes accent={accent} />}
+      {dark && <ConstellationCanvas color={accentAlpha(accent, 0.5)} lineColor={accentAlpha(accent, 0.35)} count={55} />}
+      {!dark && <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        background: `radial-gradient(ellipse 60% 50% at 50% 40%, ${accentAlpha(accent, 0.08)}, transparent 70%)`,
+      }} />}
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        opacity: dark ? 0.02 : 0.03,
+        backgroundImage: `radial-gradient(${dark ? 'rgba(255,255,255,0.5)' : 'rgba(15,17,64,0.3)'} 1px, transparent 1px)`,
+        backgroundSize: '30px 30px',
+        transform: `translateY(${scrollY * 0.06}px)`,
+      }} />
+
+      <div style={{
+        position: 'relative', maxWidth: 900, margin: '0 auto',
+        opacity: heroOpacity, transform: `translateY(${scrollY * 0.08}px)`,
+      }}>
+        <FadeSlide delay={0}>
+          <div className="kb-eyebrow">
+            <span className="kb-eyebrow-dot" style={{ background: accent }} />
+            יזם · בונה מערכות AI · מוצרים דיגיטליים
+          </div>
+        </FadeSlide>
+
+        <h1 className="kb-hero-name">
+          <StaggerWords text="קובי ברק" delay={0.3} style={{
+            background: `linear-gradient(135deg, ${fg} 30%, ${accentAlpha(accent, 0.7)} 80%, ${accentAlpha('#6FD3FF', 0.6)})`,
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+          }} />
+        </h1>
+
+        <div style={{ position: 'absolute', top: '32%', left: '50%', transform: 'translate(-50%, -50%)',
+          width: 'min(500px, 70vw)', height: 140, borderRadius: '50%',
+          background: `radial-gradient(ellipse, ${accentAlpha(accent, dark ? 0.15 : 0.08)}, transparent 65%)`,
+          filter: 'blur(40px)', pointerEvents: 'none', zIndex: -1, animation: 'glowPulse 4s ease-in-out infinite',
+        }} />
+
+        <div style={{ marginTop: 16 }}>
+          <StaggerWords text="בונה את העתיד, מערכת אחרי מערכת."
+            delay={0.7} style={{ fontSize: 'clamp(22px, 3.8vw, 44px)', fontWeight: 300, color: fg2 }} />
+        </div>
+
+        <FadeSlide delay={1.1}>
+          <p style={{
+            fontSize: 'clamp(14px, 1.6vw, 18px)', lineHeight: 1.7, color: fg3,
+            maxWidth: 500, margin: '22px auto 0',
+          }}>
+            מתוך הבנה עמוקה של שטח, חשיבה מערכתית ובנייה שמייצרת תוצאות אמיתיות.
+          </p>
+        </FadeSlide>
+
+        <FadeSlide delay={1.3}>
+          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginTop: 44, flexWrap: 'wrap' }}>
+            <MagneticWrap>
+              <a href="#projects" className="kb-ghost">הכירו את העבודה שלי</a>
+            </MagneticWrap>
+            <MagneticWrap>
+              <a href="https://barak-ai.co.il" target="_blank" rel="noopener" className="kb-pill"
+                style={{ background: accent, boxShadow: `0 0 36px ${accentAlpha(accent, 0.4)}` }}>
+                מעבר ל־Barak AI
+              </a>
+            </MagneticWrap>
+          </div>
+        </FadeSlide>
+
+        <div className="kb-scroll-hint"><div className="kb-scroll-line" /></div>
+      </div>
+    </section>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════
+// STATEMENT (SCROLL REVEAL)
+// ═══════════════════════════════════════════════════════════
+function StatementSection() {
+  return (
+    <section style={{
+      padding: 'clamp(100px, 14vw, 200px) 24px',
+      display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '50vh',
+    }}>
+      <div style={{ maxWidth: 960 }}>
+        <RevealText
+          text="אני לא מגיע ל־AI מהצד של ההייפ. אני מגיע אליו מהצד של תהליכים, שירות, מערכות, אנשים ובעיות שצריך לפתור."
+          style={{ fontSize: 'clamp(26px, 4.5vw, 50px)', fontWeight: 400, lineHeight: 1.55, textAlign: 'center' }}
+        />
+      </div>
+    </section>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════
+// BENTO GRID
+// ═══════════════════════════════════════════════════════════
+function BentoSection({ accent }) {
+  const areas = [
+    { icon: 'cpu',      title: 'מערכות AI',          desc: 'מידע, תהליכים, משתמשים — במערכת אחת שעובדת.',  span: 'wide',   color: accent },
+    { icon: 'settings', title: 'אוטומציה',            desc: 'חיבור בין הכלים שכבר יש.',                      span: 'normal', color: '#5B7BF7' },
+    { icon: 'mic',      title: 'סוכנים קוליים',       desc: 'מענה 24/7 בכל ערוץ.',                           span: 'normal', color: '#6FD3FF' },
+    { icon: 'monitor',  title: 'מוצרים דיגיטליים',   desc: 'דשבורדים, SaaS ומערכות ניהול.',                 span: 'normal', color: '#C04CE8' },
+    { icon: 'wrench',   title: 'רכב ושירות',          desc: 'ניסיון מהשטח → מערכות דיגיטליות.',             span: 'normal', color: '#1BB78A' },
+    { icon: 'compass',  title: 'ליווי ואסטרטגיה',    desc: 'מיפוי צרכים עד מערכת חיה.',                    span: 'wide',   color: '#6C3FE0' },
+  ];
+
+  return (
+    <section id="bento" style={{ padding: 'clamp(60px, 8vw, 110px) 24px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <FadeSlide>
+          <div className="kb-eyebrow">
+            <span className="kb-eyebrow-dot" style={{ background: accent }} />
+            תחומי עשייה
+          </div>
+        </FadeSlide>
+        <FadeSlide delay={0.08}>
+          <h2 className="kb-h2" style={{ marginTop: 10 }}>מה אני בונה</h2>
+        </FadeSlide>
+        <FadeSlide delay={0.14}>
+          <p className="kb-sub" style={{ marginBottom: 48 }}>קודם להבין את הבעיה, אחר כך לתכנן, ורק אז — לבחור כלים.</p>
+        </FadeSlide>
+
+        <div className="bento-grid">
+          {areas.map((a, i) => (
+            <FadeSlide key={a.title} delay={0.04 + i * 0.06}
+              style={{ gridColumn: a.span === 'wide' ? 'span 2' : 'span 1' }}
+              className="bento-cell">
+              <TiltCard className="bento-card" style={{ height: '100%' }}>
+                <div className="bento-glow" style={{ background: `linear-gradient(90deg, ${a.color}, ${accentAlpha(a.color, 0.15)})` }} />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 14, height: '100%', padding: 28, position: 'relative' }}>
+                  <div style={{
+                    width: 46, height: 46, borderRadius: 14, flexShrink: 0,
+                    background: accentAlpha(a.color, 0.1), color: a.color,
+                    display: 'grid', placeItems: 'center',
+                  }}>
+                    <LIcon name={a.icon} size={22} />
+                  </div>
+                  <h3 style={{ fontSize: 19, fontWeight: 600 }}>{a.title}</h3>
+                  <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.4)' }}>{a.desc}</p>
+                </div>
+              </TiltCard>
+            </FadeSlide>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════
+// MARQUEE
+// ═══════════════════════════════════════════════════════════
+function MarqueeSection() {
+  const row1 = ['צ׳אטבוטים', 'סוכנים קוליים', 'אוטומציות', 'CRM', 'SaaS', 'Garage-OS', 'Nadlan-OS', 'מערכות AI'];
+  const row2 = ['WhatsApp', 'דשבורדים', 'LLM', 'API', 'Voice AI', 'Analytics', 'Workflows', 'Integration'];
+  return (
+    <section style={{ padding: '56px 0', overflow: 'hidden', direction: 'ltr' }}>
+      <FadeSlide>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center' }}>
+          <MarqueeStrip items={row1} speed={40} />
+          <MarqueeStrip items={row2} speed={45} reverse />
+        </div>
+      </FadeSlide>
+    </section>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════
+// PROJECTS
+// ═══════════════════════════════════════════════════════════
+function FeaturedProject({ p }) {
+  const [hov, setHov] = useState(false);
+  return (
+    <a href={p.link} target="_blank" rel="noopener"
+      onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+      className="featured-project" style={{
+        background: hov
+          ? `linear-gradient(135deg, ${accentAlpha(p.color, 0.1)} 0%, ${accentAlpha(p.color, 0.03)} 100%)`
+          : 'rgba(255,255,255,0.025)',
+        borderColor: hov ? accentAlpha(p.color, 0.25) : 'rgba(255,255,255,0.06)',
+        transform: hov ? 'translateY(-4px)' : 'none',
+        boxShadow: hov ? `0 24px 60px ${accentAlpha(p.color, 0.12)}` : 'none',
+      }}>
+      <div style={{
+        position: 'absolute', top: -40, right: -40, width: 200, height: 200, borderRadius: '50%',
+        background: `radial-gradient(circle, ${accentAlpha(p.color, hov ? 0.12 : 0.05)}, transparent 70%)`,
+        transition: 'background 0.4s', pointerEvents: 'none',
+      }} />
+      <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 28, flexWrap: 'wrap' }}>
+        <div style={{ flex: 1, minWidth: 240 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+            <div className="proj-badge" style={{ background: accentAlpha(p.color, 0.12), color: p.color }}>Featured</div>
+          </div>
+          <h3 style={{ fontSize: 28, fontWeight: 700, color: hov ? p.color : '#fff', transition: 'color 0.3s' }}>{p.name}</h3>
+          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', marginTop: 8, lineHeight: 1.6 }}>{p.desc}</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 14 }}>
+            {p.tags.map(t => <span key={t} className="kb-chip" style={{ borderColor: hov ? accentAlpha(p.color, 0.2) : undefined }}>{t}</span>)}
+          </div>
+        </div>
+        <div style={{
+          width: 56, height: 56, borderRadius: 16, flexShrink: 0,
+          background: accentAlpha(p.color, hov ? 0.18 : 0.08), color: p.color,
+          display: 'grid', placeItems: 'center', transition: 'all 0.3s',
+          transform: hov ? 'scale(1.08)' : 'scale(1)',
+        }}>
+          <LIcon name="arrow-up-right" size={24} />
+        </div>
+      </div>
+    </a>
+  );
+}
+
+function ProjectCard({ p }) {
+  const [hov, setHov] = useState(false);
+  const Wrap = p.link ? 'a' : 'div';
+  const wrapProps = p.link ? { href: p.link, target: '_blank', rel: 'noopener' } : {};
+  return (
+    <Wrap {...wrapProps}
+      onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+      className="project-card" style={{
+        background: hov ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.02)',
+        borderColor: hov ? accentAlpha(p.color, 0.22) : 'rgba(255,255,255,0.06)',
+        transform: hov ? 'translateY(-4px)' : 'none',
+        boxShadow: hov ? `0 16px 44px ${accentAlpha(p.color, 0.08)}` : 'none',
+        display: 'block', textDecoration: 'none', color: 'inherit', cursor: p.link ? 'pointer' : 'default',
+      }}>
+      <div style={{
+        position: 'absolute', top: 0, left: '15%', right: '15%', height: 2, borderRadius: 1,
+        background: `linear-gradient(90deg, transparent, ${p.color}, transparent)`,
+        opacity: hov ? 0.6 : 0, transition: 'opacity 0.35s',
+      }} />
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 10, marginBottom: 8 }}>
+        <h3 style={{ fontSize: 19, fontWeight: 700, color: hov ? p.color : '#fff', transition: 'color 0.3s' }}>{p.name}</h3>
+        {p.link && (
+          <div style={{
+            width: 30, height: 30, borderRadius: 8, flexShrink: 0,
+            background: accentAlpha(p.color, hov ? 0.15 : 0.06), color: p.color,
+            display: 'grid', placeItems: 'center', transition: 'all 0.3s',
+          }}>
+            <LIcon name="arrow-up-right" size={14} />
+          </div>
+        )}
+      </div>
+      <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.4)', lineHeight: 1.6 }}>{p.desc}</p>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginTop: 14 }}>
+        {p.tags.map(t => <span key={t} className="kb-chip" style={{ fontSize: 11, padding: '3px 10px' }}>{t}</span>)}
+      </div>
+    </Wrap>
+  );
+}
+
+function ProjectsSection({ accent }) {
+  const projects = [
+    { name: 'Barak AI',         desc: 'מערכות AI לעסקים — אוטומציות, סוכנים קוליים, צ׳אטבוטים ואתרים חכמים.', tags: ['AI', 'אוטומציות', 'SaaS'],              link: 'https://barak-ai.co.il',             color: '#4F1AD6', featured: true },
+    { name: 'Garage-OS',        desc: 'מערכת ניהול ייעודית לעולמות השירות והרכב.',                               tags: ['Vertical AI', 'מוסכים', 'שירות'],      link: 'https://garage-os.co.il',            color: '#5B7BF7' },
+    { name: 'Nadlan-OS',        desc: 'ניהול לידים, נכסים ותהליכי עבודה עבור אנשי נדל״ן.',                      tags: ['Vertical AI', 'נדל״ן', 'CRM'],         link: 'https://nadlan-os.co.il',            color: '#6FD3FF' },
+    { name: 'MultiX Simulator', desc: 'סימולטור אינטראקטיבי לממשקי מולטימדיה בעולם הרכב.',                       tags: ['רכב', 'סימולציה', 'UX'],               link: 'https://multix.barak-ai.co.il',      color: '#C04CE8' },
+    { name: 'Ale Zahav LIVE',   desc: 'פלטפורמה לשידורים חיים ותוכן עבור הגיל השלישי.',                         tags: ['קהילה', 'וידאו', 'CMS'],               link: 'https://live.ale-zahav.co.il',       color: '#1BB78A' },
+  ];
+
+  return (
+    <section id="projects" style={{ padding: 'clamp(60px, 8vw, 110px) 24px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <FadeSlide>
+          <div className="kb-eyebrow">
+            <span className="kb-eyebrow-dot" style={{ background: accent }} />
+            פרויקטים
+          </div>
+        </FadeSlide>
+        <FadeSlide delay={0.08}><h2 className="kb-h2">מה שבניתי.</h2></FadeSlide>
+        <FadeSlide delay={0.14}><p className="kb-sub" style={{ marginBottom: 48 }}>בלי תבניות גנריות. בלי פתרונות מדף.</p></FadeSlide>
+
+        <FadeSlide delay={0.2}>
+          <FeaturedProject p={projects[0]} />
+        </FadeSlide>
+
+        <div className="projects-grid" style={{ marginTop: 14 }}>
+          {projects.slice(1).map((p, i) => (
+            <FadeSlide key={p.name} delay={0.1 + i * 0.06}>
+              <ProjectCard p={p} />
+            </FadeSlide>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════
+// PROCESS
+// ═══════════════════════════════════════════════════════════
+function ProcessSection({ accent }) {
+  const steps = [
+    { icon: 'search', title: 'להבין את הבעיה',    desc: 'ניתוח, מיפוי תהליכים, זיהוי צווארי בקבוק ומטרות.' },
+    { icon: 'layers', title: 'לתכנן',              desc: 'אדריכלות פתרון, ממשקים וזרימת מידע.' },
+    { icon: 'wrench', title: 'לבנות ולהטמיע',     desc: 'פיתוח, בדיקות, הדרכה — עם ליווי צמוד.' },
+  ];
+  const [lineRef, lineVis] = useInView();
+
+  return (
+    <section id="process" style={{ padding: 'clamp(60px, 8vw, 100px) 24px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <FadeSlide>
+          <div className="kb-eyebrow">
+            <span className="kb-eyebrow-dot" style={{ background: accent }} />
+            תהליך
+          </div>
+        </FadeSlide>
+        <FadeSlide delay={0.08}>
+          <h2 className="kb-h2">קודם הבעיה, אחר כך המערכת.</h2>
+        </FadeSlide>
+
+        <div ref={lineRef} style={{ position: 'relative', marginTop: 56 }}>
+          <div className="process-line-wrap">
+            <div className="process-line" style={{
+              background: `linear-gradient(90deg, ${accent}, ${accentAlpha('#6FD3FF', 0.4)}, ${accent})`,
+              transform: lineVis ? 'scaleX(1)' : 'scaleX(0)',
+            }} />
+          </div>
+          <div className="process-grid">
+            {steps.map((s, i) => (
+              <FadeSlide key={s.title} delay={0.18 + i * 0.14}>
+                <div style={{ textAlign: 'center' }}>
+                  <div className="process-circle" style={{
+                    background: `linear-gradient(135deg, ${accent}, ${accentAlpha(accent, 0.4)})`,
+                    boxShadow: `0 0 28px ${accentAlpha(accent, 0.25)}, inset 0 1px 0 rgba(255,255,255,0.15)`,
+                  }}>{i + 1}</div>
+                  <h3 style={{ fontSize: 20, fontWeight: 600, margin: '18px 0 8px' }}>{s.title}</h3>
+                  <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.4)', maxWidth: 260, margin: '0 auto' }}>{s.desc}</p>
+                </div>
+              </FadeSlide>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════
+// ABOUT + STATS
+// ═══════════════════════════════════════════════════════════
+function AboutSection({ accent }) {
+  const stats = [
+    { num: 5,   suffix: '+', label: 'מוצרים עצמאיים' },
+    { num: 100, suffix: '%', label: 'בנייה בהתאמה' },
+    { num: 24,  suffix: '/7', label: 'סוכנים שעובדים' },
+  ];
+  const values = [
+    { n: '01', title: 'התאמה, לא תבנית',          desc: 'כל מערכת נבנית סביב העסק הספציפי.' },
+    { n: '02', title: 'טכנולוגיה בגובה העיניים',  desc: 'בעברית פשוטה. בלי ז׳רגון מיותר.' },
+    { n: '03', title: 'תוצאות מדידות',             desc: 'לידים, חיסכון בזמן, מספרים.' },
+  ];
+
+  return (
+    <section id="about" style={{ padding: 'clamp(60px, 8vw, 110px) 24px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <FadeSlide>
+          <div className="kb-eyebrow">
+            <span className="kb-eyebrow-dot" style={{ background: accent }} />
+            אודות
+          </div>
+        </FadeSlide>
+        <FadeSlide delay={0.08}>
+          <h2 className="kb-h2">הרקע שלי מהשטח,<br />הבנייה מהראש.</h2>
+        </FadeSlide>
+        <FadeSlide delay={0.14}>
+          <p className="kb-sub">מעולמות השירות, הרכב, הדיגיטל והטכנולוגיה — מקומות שבהם תהליך לא טוב הופך מהר לבעיה עסקית.</p>
+        </FadeSlide>
+
+        <div className="stats-row">
+          {stats.map((s, i) => (
+            <FadeSlide key={s.label} delay={0.1 + i * 0.1}>
+              <div className="stat-item">
+                <div className="stat-num" style={{
+                  background: `linear-gradient(135deg, ${accent}, ${accentAlpha('#6FD3FF', 0.6)})`,
+                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                }}>
+                  <Counter to={s.num} suffix={s.suffix} />
+                </div>
+                <div className="stat-label">{s.label}</div>
+              </div>
+            </FadeSlide>
+          ))}
+        </div>
+
+        <div className="values-grid">
+          {values.map((v, i) => (
+            <FadeSlide key={v.n} delay={0.1 + i * 0.08}>
+              <TiltCard className="value-card" intensity={4}>
+                <div style={{ padding: 28 }}>
+                  <div className="value-num" style={{
+                    background: `linear-gradient(135deg, ${accent}, ${accentAlpha(accent, 0.12)})`,
+                    WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                  }}>{v.n}</div>
+                  <h3 style={{ fontSize: 18, fontWeight: 600, margin: '14px 0 8px' }}>{v.title}</h3>
+                  <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.4)' }}>{v.desc}</p>
+                </div>
+              </TiltCard>
+            </FadeSlide>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════
+// CTA
+// ═══════════════════════════════════════════════════════════
+function CTASection({ accent }) {
+  return (
+    <section id="contact" style={{ padding: 'clamp(60px, 8vw, 110px) 24px' }}>
+      <FadeSlide>
+        <div className="cta-box" style={{
+          background: `linear-gradient(135deg, ${accentAlpha(accent, 0.1)}, ${accentAlpha(accent, 0.02)})`,
+          borderColor: accentAlpha(accent, 0.12),
+        }}>
+          <div style={{
+            position: 'absolute', top: '-30%', right: '-10%', width: '45%', height: '160%',
+            background: `radial-gradient(ellipse, ${accentAlpha(accent, 0.08)}, transparent 70%)`,
+            animation: 'ctaPulse 7s ease-in-out infinite', pointerEvents: 'none', borderRadius: '50%',
+          }} />
+          <div style={{
+            position: 'absolute', bottom: '-20%', left: '-5%', width: '35%', height: '140%',
+            background: `radial-gradient(ellipse, ${accentAlpha('#6FD3FF', 0.04)}, transparent 70%)`,
+            animation: 'ctaPulse 9s ease-in-out infinite reverse', pointerEvents: 'none', borderRadius: '50%',
+          }} />
+
+          <div style={{ position: 'relative', textAlign: 'center' }}>
+            <h2 style={{ fontSize: 'clamp(28px, 4.5vw, 48px)', fontWeight: 700 }}>
+              מחפשים פתרון <span style={{ color: accent }}>AI</span>?
+            </h2>
+            <p style={{
+              fontSize: 'clamp(14px, 1.6vw, 17px)', lineHeight: 1.65,
+              color: 'rgba(255,255,255,0.45)', maxWidth: 500, margin: '16px auto 40px',
+            }}>
+              את העבודה המסחרית שלי אני מרכז דרך Barak AI — שם אפשר לראות שירותים, פתרונות ודרכי התקשרות.
+            </p>
+            <MagneticWrap strength={0.18}>
+              <a href="https://barak-ai.co.il" target="_blank" rel="noopener" className="kb-pill"
+                style={{ background: accent, boxShadow: `0 0 24px ${accentAlpha(accent, 0.3)}`, whiteSpace: 'nowrap' }}>
+                מעבר ל־Barak AI
+              </a>
+            </MagneticWrap>
+          </div>
+        </div>
+      </FadeSlide>
+    </section>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════
+// FOOTER
+// ═══════════════════════════════════════════════════════════
+function SiteFooter({ accent }) {
+  const ext = [
+    { label: 'Barak-AI.co.il',    href: 'https://barak-ai.co.il' },
+    { label: 'SkyMarketing.co.il', href: 'https://skymarketing.co.il' },
+    { label: 'WhatsApp',           href: 'https://wa.me/972505552007' },
+  ];
+  const nav = [
+    { label: 'מה אני בונה', href: '#bento' },
+    { label: 'פרויקטים',    href: '#projects' },
+    { label: 'אודות',       href: '#about' },
+    { label: 'יצירת קשר',  href: 'https://barak-ai.co.il/contact', ext: true },
+  ];
+  return (
+    <footer className="kb-footer">
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div className="footer-grid">
+          <div>
+            <div style={{ fontSize: 22, fontWeight: 700, marginBottom: 10 }}>
+              <span style={{
+                background: `linear-gradient(135deg, var(--kb-fg, #fff) 40%, ${accent})`,
+                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+              }}>קובי ברק</span>
+            </div>
+            <p style={{ fontSize: 14, lineHeight: 1.65, maxWidth: 300 }}>
+              יזם, בונה מערכות AI ומוצרים דיגיטליים.
+            </p>
+          </div>
+          <div>
+            <div className="footer-heading">לינקים</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {ext.map(l => (
+                <a key={l.label} href={l.href} target="_blank" rel="noopener" className="footer-link">{l.label}</a>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div className="footer-heading">ניווט</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {nav.map(l => (
+                <a key={l.label} href={l.href} className="footer-link" {...(l.ext ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>© 2026 קובי ברק</span>
+          <span style={{ letterSpacing: '0.12em', color: 'rgba(255,255,255,0.12)' }}>KobiBarak.com</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════
+// TWEAKS PANEL (minimal embedded version)
+// ═══════════════════════════════════════════════════════════
+const TWEAKS_CSS = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:270px;
+    display:flex;flex-direction:column;
+    background:rgba(250,249,247,.85);color:#29261b;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
+    box-shadow:0 12px 40px rgba(0,0,0,.2);
+    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
+    width:22px;height:22px;border-radius:6px;cursor:pointer;font-size:13px}
+  .twk-x:hover{background:rgba(0,0,0,.06)}
+  .twk-body{padding:4px 14px 14px;display:flex;flex-direction:column;gap:10px;overflow-y:auto}
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(41,38,27,.45);padding:8px 0 0}
+  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;
+    background:rgba(0,0,0,.15);transition:background .15s;cursor:pointer;padding:0}
+  .twk-toggle[data-on="1"]{background:#34c759}
+  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
+  .twk-row-h{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{font-weight:500}
+  .twk-chips{display:flex;gap:6px}
+  .twk-chip-c{flex:1;height:40px;border:0;border-radius:6px;cursor:pointer;
+    box-shadow:0 0 0 .5px rgba(0,0,0,.12);transition:transform .12s,box-shadow .12s;position:relative}
+  .twk-chip-c:hover{transform:translateY(-1px);box-shadow:0 0 0 .5px rgba(0,0,0,.2),0 4px 10px rgba(0,0,0,.12)}
+  .twk-chip-c[data-on="1"]{box-shadow:0 0 0 2px rgba(0,0,0,.85)}
+  .twk-chip-c svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:12px;height:12px}
+`;
+
+function TweaksPanelMini({ children, title = 'התאמות' }) {
+  const [open, setOpen] = useState(false);
+  const dragRef = useRef(null);
+  const offsetRef = useRef({ x: 16, y: 16 });
+
+  useEffect(() => {
+    const onMsg = (e) => {
+      const t = e?.data?.type;
+      if (t === '__activate_edit_mode') setOpen(true);
+      else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  const dismiss = () => {
+    setOpen(false);
+    window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+  };
+
+  const onDragStart = (e) => {
+    const panel = dragRef.current; if (!panel) return;
+    const r = panel.getBoundingClientRect();
+    const startRight = window.innerWidth - r.right, startBottom = window.innerHeight - r.bottom;
+    const sx = e.clientX, sy = e.clientY;
+    const move = (ev) => {
+      offsetRef.current = { x: startRight - (ev.clientX - sx), y: startBottom - (ev.clientY - sy) };
+      panel.style.right = Math.max(8, offsetRef.current.x) + 'px';
+      panel.style.bottom = Math.max(8, offsetRef.current.y) + 'px';
+    };
+    const up = () => { window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', up); };
+    window.addEventListener('mousemove', move); window.addEventListener('mouseup', up);
+  };
+
+  if (!open) return null;
+  return (
+    <>
+      <style>{TWEAKS_CSS}</style>
+      <div ref={dragRef} className="twk-panel" style={{ right: offsetRef.current.x, bottom: offsetRef.current.y }}>
+        <div className="twk-hd" onMouseDown={onDragStart}>
+          <b>{title}</b>
+          <button className="twk-x" onClick={dismiss}>✕</button>
+        </div>
+        <div className="twk-body">{children}</div>
+      </div>
+    </>
+  );
+}
+
+function ColorPicker({ label, value, options, onChange }) {
+  const isLight = (hex) => {
+    const h = hex.replace('#','').padEnd(6,'0');
+    const n = parseInt(h,16);
+    return ((n>>16)&255)*299 + ((n>>8)&255)*587 + (n&255)*114 > 148000;
+  };
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <div className="twk-lbl">{label}</div>
+      <div className="twk-chips">
+        {options.map(c => (
+          <button key={c} className="twk-chip-c" data-on={value === c ? '1' : '0'}
+            style={{ background: c }} onClick={() => onChange(c)}
+            title={c}>
+            {value === c && (
+              <svg viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M3 7.2 5.8 10 11 4.2" fill="none" strokeWidth="2.2"
+                  strokeLinecap="round" strokeLinejoin="round"
+                  stroke={isLight(c) ? 'rgba(0,0,0,.78)' : '#fff'} />
+              </svg>
+            )}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ToggleControl({ label, value, onChange }) {
+  return (
+    <div className="twk-row-h">
+      <span className="twk-lbl">{label}</span>
+      <button className="twk-toggle" data-on={value ? '1' : '0'} onClick={() => onChange(!value)}><i /></button>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════
+// APP ROOT
+// ═══════════════════════════════════════════════════════════
+const ACCENT_OPTIONS = ['#4F1AD6', '#6C3FE0', '#5B7BF7', '#1BB78A', '#C04CE8'];
+
+function App() {
+  const [accent, setAccent] = useState('#4F1AD6');
+  const [dark, setDark] = useState(true);
+  const [mouseGlow, setMouseGlow] = useState(true);
+
+  useEffect(() => {
+    document.body.classList.toggle('kb-light', !dark);
+    document.body.classList.toggle('kb-dark', dark);
+  }, [dark]);
+
+  return (
+    <div>
+      <ScrollProgress accent={accent} />
+      {mouseGlow && <MouseGlow color={accentAlpha(accent, dark ? 0.05 : 0.03)} />}
+      <SiteNav accent={accent} dark={dark} onToggleTheme={() => setDark(d => !d)} />
+      <HeroSection accent={accent} dark={dark} />
+      <Divider accent={accent} width={80} />
+      <StatementSection accent={accent} />
+      <BentoSection accent={accent} />
+      <MarqueeSection />
+      <Divider accent={accent} width={100} />
+      <ProjectsSection accent={accent} />
+      <Divider accent={accent} width={80} />
+      <ProcessSection accent={accent} />
+      <Divider accent={accent} width={100} />
+      <AboutSection accent={accent} />
+      <CTASection accent={accent} />
+      <SiteFooter accent={accent} />
+
+      <TweaksPanelMini title="התאמות">
+        <div className="twk-sect">צבע מוביל</div>
+        <ColorPicker label="" value={accent} options={ACCENT_OPTIONS} onChange={setAccent} />
+        <div className="twk-sect">אפקטים</div>
+        <ToggleControl label="זוהר עכבר" value={mouseGlow} onChange={setMouseGlow} />
+        <ToggleControl label="מצב כהה" value={dark} onChange={setDark} />
+      </TweaksPanelMini>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
