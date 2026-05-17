@@ -71,6 +71,14 @@
     background-size: 180px;
   }
   a { color: inherit; text-decoration: none; }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 65vw 55vh at 8% 18%, rgba(79,26,214,0.25) 0%, transparent 65%),
+      radial-gradient(ellipse 55vw 50vh at 90% 50%, rgba(192,76,232,0.18) 0%, transparent 65%),
+      radial-gradient(ellipse 50vw 45vh at 42% 95%, rgba(111,211,255,0.13) 0%, transparent 65%);
+  }
   ::selection { background: rgba(79,26,214,0.35); }
 
   /* ═══ AURORA ═══ */
@@ -181,11 +189,14 @@
   .bento-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
   .bento-card {
     border-radius: 20px; overflow: hidden; position: relative;
-    background: linear-gradient(145deg, rgba(79,26,214,0.22) 0%, rgba(15,8,40,0.7) 100%);
-    border: 1px solid rgba(108,63,224,0.35);
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(24px) saturate(1.8);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
+    border: 1px solid rgba(255,255,255,0.13);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08);
     transition: border-color 0.35s ease, box-shadow 0.35s ease;
   }
-  .bento-card:hover { border-color: rgba(108,63,224,0.65); box-shadow: 0 8px 32px rgba(79,26,214,0.22); }
+  .bento-card:hover { border-color: rgba(255,255,255,0.26); box-shadow: 0 8px 40px rgba(0,0,0,0.38), inset 0 1px 0 rgba(255,255,255,0.12); }
   .bento-glow { position: absolute; top: 0; left: 0; right: 0; height: 2px; opacity: 0; transition: opacity 0.35s; }
   .bento-card:hover .bento-glow { opacity: 1; }
 
@@ -201,14 +212,23 @@
   /* ═══ PROJECTS ═══ */
   .featured-project {
     display: block; border-radius: 24px; padding: 36px 32px;
-    border: 1px solid rgba(255,255,255,0.06); position: relative; overflow: hidden;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(24px) saturate(1.8);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
+    border: 1px solid rgba(255,255,255,0.13);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08);
+    position: relative; overflow: hidden;
     transition: all 0.4s cubic-bezier(.22,1,.36,1); text-decoration: none; color: #fff;
   }
   .proj-badge { padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.03em; }
   .projects-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(min(100%,260px),1fr)); gap: 14px; }
   .project-card {
     border-radius: 20px; padding: 24px 26px; position: relative; overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(24px) saturate(1.8);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
+    border: 1px solid rgba(255,255,255,0.13);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08);
     transition: all 0.35s cubic-bezier(.22,1,.36,1);
   }
 
@@ -238,11 +258,14 @@
   .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 8px; align-items: start; }
   .value-card {
     border-radius: 20px;
-    background: linear-gradient(145deg, rgba(79,26,214,0.22) 0%, rgba(15,8,40,0.7) 100%);
-    border: 1px solid rgba(108,63,224,0.35);
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(24px) saturate(1.8);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
+    border: 1px solid rgba(255,255,255,0.13);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08);
     transition: border-color 0.35s, box-shadow 0.35s; overflow: visible;
   }
-  .value-card:hover { border-color: rgba(108,63,224,0.65); box-shadow: 0 8px 32px rgba(79,26,214,0.22); }
+  .value-card:hover { border-color: rgba(255,255,255,0.26); box-shadow: 0 8px 40px rgba(0,0,0,0.38), inset 0 1px 0 rgba(255,255,255,0.12); }
   .value-num { font-size: 44px; font-weight: 800; line-height: 1; }
 
   /* ═══ CTA ═══ */
@@ -929,10 +952,8 @@ function FeaturedProject({ p }) {
     <a href={p.link} target="_blank" rel="noopener"
       onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
       className="featured-project" style={{
-        background: hov
-          ? `linear-gradient(145deg, ${accentAlpha(p.color, 0.32)} 0%, rgba(15,8,40,0.88) 100%)`
-          : 'linear-gradient(145deg, rgba(79,26,214,0.2) 0%, rgba(15,8,40,0.75) 100%)',
-        borderColor: hov ? accentAlpha(p.color, 0.6) : 'rgba(108,63,224,0.35)',
+        background: hov ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.06)',
+        borderColor: hov ? accentAlpha(p.color, 0.55) : 'rgba(255,255,255,0.13)',
         transform: hov ? 'translateY(-4px)' : 'none',
         boxShadow: hov ? `0 24px 60px ${accentAlpha(p.color, 0.12)}` : 'none',
       }}>
@@ -973,8 +994,8 @@ function ProjectCard({ p }) {
     <Wrap {...wrapProps}
       onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
       className="project-card" style={{
-        background: hov ? 'linear-gradient(145deg, rgba(79,26,214,0.3) 0%, rgba(15,8,40,0.88) 100%)' : 'linear-gradient(145deg, rgba(79,26,214,0.18) 0%, rgba(15,8,40,0.72) 100%)',
-        borderColor: hov ? accentAlpha(p.color, 0.6) : 'rgba(108,63,224,0.32)',
+        background: hov ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.06)',
+        borderColor: hov ? accentAlpha(p.color, 0.55) : 'rgba(255,255,255,0.13)',
         transform: hov ? 'translateY(-4px)' : 'none',
         boxShadow: hov ? `0 16px 44px ${accentAlpha(p.color, 0.08)}` : 'none',
         display: 'block', textDecoration: 'none', color: 'inherit', cursor: p.link ? 'pointer' : 'default',
