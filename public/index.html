@@ -50,7 +50,7 @@
   html { scroll-behavior: smooth; scroll-padding-top: 72px; }
   body {
     font-family: 'Rubik', sans-serif;
-    background: #0F172A;
+    background: #182540;
     color: #fff;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -270,7 +270,7 @@
     --kb-surface: rgba(255,255,255,0.04); --kb-surface-border: rgba(255,255,255,0.06);
     transition: background 0.6s ease, color 0.6s ease;
   }
-  body.kb-dark { background: #0F172A; color: #fff; }
+  body.kb-dark { background: #182540; color: #fff; }
   body.kb-light {
     background: #F7F8FF; color: #0F1140;
     --kb-fg: #0F1140; --kb-fg2: rgba(15,17,64,0.65); --kb-fg3: rgba(15,17,64,0.5);
@@ -659,7 +659,7 @@ function SiteNav({ accent, dark, onToggleTheme }) {
   return (
     <>
       <nav className="kb-nav" style={{
-        background: s ? (dark ? 'rgba(15,23,42,0.92)' : 'rgba(247,248,255,0.82)') : 'transparent',
+        background: s ? (dark ? 'rgba(24,37,64,0.92)' : 'rgba(247,248,255,0.82)') : 'transparent',
         backdropFilter: s ? 'blur(20px) saturate(1.4)' : 'none',
         WebkitBackdropFilter: s ? 'blur(20px) saturate(1.4)' : 'none',
         borderBottom: s ? `1px solid ${dark ? 'rgba(255,255,255,0.04)' : 'rgba(15,17,64,0.06)'}` : '1px solid transparent',
@@ -715,7 +715,7 @@ function SiteNav({ accent, dark, onToggleTheme }) {
       </nav>
       {open && (
         <div className="kb-mobile-overlay" style={{
-          background: dark ? 'rgba(15,23,42,0.97)' : 'rgba(247,248,255,0.97)',
+          background: dark ? 'rgba(24,37,64,0.97)' : 'rgba(247,248,255,0.97)',
           backdropFilter: 'blur(24px)',
         }}>
           {links.map(l => (
