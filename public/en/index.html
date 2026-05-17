@@ -58,6 +58,7 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
+    overscroll-behavior-y: none;
     line-height: 1.6;
     direction: ltr;
     text-align: left;
@@ -861,7 +862,7 @@ function HeroSection({ accent, dark }) {
 function StatementSection() {
   return (
     <section style={{
-      padding: 'clamp(60px, 10vw, 160px) 24px',
+      padding: 'clamp(40px, 8vw, 140px) 24px',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
     }}>
       <div style={{ maxWidth: 960 }}>
@@ -887,7 +888,7 @@ function BentoSection({ accent }) {
   ];
 
   return (
-    <section id="bento" style={{ padding: 'clamp(60px, 8vw, 110px) 24px' }}>
+    <section id="bento" style={{ padding: 'clamp(40px, 7vw, 100px) 24px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <FadeSlide>
           <div className="kb-eyebrow">
@@ -1039,7 +1040,7 @@ function ProjectsSection({ accent }) {
   ];
 
   return (
-    <section id="projects" style={{ padding: 'clamp(60px, 8vw, 110px) 24px' }}>
+    <section id="projects" style={{ padding: 'clamp(40px, 7vw, 100px) 24px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <FadeSlide>
           <div className="kb-eyebrow">
@@ -1133,7 +1134,7 @@ function AboutSection({ accent }) {
   ];
 
   return (
-    <section id="about" style={{ padding: 'clamp(60px, 8vw, 110px) 24px' }}>
+    <section id="about" style={{ padding: 'clamp(40px, 7vw, 100px) 24px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <FadeSlide>
           <div className="kb-eyebrow">
@@ -1190,7 +1191,7 @@ function AboutSection({ accent }) {
 // ═══════════════════════════════════════════════════════════
 function CTASection({ accent }) {
   return (
-    <section id="contact" style={{ padding: 'clamp(60px, 8vw, 110px) 24px' }}>
+    <section id="contact" style={{ padding: 'clamp(40px, 7vw, 100px) 24px' }}>
       <FadeSlide>
         <div className="cta-box" style={{
           background: `linear-gradient(135deg, ${accentAlpha(accent, 0.1)}, ${accentAlpha(accent, 0.02)})`,
