@@ -79,11 +79,29 @@
     content: '';
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
     background:
-      radial-gradient(ellipse 65vw 55vh at 8% 18%, rgba(79,26,214,0.25) 0%, transparent 65%),
-      radial-gradient(ellipse 55vw 50vh at 90% 50%, rgba(192,76,232,0.18) 0%, transparent 65%),
-      radial-gradient(ellipse 50vw 45vh at 42% 95%, rgba(111,211,255,0.13) 0%, transparent 65%);
+      radial-gradient(ellipse 70vw 60vh at 5% 12%, rgba(139,92,246,0.52) 0%, transparent 58%),
+      radial-gradient(ellipse 60vw 55vh at 93% 42%, rgba(236,72,153,0.34) 0%, transparent 58%),
+      radial-gradient(ellipse 55vw 50vh at 44% 98%, rgba(6,182,212,0.28) 0%, transparent 58%),
+      radial-gradient(ellipse 40vw 40vh at 70% 8%, rgba(168,85,247,0.22) 0%, transparent 58%);
   }
-  ::selection { background: rgba(79,26,214,0.35); }
+  ::selection { background: rgba(139,92,246,0.4); }
+
+  @keyframes nameGlow {
+    0%,100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  .kb-name-accent {
+    background: linear-gradient(-45deg, #A855F7, #EC4899, #06B6D4, #A855F7, #8B5CF6);
+    background-size: 400% 400%;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    animation: nameGlow 5s ease infinite;
+  }
+  @keyframes cursorBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .kb-cursor {
+    display: inline-block; width: 2px; height: 0.85em; background: currentColor;
+    margin-left: 2px; vertical-align: middle; border-radius: 1px;
+    animation: cursorBlink 0.9s step-end infinite;
+  }
 
   /* ═══ AURORA ═══ */
   .aurora-b { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(80px); will-change: transform; }
@@ -450,14 +468,14 @@ function FadeSlide({ children, delay = 0, y = 24, style = {}, className = '' }) 
   }}>{children}</div>;
 }
 
-function StaggerWords({ text, delay = 0, style = {} }) {
+function StaggerWords({ text, delay = 0, style = {}, className = '' }) {
   const [show, setShow] = useState(false);
   useEffect(() => { const t = setTimeout(() => setShow(true), delay * 1000); return () => clearTimeout(t); }, [delay]);
   const words = text.split(' ');
   return <span style={{ display: 'inline' }}>
     {words.map((w, i) => (
       <span key={i} style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'top' }}>
-        <span style={{
+        <span className={className} style={{
           display: 'inline-block', ...style,
           transform: show ? 'translateY(0)' : 'translateY(115%)',
           opacity: show ? 1 : 0,
@@ -467,6 +485,29 @@ function StaggerWords({ text, delay = 0, style = {} }) {
       </span>
     ))}
   </span>;
+}
+
+function Typewriter({ phrases, typeSpeed = 60, deleteSpeed = 32, pause = 2400 }) {
+  const [text, setText] = useState('');
+  const [pi, setPi] = useState(0);
+  const [fwd, setFwd] = useState(true);
+  useEffect(() => {
+    const phrase = phrases[pi % phrases.length];
+    if (fwd) {
+      if (text.length < phrase.length) {
+        const t = setTimeout(() => setText(phrase.slice(0, text.length + 1)), typeSpeed);
+        return () => clearTimeout(t);
+      }
+      const t = setTimeout(() => setFwd(false), pause);
+      return () => clearTimeout(t);
+    }
+    if (text.length > 0) {
+      const t = setTimeout(() => setText(text.slice(0, -1)), deleteSpeed);
+      return () => clearTimeout(t);
+    }
+    setPi(i => i + 1); setFwd(true);
+  }, [text, fwd, pi, phrases, typeSpeed, deleteSpeed, pause]);
+  return <span>{text}<span className="kb-cursor" /></span>;
 }
 
 function RevealText({ text, style = {} }) {
@@ -496,20 +537,20 @@ function RevealText({ text, style = {} }) {
   </p>;
 }
 
-function TiltCard({ children, style = {}, className = '', intensity = 5 }) {
+function TiltCard({ children, style = {}, className = '', intensity = 12 }) {
   const ref = useRef(null);
   const onMove = (e) => {
     const el = ref.current; if (!el) return;
     const rect = el.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
-    el.style.transform = `perspective(800px) rotateY(${x * intensity}deg) rotateX(${-y * intensity}deg) translateY(-5px)`;
-    el.style.boxShadow = `${-x * 20}px ${y * 20}px 40px rgba(0,0,0,0.15)`;
+    el.style.transform = `perspective(900px) rotateY(${x * intensity}deg) rotateX(${-y * intensity}deg) translateY(-6px) scale(1.01)`;
+    el.style.boxShadow = `${-x * 28}px ${y * 28}px 48px rgba(0,0,0,0.22)`;
   };
   const onLeave = () => { if (ref.current) { ref.current.style.transform = ''; ref.current.style.boxShadow = ''; } };
   return <div ref={ref} className={className} style={{
     ...style,
-    transition: 'transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s ease',
+    transition: 'transform 0.25s cubic-bezier(.22,1,.36,1), box-shadow 0.25s ease',
   }} onMouseMove={onMove} onMouseLeave={onLeave}>{children}</div>;
 }
 
@@ -805,34 +846,34 @@ function HeroSection({ accent, dark }) {
         <FadeSlide delay={0}>
           <div className="kb-eyebrow">
             <span className="kb-eyebrow-dot" style={{ background: accent }} />
-            Entrepreneur · AI Systems · Digital Products
+            AI That Works · Products That Ship · Results That Show
           </div>
         </FadeSlide>
 
         <h1 className="kb-hero-name">
-          <StaggerWords text="Kobi Barak" delay={0.3} style={{
-            background: `linear-gradient(135deg, ${fg} 30%, ${accentAlpha(accent, 0.7)} 80%, ${accentAlpha('#6FD3FF', 0.6)})`,
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-          }} />
+          <StaggerWords text="Kobi" delay={0.3} style={{ color: fg }} />
+          {' '}
+          <StaggerWords text="Barak" delay={0.45} className="kb-name-accent" style={{}} />
         </h1>
 
         <div style={{ position: 'absolute', top: '32%', left: '50%', transform: 'translate(-50%, -50%)',
           width: 'min(500px, 70vw)', height: 140, borderRadius: '50%',
-          background: `radial-gradient(ellipse, ${accentAlpha(accent, dark ? 0.15 : 0.08)}, transparent 65%)`,
+          background: `radial-gradient(ellipse, ${accentAlpha(accent, dark ? 0.2 : 0.1)}, transparent 65%)`,
           filter: 'blur(40px)', pointerEvents: 'none', zIndex: -1, animation: 'glowPulse 4s ease-in-out infinite',
         }} />
 
-        <div style={{ marginTop: 16 }}>
-          <StaggerWords text="Building the future, one system at a time."
-            delay={0.7} style={{ fontSize: 'clamp(22px, 3.8vw, 44px)', fontWeight: 300, color: fg2 }} />
-        </div>
+        <FadeSlide delay={0.85}>
+          <div style={{ marginTop: 20, fontSize: 'clamp(22px, 3.8vw, 44px)', fontWeight: 300, color: fg2, minHeight: '1.4em' }}>
+            <Typewriter phrases={['Building AI systems that work.', 'Solving real business problems.', 'Delivering results you can measure.']} />
+          </div>
+        </FadeSlide>
 
         <FadeSlide delay={1.1}>
           <p style={{
             fontSize: 'clamp(14px, 1.6vw, 18px)', lineHeight: 1.7, color: fg3,
             maxWidth: 500, margin: '22px auto 0',
           }}>
-            From deep field understanding, systems thinking, and building that delivers real results.
+            Not ChatGPT and hope — systems built to succeed from day one.
           </p>
         </FadeSlide>
 
@@ -867,7 +908,7 @@ function StatementSection() {
     }}>
       <div style={{ maxWidth: 960 }}>
         <RevealText
-          text="I don't come to AI from the hype side. I come from the side of processes, service, systems, people, and problems that need solving."
+          text="Most AI projects have one problem: they start with the technology. I start with the problem — and finish with a system that works inside the business."
           style={{ fontSize: 'clamp(26px, 4.5vw, 50px)', fontWeight: 400, lineHeight: 1.55, textAlign: 'center' }}
         />
       </div>
@@ -900,7 +941,7 @@ function BentoSection({ accent }) {
           <h2 className="kb-h2" style={{ marginTop: 10 }}>What I Build</h2>
         </FadeSlide>
         <FadeSlide delay={0.14}>
-          <p className="kb-sub" style={{ marginBottom: 48 }}>First understand the problem, then plan — and only then choose the tools.</p>
+          <p className="kb-sub" style={{ marginBottom: 48 }}>You come with a business challenge. We leave with a system that runs.</p>
         </FadeSlide>
 
         <div className="bento-grid">
@@ -1143,10 +1184,10 @@ function AboutSection({ accent }) {
           </div>
         </FadeSlide>
         <FadeSlide delay={0.08}>
-          <h2 className="kb-h2">My background from the field,<br />my building from the mind.</h2>
+          <h2 className="kb-h2">Not from LinkedIn.<br />From the field.</h2>
         </FadeSlide>
         <FadeSlide delay={0.14}>
-          <p className="kb-sub">From service, automotive, digital and technology — places where a broken process quickly becomes a business problem.</p>
+          <p className="kb-sub">I came through service, automotive, and digital — and in every one I saw the same problem: processes breaking because there's no tech backbone. Now I build that backbone.</p>
         </FadeSlide>
 
         <div className="stats-row">
@@ -1210,13 +1251,13 @@ function CTASection({ accent }) {
 
           <div style={{ position: 'relative', textAlign: 'center' }}>
             <h2 style={{ fontSize: 'clamp(28px, 4.5vw, 48px)', fontWeight: 700 }}>
-              Looking for an <span style={{ color: accent }}>AI</span> solution?
+              Got a problem that needs a <span style={{ color: accent }}>system</span>?
             </h2>
             <p style={{
               fontSize: 'clamp(14px, 1.6vw, 17px)', lineHeight: 1.65,
               color: 'rgba(255,255,255,0.45)', maxWidth: 500, margin: '16px auto 40px',
             }}>
-              My commercial work is centered through Barak AI — where you can explore services, solutions and ways to get in touch.
+              My commercial work runs through Barak AI — reach out directly, no complicated forms.
             </p>
             <MagneticWrap strength={0.18}>
               <a href="https://barak-ai.co.il" target="_blank" rel="noopener" className="kb-pill"
@@ -1413,10 +1454,10 @@ function ToggleControl({ label, value, onChange }) {
 // ═══════════════════════════════════════════════════════════
 // APP ROOT
 // ═══════════════════════════════════════════════════════════
-const ACCENT_OPTIONS = ['#4F1AD6', '#6C3FE0', '#5B7BF7', '#1BB78A', '#C04CE8'];
+const ACCENT_OPTIONS = ['#8B5CF6', '#EC4899', '#06B6D4', '#10B981', '#F59E0B'];
 
 function App() {
-  const [accent, setAccent] = useState('#4F1AD6');
+  const [accent, setAccent] = useState('#8B5CF6');
   const [dark, setDark] = useState(true);
   const [mouseGlow, setMouseGlow] = useState(true);
 
