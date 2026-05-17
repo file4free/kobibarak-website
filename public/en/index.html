@@ -304,6 +304,7 @@
     --kb-surface: rgba(15,17,64,0.03); --kb-surface-border: rgba(15,17,64,0.06);
   }
   body.kb-light::after { opacity: 0.008; }
+  body.kb-light::before { display: none; }
   body.kb-light ::selection { background: rgba(79,26,214,0.2); }
 
   body.kb-light .kb-nav-link { color: rgba(15,17,64,0.45); }
@@ -1166,7 +1167,7 @@ function AboutSection({ accent }) {
               <TiltCard className="value-card" intensity={4}>
                 <div style={{ padding: 28 }}>
                   <div className="value-num" style={{
-                    background: `linear-gradient(135deg, ${accent}, ${accentAlpha(accent, 0.12)})`,
+                    background: `linear-gradient(135deg, #fff 10%, ${accentAlpha(accent, 0.75)} 100%)`,
                     WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
                   }}>{v.n}</div>
                   <h3 style={{ fontSize: 18, fontWeight: 600, margin: '14px 0 8px' }}>{v.title}</h3>
