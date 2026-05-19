@@ -274,6 +274,32 @@
   .value-card:hover { border-color: rgba(255,255,255,0.26); box-shadow: 0 8px 40px rgba(0,0,0,0.38), inset 0 1px 0 rgba(255,255,255,0.12); }
   .value-num { font-size: 44px; font-weight: 800; line-height: 1; }
 
+  /* ═══ ABOUT STORY ═══ */
+  .about-grid {
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center;
+    margin: 56px 0 56px;
+  }
+  .about-photo {
+    border-radius: 24px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    aspect-ratio: 4 / 5; width: 100%; max-width: 460px;
+    background: rgba(255,255,255,0.04);
+    justify-self: end;
+  }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-story p {
+    font-size: clamp(15px, 1.35vw, 17px); line-height: 1.85;
+    color: rgba(255,255,255,0.78); margin-bottom: 18px;
+  }
+  .about-story p strong { color: #fff; font-weight: 600; }
+  .about-story p em { color: rgba(255,255,255,0.55); font-style: normal; font-size: 0.92em; }
+  .about-story p:last-child { margin-bottom: 0; }
+  body.kb-light .about-story p { color: rgba(15,17,64,0.7) !important; }
+  body.kb-light .about-story p strong { color: #0F1140 !important; }
+  body.kb-light .about-story p em { color: rgba(15,17,64,0.5) !important; }
+  body.kb-light .about-photo { border-color: rgba(15,17,64,0.1); box-shadow: 0 20px 60px rgba(15,17,64,0.18); }
+
   /* ═══ CTA ═══ */
   .cta-box {
     max-width: 940px; margin: 0 auto; border-radius: 28px;
@@ -393,6 +419,8 @@
     .kb-hero-name { font-size: clamp(48px,14vw,80px) !important; }
     .featured-project { padding: 24px 20px; }
     .values-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 28px; margin: 32px 0 32px; }
+    .about-photo { max-width: 340px; margin: 0 auto; aspect-ratio: 4 / 5; justify-self: center; }
   }
   @media (min-width: 769px) and (max-width: 1024px) {
     .bento-grid { grid-template-columns: repeat(2,1fr); }
@@ -406,6 +434,10 @@
   <main>
     <h1>Kobi Barak — Entrepreneur, AI Systems &amp; Digital Products Builder</h1>
     <p>Entrepreneur and builder of AI systems and digital products. Specializing in business automation, voice agents and SaaS.</p>
+
+    <h2>About</h2>
+    <p>My story didn’t start with AI. In 2019 I stepped into the digital world — marketing, WordPress sites with Elementor, campaigns. Six years of constant learning and building. About two years ago I met the world of automations, smart agents and AI — and I couldn’t stop. At 45, for the first time, I felt I’d found my calling: to build systems that work for people, not the other way around.</p>
+
     <h2>Areas of Work</h2>
     <ul>
       <li>AI Systems — data, processes and users in one working system</li>
@@ -414,13 +446,24 @@
       <li>Digital Products — dashboards, SaaS and management systems</li>
       <li>Strategy &amp; Consulting — from mapping needs to a live system</li>
     </ul>
+
     <h2>Projects</h2>
     <ul>
-      <li>Barak AI — <a href="https://barak-ai.co.il">barak-ai.co.il</a></li>
-      <li>Garage-OS — garage management system</li>
-      <li>Nadlan-OS — real estate management system</li>
-      <li>SkyMarketing — <a href="https://skymarketing.co.il">skymarketing.co.il</a></li>
+      <li>Barak AI — custom AI systems for businesses, the site ranks itself autonomously on Google — <a href="https://barak-ai.co.il">barak-ai.co.il</a></li>
+      <li>Garage-OS — operations platform for garages: jobs, customers, inventory and automations</li>
+      <li>Nadlan-OS — full operations suite for real estate agents: leads, automatic property pages, AI copy/translation, voice agent</li>
+      <li>Ale Zahav LIVE — content platform for seniors: fitness, brain training, AI-curated video library</li>
+      <li>MultiX Simulator — interactive simulator for in-car multimedia interfaces</li>
     </ul>
+
+    <h2>Why Me</h2>
+    <ul>
+      <li>Everything Connected — not selling a tool, building end-to-end infrastructure</li>
+      <li>Creative Solutions — when things get stuck, I find another way</li>
+      <li>A Different Level of Service — you’re not a client, you’re a partner</li>
+      <li>Native-level English — working with international tools, vendors and clients without friction</li>
+    </ul>
+
     <p>Contact: <a href="https://barak-ai.co.il/contact">barak-ai.co.il/contact</a> | <a href="https://wa.me/972505552007">WhatsApp</a></p>
   </main>
 </noscript>
@@ -1056,11 +1099,11 @@ function ProjectCard({ p }) {
 
 function ProjectsSection({ accent }) {
   const projects = [
-    { name: 'Barak AI',         desc: 'AI systems for businesses — automations, voice agents, chatbots and smart websites.', tags: ['AI', 'Automations', 'SaaS'],             link: 'https://barak-ai.co.il',             color: '#4F1AD6', featured: true },
-    { name: 'Garage-OS',        desc: 'A dedicated management system for the automotive service industry.',                   tags: ['Vertical AI', 'Garages', 'Service'],     link: 'https://garage-os.co.il',            color: '#5B7BF7' },
-    { name: 'Nadlan-OS',        desc: 'Lead, property and workflow management for real estate professionals.',                 tags: ['Vertical AI', 'Real Estate', 'CRM'],     link: 'https://nadlan-os.co.il',            color: '#6FD3FF' },
-    { name: 'MultiX Simulator', desc: 'Interactive simulator for multimedia interfaces in the automotive world.',             tags: ['Automotive', 'Simulation', 'UX'],         link: 'https://multix.barak-ai.co.il',      color: '#C04CE8' },
-    { name: 'Ale Zahav LIVE',   desc: 'Live streaming platform and content for the senior community.',                        tags: ['Community', 'Video', 'CMS'],              link: 'https://live.ale-zahav.co.il',       color: '#1BB78A' },
+    { name: 'Barak AI',         desc: 'Custom AI systems for businesses — automations, voice agents, chatbots, and SEO-driven smart websites. The site promotes itself autonomously and ranks on page 1 of Google.', tags: ['AI', 'Automations', 'SaaS'],             link: 'https://barak-ai.co.il',             color: '#4F1AD6', featured: true },
+    { name: 'Garage-OS',        desc: 'Operations platform for garages — job management, customers, inventory, and smart automations for daily workflows.',                   tags: ['Vertical AI', 'Garages', 'Service'],     link: 'https://garage-os.co.il',            color: '#5B7BF7' },
+    { name: 'Nadlan-OS',        desc: 'Complete operations suite for real estate agents — lead management, automatic property landing pages, AI copy enhancement and translation to 4 languages, plus a voice agent that answers calls and creates leads.',                 tags: ['Vertical AI', 'Real Estate', 'CRM'],     link: 'https://nadlan-os.co.il',            color: '#6FD3FF' },
+    { name: 'MultiX Simulator', desc: 'Interactive simulator for in-car multimedia interfaces — for training, demos, and UX testing.',             tags: ['Automotive', 'Simulation', 'UX'],         link: 'https://multix.barak-ai.co.il',      color: '#C04CE8' },
+    { name: 'Ale Zahav LIVE',   desc: 'Content and live-event platform for seniors — fitness classes, brain training, AI-curated video library, and cognitive games.',                        tags: ['Community', 'Video', 'CMS'],              link: 'https://live.ale-zahav.co.il',       color: '#1BB78A' },
   ];
 
   return (
@@ -1152,9 +1195,9 @@ function AboutSection({ accent }) {
     { num: 24,  suffix: '/7', label: 'Agents Working' },
   ];
   const values = [
-    { n: '01', title: 'Custom, Not Template',    desc: 'Every system is built around the specific business.' },
-    { n: '02', title: 'Technology at Eye Level', desc: 'Plain language. No unnecessary jargon.' },
-    { n: '03', title: 'Measurable Results',      desc: 'Leads, time savings, numbers.' },
+    { n: '01', title: 'Everything Connected',   desc: 'I don’t sell you a tool. I build you infrastructure that works end-to-end.' },
+    { n: '02', title: 'Creative Solutions',     desc: 'When things get stuck, I find another way. Always.' },
+    { n: '03', title: 'A Different Level of Service', desc: 'You’re not just a client. You’re a partner.' },
   ];
 
   return (
@@ -1167,11 +1210,28 @@ function AboutSection({ accent }) {
           </div>
         </FadeSlide>
         <FadeSlide delay={0.08}>
-          <h2 className="kb-h2">My background from the field,<br />my building from the mind.</h2>
+          <h2 className="kb-h2">My story didn’t start with AI.</h2>
         </FadeSlide>
-        <FadeSlide delay={0.14}>
-          <p className="kb-sub">From service, automotive, digital and technology — places where a broken process quickly becomes a business problem.</p>
-        </FadeSlide>
+
+        <div className="about-grid">
+          <FadeSlide delay={0.2}>
+            <div className="about-story">
+              <p>In 2019 I stepped into the digital world — marketing, WordPress sites, Elementor, campaigns. Six years of constant learning and building.</p>
+              <p>About two years ago I met the world of automations, smart agents, and AI — and I couldn’t stop. At 45, for the first time, I felt I’d found my calling: <strong>to build systems that work for people, not the other way around.</strong></p>
+              <p>It’s not work. It’s a healthy obsession — with tools that improve every day, with a world that renews itself every morning, and with the feeling that technology is finally where I always imagined it would be. <em>(And along the way — Vibe Coder. AI Whisperer.)</em></p>
+            </div>
+          </FadeSlide>
+
+          <FadeSlide delay={0.14}>
+            <div className="about-photo">
+              <img
+                src="https://res.cloudinary.com/di0pjetew/image/upload/v1779231635/kobi-desk_olsklp.png"
+                alt="Kobi Barak — AI systems builder"
+                loading="lazy"
+              />
+            </div>
+          </FadeSlide>
+        </div>
 
         <div className="stats-row">
           {stats.map((s, i) => (
