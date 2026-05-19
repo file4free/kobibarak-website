@@ -259,7 +259,9 @@
   .stat-label { font-size: 14px; color: rgba(255,255,255,0.35); margin-top: 6px; font-weight: 500; }
 
   /* ═══ VALUES ═══ */
-  .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 8px; align-items: start; }
+  .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 8px; }
+  .values-grid > *, .projects-grid > * { height: 100%; }
+  .value-card, .project-card { height: 100%; }
   .value-card {
     border-radius: 20px;
     background: rgba(255,255,255,0.06);
