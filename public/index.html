@@ -299,10 +299,40 @@
   body.kb-light .about-story p em { color: rgba(15,17,64,0.5) !important; }
   body.kb-light .about-photo { border-color: rgba(15,17,64,0.1); box-shadow: 0 20px 60px rgba(15,17,64,0.18); }
 
+  /* ═══ HERO SPLIT ═══ */
+  .hero-split {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px;
+    align-items: center; width: 100%; max-width: 1200px; margin: 0 auto;
+  }
+  .hero-photo-col { display: flex; justify-content: center; align-items: center; }
+  .hero-portrait {
+    border-radius: 28px; overflow: hidden; width: 100%; max-width: 420px;
+    aspect-ratio: 3/4; border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.6); position: relative;
+  }
+  .hero-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-portrait-overlay {
+    position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(180deg, transparent 55%, rgba(10,10,10,0.55) 100%);
+  }
+  body.kb-light .hero-portrait { border-color: rgba(15,17,64,0.12); box-shadow: 0 32px 80px rgba(15,17,64,0.2); }
+  body.kb-light .hero-portrait-overlay { background: linear-gradient(180deg, transparent 55%, rgba(240,240,255,0.45) 100%); }
+
+  /* ═══ CTA PHOTO ═══ */
+  .cta-inner { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; position: relative; }
+  .cta-photo-col {
+    width: 220px; border-radius: 20px; overflow: hidden;
+    aspect-ratio: 3/4; flex-shrink: 0;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.55);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .cta-photo-col img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  body.kb-light .cta-photo-col { box-shadow: 0 16px 48px rgba(15,17,64,0.2); border-color: rgba(15,17,64,0.08); }
+
   /* ═══ CTA ═══ */
   .cta-box {
-    max-width: 940px; margin: 0 auto; border-radius: 28px;
-    padding: clamp(48px,7vw,88px) clamp(24px,4vw,56px);
+    max-width: 1000px; margin: 0 auto; border-radius: 28px;
+    padding: clamp(36px,5vw,72px) clamp(24px,4vw,56px);
     border: 1px solid; position: relative; overflow: hidden;
   }
 
@@ -414,11 +444,16 @@
     .footer-grid { grid-template-columns: 1fr; gap: 28px; }
     .stats-row { gap: 28px; }
     .kb-scroll-hint { display: none !important; }
-    .kb-hero-name { font-size: clamp(48px,14vw,80px) !important; }
+    .kb-hero-name { font-size: clamp(44px,13vw,78px) !important; }
     .featured-project { padding: 24px 20px; }
     .values-grid { grid-template-columns: 1fr; }
     .about-grid { grid-template-columns: 1fr; gap: 28px; margin: 32px 0 32px; }
     .about-photo { max-width: 340px; margin: 0 auto; aspect-ratio: 4 / 5; }
+    .hero-split { grid-template-columns: 1fr; gap: 0; }
+    .hero-photo-col { order: -1; margin-bottom: 32px; }
+    .hero-portrait { max-width: 220px; aspect-ratio: 3/4; margin: 0 auto; }
+    .cta-inner { grid-template-columns: 1fr; }
+    .cta-photo-col { display: none; }
   }
   @media (min-width: 769px) and (max-width: 1024px) {
     .bento-grid { grid-template-columns: repeat(2,1fr); }
@@ -846,14 +881,14 @@ function HeroSection({ accent, dark }) {
     <section id="hero" style={{
       position: 'relative', minHeight: '100dvh',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      textAlign: 'center', padding: '140px 24px 100px', overflow: 'hidden',
+      padding: '120px 32px 80px', overflow: 'hidden',
     }}>
       {dark && <AuroraBg accent={accent} />}
       {dark && <FloatingShapes accent={accent} />}
       {dark && <ConstellationCanvas color={accentAlpha(accent, 0.5)} lineColor={accentAlpha(accent, 0.35)} count={55} />}
       {!dark && <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
-        background: `radial-gradient(ellipse 60% 50% at 50% 40%, ${accentAlpha(accent, 0.08)}, transparent 70%)`,
+        background: `radial-gradient(ellipse 80% 60% at 30% 40%, ${accentAlpha(accent, 0.09)}, transparent 70%)`,
       }} />}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
@@ -863,59 +898,76 @@ function HeroSection({ accent, dark }) {
         transform: `translateY(${scrollY * 0.06}px)`,
       }} />
 
-      <div style={{
-        position: 'relative', maxWidth: 900, margin: '0 auto',
-        opacity: heroOpacity, transform: `translateY(${scrollY * 0.08}px)`,
-      }}>
-        <FadeSlide delay={0}>
-          <div className="kb-eyebrow">
-            <span className="kb-eyebrow-dot" style={{ background: accent }} />
-            יזם · בונה מערכות AI · מוצרים דיגיטליים
+      <div className="hero-split" style={{ opacity: heroOpacity, transform: `translateY(${scrollY * 0.08}px)` }}>
+
+        {/* TEXT — RIGHT in RTL */}
+        <div style={{ position: 'relative' }}>
+          <FadeSlide delay={0}>
+            <div className="kb-eyebrow">
+              <span className="kb-eyebrow-dot" style={{ background: accent }} />
+              יזם · בונה מערכות AI · מוצרים דיגיטליים
+            </div>
+          </FadeSlide>
+
+          <h1 className="kb-hero-name" style={{ position: 'relative' }}>
+            <StaggerWords text="קובי ברק" delay={0.3} style={{
+              background: `linear-gradient(135deg, ${fg} 30%, ${accentAlpha(accent, 0.7)} 80%, ${accentAlpha('#6FD3FF', 0.6)})`,
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+            }} />
+            <div style={{
+              position: 'absolute', top: '50%', right: '20%', transform: 'translateY(-50%)',
+              width: 'min(400px, 90%)', height: 120, borderRadius: '50%',
+              background: `radial-gradient(ellipse, ${accentAlpha(accent, dark ? 0.18 : 0.1)}, transparent 65%)`,
+              filter: 'blur(40px)', pointerEvents: 'none', zIndex: -1, animation: 'glowPulse 4s ease-in-out infinite',
+            }} />
+          </h1>
+
+          <div style={{ marginTop: 14 }}>
+            <StaggerWords text="בונה את העתיד, מערכת אחרי מערכת."
+              delay={0.7} style={{ fontSize: 'clamp(18px, 2.6vw, 36px)', fontWeight: 300, color: fg2 }} />
           </div>
-        </FadeSlide>
 
-        <h1 className="kb-hero-name">
-          <StaggerWords text="קובי ברק" delay={0.3} style={{
-            background: `linear-gradient(135deg, ${fg} 30%, ${accentAlpha(accent, 0.7)} 80%, ${accentAlpha('#6FD3FF', 0.6)})`,
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-          }} />
-        </h1>
+          <FadeSlide delay={1.1}>
+            <p style={{ fontSize: 'clamp(14px, 1.4vw, 17px)', lineHeight: 1.75, color: fg3, maxWidth: 460, marginTop: 16 }}>
+              מתוך הבנה עמוקה של שטח, חשיבה מערכתית ובנייה שמייצרת תוצאות אמיתיות.
+            </p>
+          </FadeSlide>
 
-        <div style={{ position: 'absolute', top: '32%', left: '50%', transform: 'translate(-50%, -50%)',
-          width: 'min(500px, 70vw)', height: 140, borderRadius: '50%',
-          background: `radial-gradient(ellipse, ${accentAlpha(accent, dark ? 0.15 : 0.08)}, transparent 65%)`,
-          filter: 'blur(40px)', pointerEvents: 'none', zIndex: -1, animation: 'glowPulse 4s ease-in-out infinite',
-        }} />
-
-        <div style={{ marginTop: 16 }}>
-          <StaggerWords text="בונה את העתיד, מערכת אחרי מערכת."
-            delay={0.7} style={{ fontSize: 'clamp(22px, 3.8vw, 44px)', fontWeight: 300, color: fg2 }} />
+          <FadeSlide delay={1.3}>
+            <div style={{ display: 'flex', gap: 14, marginTop: 36, flexWrap: 'wrap' }}>
+              <MagneticWrap>
+                <a href="#projects" className="kb-ghost">הכירו את העבודה שלי</a>
+              </MagneticWrap>
+              <MagneticWrap>
+                <a href="https://barak-ai.co.il" target="_blank" rel="noopener" className="kb-pill"
+                  style={{ background: accent, boxShadow: `0 0 36px ${accentAlpha(accent, 0.4)}` }}>
+                  מעבר ל־Barak AI
+                </a>
+              </MagneticWrap>
+            </div>
+          </FadeSlide>
         </div>
 
-        <FadeSlide delay={1.1}>
-          <p style={{
-            fontSize: 'clamp(14px, 1.6vw, 18px)', lineHeight: 1.7, color: fg3,
-            maxWidth: 500, margin: '22px auto 0',
-          }}>
-            מתוך הבנה עמוקה של שטח, חשיבה מערכתית ובנייה שמייצרת תוצאות אמיתיות.
-          </p>
-        </FadeSlide>
+        {/* PHOTO — LEFT in RTL */}
+        <div className="hero-photo-col">
+          <FadeSlide delay={0.5}>
+            <div className="hero-portrait" style={{
+              borderColor: accentAlpha(accent, 0.2),
+              boxShadow: `0 32px 80px rgba(0,0,0,0.65), 0 0 0 1px ${accentAlpha(accent, 0.12)}, 0 0 80px ${accentAlpha(accent, 0.07)}`,
+            }}>
+              <img
+                src="https://res.cloudinary.com/di0pjetew/image/upload/v1779231633/kobi-car_pavk4f.png"
+                alt="קובי ברק — יזם ובונה מערכות AI"
+                loading="eager"
+              />
+              <div className="hero-portrait-overlay" />
+            </div>
+          </FadeSlide>
+        </div>
+      </div>
 
-        <FadeSlide delay={1.3}>
-          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginTop: 44, flexWrap: 'wrap' }}>
-            <MagneticWrap>
-              <a href="#projects" className="kb-ghost">הכירו את העבודה שלי</a>
-            </MagneticWrap>
-            <MagneticWrap>
-              <a href="https://barak-ai.co.il" target="_blank" rel="noopener" className="kb-pill"
-                style={{ background: accent, boxShadow: `0 0 36px ${accentAlpha(accent, 0.4)}` }}>
-                מעבר ל־Barak AI
-              </a>
-            </MagneticWrap>
-          </div>
-        </FadeSlide>
-
-        <div className="kb-scroll-hint"><div className="kb-scroll-line" /></div>
+      <div className="kb-scroll-hint" style={{ position: 'absolute', bottom: 28, left: '50%', transform: 'translateX(-50%)' }}>
+        <div className="kb-scroll-line" />
       </div>
     </section>
   );
@@ -1290,22 +1342,31 @@ function CTASection({ accent }) {
             animation: 'ctaPulse 9s ease-in-out infinite reverse', pointerEvents: 'none', borderRadius: '50%',
           }} />
 
-          <div style={{ position: 'relative', textAlign: 'center' }}>
-            <h2 style={{ fontSize: 'clamp(28px, 4.5vw, 48px)', fontWeight: 700 }}>
-              מחפשים פתרון <span style={{ color: accent }}>AI</span>?
-            </h2>
-            <p style={{
-              fontSize: 'clamp(14px, 1.6vw, 17px)', lineHeight: 1.65,
-              color: 'rgba(255,255,255,0.45)', maxWidth: 500, margin: '16px auto 40px',
-            }}>
-              את העבודה המסחרית שלי אני מרכז דרך Barak AI — שם אפשר לראות שירותים, פתרונות ודרכי התקשרות.
-            </p>
-            <MagneticWrap strength={0.18}>
-              <a href="https://barak-ai.co.il" target="_blank" rel="noopener" className="kb-pill"
-                style={{ background: accent, boxShadow: `0 0 24px ${accentAlpha(accent, 0.3)}`, whiteSpace: 'nowrap' }}>
-                מעבר ל־Barak AI
-              </a>
-            </MagneticWrap>
+          <div className="cta-inner">
+            <div style={{ position: 'relative' }}>
+              <h2 style={{ fontSize: 'clamp(28px, 4vw, 46px)', fontWeight: 700 }}>
+                מחפשים פתרון <span style={{ color: accent }}>AI</span>?
+              </h2>
+              <p style={{
+                fontSize: 'clamp(14px, 1.5vw, 17px)', lineHeight: 1.7,
+                color: 'rgba(255,255,255,0.5)', maxWidth: 460, margin: '16px 0 36px',
+              }}>
+                את העבודה המסחרית שלי אני מרכז דרך Barak AI — שם אפשר לראות שירותים, פתרונות ודרכי התקשרות.
+              </p>
+              <MagneticWrap strength={0.18}>
+                <a href="https://barak-ai.co.il" target="_blank" rel="noopener" className="kb-pill"
+                  style={{ background: accent, boxShadow: `0 0 24px ${accentAlpha(accent, 0.3)}`, whiteSpace: 'nowrap' }}>
+                  מעבר ל־Barak AI
+                </a>
+              </MagneticWrap>
+            </div>
+            <div className="cta-photo-col">
+              <img
+                src="https://res.cloudinary.com/di0pjetew/image/upload/v1779231634/kobi-lobby-1_rwmxd0.png"
+                alt="קובי ברק"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </FadeSlide>
