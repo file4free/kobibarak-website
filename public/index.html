@@ -887,7 +887,7 @@ function SiteNav({ accent, dark, onToggleTheme }) {
 
 // ═══════════════════════════════════════════════════════════
 // HERO
-// ═══════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════��═══════════
 function HeroSection({ accent, dark }) {
   const scrollY = useScrollY();
   const heroOpacity = Math.max(0, 1 - scrollY / 700);
@@ -1169,11 +1169,11 @@ function ProjectCard({ p }) {
 
 function ProjectsSection({ accent }) {
   const projects = [
-    { name: 'Barak AI',         desc: 'מערכות AI מותאמות אישית לעסקים — אוטומציות, סוכנים קוליים, צ׳אטבוטים ואתרי SEO חכמים. האתר מקדם את עצמו אוטונומית בגוגל, ומופיע בעמוד הראשון בביטויים מובילים.', tags: ['AI', 'אוטומציות', 'SaaS'],              link: 'https://barak-ai.co.il',             color: '#4F1AD6', featured: true },
+    { name: 'Barak AI',         desc: 'מערכות AI מותאמות אישית לעסקים — אוטומצי��ת, סוכנים קוליים, צ׳אטבוטים ואתרי SEO חכמים. האתר מקדם את עצמו אוטונומית בגוגל, ומופיע בעמוד הראשון בביטויים מובילים.', tags: ['AI', 'אוטומציות', 'SaaS'],              link: 'https://barak-ai.co.il',             color: '#4F1AD6', featured: true },
     { name: 'Garage-OS',        desc: 'מערכת תפעולית למוסכים — ניהול עבודה, לקוחות, מלאי, ואוטומציות חכמות לתהליכים יומיומיים.', tags: ['Vertical AI', 'מוסכים', 'שירות'],      link: 'https://garage-os.co.il',            color: '#5B7BF7' },
     { name: 'Nadlan-OS',        desc: 'מערכת מושלמת למתווכי נדל״ן — ניהול לידים, יצירה אוטומטית של דפי נכס, AI לשיפור קופי ולתרגום ל-4 שפות, וסוכן קולי שעונה ופותח לידים.', tags: ['Vertical AI', 'נדל״ן', 'CRM'],         link: 'https://nadlan-os.co.il',            color: '#6FD3FF' },
     { name: 'MultiX Simulator', desc: 'סימולטור הדמיה לממשקי מולטימדיה ברכב — להדרכה, הצגה ובדיקות חוויית משתמש.',                       tags: ['רכב', 'סימולציה', 'UX'],               link: 'https://multix.barak-ai.co.il',      color: '#C04CE8' },
-    { name: 'Ale Zahav LIVE',   desc: 'פלטפורמה לתוכן והרצאות לגיל השלישי — שיעורי כושר, חדר כושר למוח, ספריית וידאו מסוננת ב-AI, ומשחקי חשיבה.',                         tags: ['קהילה', 'וידאו', 'CMS'],               link: 'https://live.ale-zahav.co.il',       color: '#1BB78A' },
+    { name: 'Ale Zahav LIVE',   desc: 'פלטפורמה לתוכן והרצאות לגיל השלישי — שיעורי כושר, חדר כושר למוח, ספריית וידאו מסוננת ב-AI, ומשחקי חשיבה.',                         tags: ['קהילה', '��ידאו', 'CMS'],               link: 'https://live.ale-zahav.co.il',       color: '#1BB78A' },
   ];
 
   return (
@@ -1638,5 +1638,6 @@ function App() {
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 </script>
+<script src="/analytics.js" defer></script>
 </body>
 </html>
