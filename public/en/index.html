@@ -157,6 +157,7 @@
     padding: 6px 16px; border-radius: 999px; font-size: 13px; font-weight: 500;
     color: rgba(255,255,255,0.55); margin-bottom: 16px;
     background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    max-width: 100%; flex-wrap: wrap; white-space: normal; line-height: 1.4;
   }
   .kb-eyebrow-dot {
     width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
@@ -435,7 +436,7 @@
   ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 2px; }
 
   @media (max-width: 768px) {
-    .kb-eyebrow { font-size: 11px; padding: 5px 12px; white-space: nowrap; }
+    .kb-eyebrow { font-size: 11px; padding: 5px 12px; }
     .kb-desktop-only { display: none !important; }
     .kb-mobile-only { display: flex !important; }
     .bento-grid { grid-template-columns: 1fr !important; }
@@ -910,7 +911,7 @@ function HeroSection({ accent, dark }) {
         transform: `translateY(${scrollY * 0.06}px)`,
       }} />
 
-      <div className="hero-split" style={{ opacity: heroOpacity, transform: `translateY(${scrollY * 0.08}px)` }}>
+      <div className="hero-split" style={{ transform: `translateY(${scrollY * 0.08}px)` }}>
 
         {/* PHOTO — LEFT in LTR */}
         <div className="hero-photo-col">
@@ -930,7 +931,7 @@ function HeroSection({ accent, dark }) {
         </div>
 
         {/* TEXT — RIGHT in LTR */}
-        <div className="hero-text-col" style={{ position: 'relative' }}>
+        <div className="hero-text-col" style={{ position: 'relative', opacity: heroOpacity }}>
           <FadeSlide delay={0}>
             <div className="kb-eyebrow">
               <span className="kb-eyebrow-dot" style={{ background: accent }} />
