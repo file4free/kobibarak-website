@@ -452,6 +452,9 @@
     .values-grid { grid-template-columns: 1fr; }
     .about-grid { grid-template-columns: 1fr; gap: 32px; margin: 40px 0; }
     .about-photo { max-width: 300px; margin: 0 auto; aspect-ratio: 4 / 5; justify-self: center; }
+    .bento-content { padding: 20px !important; }
+    .bento-content h3 { font-size: 17px !important; }
+    .bento-content p { font-size: 13px !important; }
     .hero-split { grid-template-columns: 1fr; gap: 0; }
     .hero-text-col { text-align: center; }
     .hero-text-col .kb-eyebrow { margin: 0 auto; }
@@ -463,6 +466,7 @@
     .cta-photo-col { display: none; }
   }
   @media (hover: none) {
+    .bento-card, .value-card, .project-card { transform: none !important; }
     .bento-card:hover { border-color: rgba(255,255,255,0.13) !important; box-shadow: 0 4px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08) !important; }
     .bento-card:hover .bento-glow { opacity: 0 !important; }
     .value-card:hover { border-color: rgba(255,255,255,0.13) !important; box-shadow: 0 4px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08) !important; }
@@ -886,6 +890,7 @@ function SiteNav({ accent, dark, onToggleTheme }) {
 function HeroSection({ accent, dark }) {
   const scrollY = useScrollY();
   const heroOpacity = Math.max(0, 1 - scrollY / 700);
+  const heroPhotoOpacity = Math.max(0, 1 - Math.max(0, scrollY - (typeof window !== 'undefined' ? window.innerHeight * 0.55 : 400)) / 320);
   const fg = dark ? '#fff' : '#0F1140';
   const fg2 = dark ? 'rgba(255,255,255,0.7)' : 'rgba(15,17,64,0.65)';
   const fg3 = dark ? 'rgba(255,255,255,0.35)' : 'rgba(15,17,64,0.45)';
@@ -914,7 +919,7 @@ function HeroSection({ accent, dark }) {
       <div className="hero-split" style={{ transform: `translateY(${scrollY * 0.08}px)` }}>
 
         {/* PHOTO — LEFT in LTR */}
-        <div className="hero-photo-col">
+        <div className="hero-photo-col" style={{ opacity: heroPhotoOpacity }}>
           <FadeSlide delay={0.5}>
             <div className="hero-portrait" style={{
               borderColor: accentAlpha(accent, 0.2),
@@ -1010,15 +1015,15 @@ function StatementSection() {
 // ═══════════════════════════════════════════════════════════
 function BentoSection({ accent }) {
   const areas = [
-    { icon: 'cpu',      title: 'AI Systems',          desc: 'Data, processes, users — in one system that works.',     span: 'wide',   color: accent },
-    { icon: 'settings', title: 'Automation',           desc: 'Connecting the tools you already have.',                 span: 'normal', color: '#5B7BF7' },
-    { icon: 'mic',      title: 'Voice Agents',         desc: '24/7 response across every channel.',                    span: 'normal', color: '#6FD3FF' },
-    { icon: 'monitor',  title: 'Digital Products',     desc: 'Dashboards, SaaS and management systems.',               span: 'normal', color: '#C04CE8' },
-    { icon: 'compass',  title: 'Consulting & Strategy', desc: 'From mapping needs to a live system.',                  span: 'wide',   color: '#6C3FE0' },
+    { icon: 'cpu',      title: 'AI Systems',          desc: 'Data, processes, users — in one system that works.',     detail: 'Integrations, APIs, databases and UI — all connected and running exactly as it should.',    span: 'wide',   color: accent },
+    { icon: 'settings', title: 'Automation',           desc: 'Connecting the tools you already have.',                 detail: 'Make, Zapier, n8n — every manual time-draining process becomes automatic.',               span: 'normal', color: '#5B7BF7' },
+    { icon: 'mic',      title: 'Voice Agents',         desc: '24/7 response across every channel.',                    detail: 'WhatsApp, phone, website — it answers, detects the need, and opens a lead in seconds.',    span: 'normal', color: '#6FD3FF' },
+    { icon: 'monitor',  title: 'Digital Products',     desc: 'Dashboards, SaaS and management systems.',               detail: 'Fast, clear interfaces built specifically for your business — not from a template.',         span: 'normal', color: '#C04CE8' },
+    { icon: 'compass',  title: 'Consulting & Strategy', desc: 'From mapping needs to a live system.',                  detail: "What's built, what comes first, what it costs — the full picture before spending a shekel.", span: 'wide',   color: '#6C3FE0' },
   ];
 
   return (
-    <section id="bento" style={{ padding: 'clamp(80px, 9vw, 120px) 24px' }}>
+    <section id="bento" style={{ padding: 'clamp(100px, 12vw, 160px) 24px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <FadeSlide>
           <div className="kb-eyebrow">
@@ -1040,7 +1045,7 @@ function BentoSection({ accent }) {
               className="bento-cell">
               <TiltCard className="bento-card" style={{ height: '100%' }}>
                 <div className="bento-glow" style={{ background: `linear-gradient(90deg, ${a.color}, ${accentAlpha(a.color, 0.15)})` }} />
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 14, height: '100%', padding: 28, position: 'relative' }}>
+                <div className="bento-content" style={{ display: 'flex', flexDirection: 'column', gap: 14, height: '100%', padding: 28, position: 'relative' }}>
                   <div style={{
                     width: 46, height: 46, borderRadius: 14, flexShrink: 0,
                     background: accentAlpha(a.color, 0.1), color: a.color,
@@ -1049,7 +1054,8 @@ function BentoSection({ accent }) {
                     <LIcon name={a.icon} size={22} />
                   </div>
                   <h3 style={{ fontSize: 19, fontWeight: 600 }}>{a.title}</h3>
-                  <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.55)' }}>{a.desc}</p>
+                  <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.6)', marginBottom: 6 }}>{a.desc}</p>
+                  <p style={{ fontSize: 13, lineHeight: 1.6, color: 'rgba(255,255,255,0.35)' }}>{a.detail}</p>
                 </div>
               </TiltCard>
             </FadeSlide>
@@ -1170,7 +1176,7 @@ function ProjectsSection({ accent }) {
   ];
 
   return (
-    <section id="projects" style={{ padding: 'clamp(80px, 9vw, 120px) 24px' }}>
+    <section id="projects" style={{ padding: 'clamp(100px, 12vw, 160px) 24px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <FadeSlide>
           <div className="kb-eyebrow">
@@ -1209,7 +1215,7 @@ function ProcessSection({ accent }) {
   const [lineRef, lineVis] = useInView();
 
   return (
-    <section id="process" style={{ padding: 'clamp(80px, 9vw, 120px) 24px' }}>
+    <section id="process" style={{ padding: 'clamp(100px, 12vw, 160px) 24px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <FadeSlide>
           <div className="kb-eyebrow">
@@ -1264,7 +1270,7 @@ function AboutSection({ accent }) {
   ];
 
   return (
-    <section id="about" style={{ padding: 'clamp(80px, 9vw, 120px) 24px' }}>
+    <section id="about" style={{ padding: 'clamp(100px, 12vw, 160px) 24px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <FadeSlide>
           <div className="kb-eyebrow">
@@ -1338,7 +1344,7 @@ function AboutSection({ accent }) {
 // ═══════════════════════════════════════════════════════════
 function CTASection({ accent }) {
   return (
-    <section id="contact" style={{ padding: 'clamp(80px, 9vw, 120px) 24px' }}>
+    <section id="contact" style={{ padding: 'clamp(100px, 12vw, 160px) 24px' }}>
       <FadeSlide>
         <div className="cta-box" style={{
           background: `linear-gradient(135deg, ${accentAlpha(accent, 0.1)}, ${accentAlpha(accent, 0.02)})`,
