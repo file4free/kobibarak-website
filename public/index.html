@@ -4,21 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>קובי ברק — יזם, בונה מערכות AI ומוצרים דיגיטליים</title>
-<meta name="description" content="קובי ברק — יזם ובונה מערכות AI ומוצרים דיגיטליים. AI לעסקים, אוטומציה, סוכנים קוליים ו-SaaS בהתאמה אישית.">
+<meta name="description" content="קובי ברק — יזם ובונה מערכות AI ומוצרים דיגיטליים. מערכות AI לעסקים, אוטומציות, סוכנים קוליים, SaaS ודשבורדים בהתאמה אישית.">
 <meta name="keywords" content="קובי ברק, מערכות AI, אוטומציה עסקית, סוכנים קוליים, צ׳אטבוטים, SaaS, Barak AI, Garage-OS, Nadlan-OS, פיתוח אתרים">
 <meta name="author" content="קובי ברק">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://kobibarak.com/">
-<link rel="alternate" hreflang="he" href="https://kobibarak.com/">
-<link rel="alternate" hreflang="en" href="https://kobibarak.com/en/">
-<link rel="alternate" hreflang="x-default" href="https://kobibarak.com/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kobibarak.com/">
 <meta property="og:title" content="קובי ברק — יזם, בונה מערכות AI ומוצרים דיגיטליים">
 <meta property="og:description" content="מערכות AI לעסקים, אוטומציות, סוכנים קוליים ומוצרים דיגיטליים. קודם הבעיה, אחר כך המערכת.">
-<meta property="og:image" content="https://kobibarak.com/assets/logo-mark.png">
+<meta property="og:image" content="https://kobibarak.com/og-image.png">
 <meta property="og:locale" content="he_IL">
 <meta property="og:site_name" content="KobiBarak.com">
 
@@ -27,7 +24,7 @@
 <meta name="twitter:url" content="https://kobibarak.com/">
 <meta name="twitter:title" content="קובי ברק — יזם, בונה מערכות AI">
 <meta name="twitter:description" content="מערכות AI לעסקים, אוטומציות, סוכנים קוליים ומוצרים דיגיטליים.">
-<meta name="twitter:image" content="https://kobibarak.com/assets/logo-mark.png">
+<meta name="twitter:image" content="https://kobibarak.com/og-image.png">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
@@ -46,7 +43,7 @@
 }
 </script>
 
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="project/assets/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -58,7 +55,6 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
-    overscroll-behavior-y: none;
     line-height: 1.6;
     direction: rtl;
     text-align: right;
@@ -75,14 +71,6 @@
     background-size: 180px;
   }
   a { color: inherit; text-decoration: none; }
-  body::before {
-    content: '';
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background:
-      radial-gradient(ellipse 65vw 55vh at 8% 18%, rgba(79,26,214,0.25) 0%, transparent 65%),
-      radial-gradient(ellipse 55vw 50vh at 90% 50%, rgba(192,76,232,0.18) 0%, transparent 65%),
-      radial-gradient(ellipse 50vw 45vh at 42% 95%, rgba(111,211,255,0.13) 0%, transparent 65%);
-  }
   ::selection { background: rgba(79,26,214,0.35); }
 
   /* ═══ AURORA ═══ */
@@ -157,8 +145,6 @@
     padding: 6px 16px; border-radius: 999px; font-size: 13px; font-weight: 500;
     color: rgba(255,255,255,0.55); margin-bottom: 16px;
     background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
-    max-width: 100%; flex-wrap: wrap; white-space: normal; line-height: 1.4;
-    direction: rtl;
   }
   .kb-eyebrow-dot {
     width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
@@ -168,7 +154,7 @@
 
   /* ═══ TYPOGRAPHY ═══ */
   .kb-h2 { font-size: clamp(32px,5vw,56px); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; text-wrap: pretty; }
-  .kb-sub { font-size: clamp(14px,1.7vw,17px); line-height: 1.65; color: rgba(255,255,255,0.52); max-width: 580px; margin-top: 14px; }
+  .kb-sub { font-size: clamp(14px,1.7vw,17px); line-height: 1.65; color: rgba(255,255,255,0.38); max-width: 580px; margin-top: 14px; }
   .kb-hero-name { font-size: clamp(60px,12vw,110px); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; margin-top: 16px; position: relative; }
 
   /* ═══ CHIPS ═══ */
@@ -195,14 +181,10 @@
   .bento-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
   .bento-card {
     border-radius: 20px; overflow: hidden; position: relative;
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(24px) saturate(1.8);
-    -webkit-backdrop-filter: blur(24px) saturate(1.8);
-    border: 1px solid rgba(255,255,255,0.13);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08);
-    transition: border-color 0.35s ease, box-shadow 0.35s ease;
+    background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.055);
+    transition: border-color 0.35s ease;
   }
-  .bento-card:hover { border-color: rgba(255,255,255,0.26); box-shadow: 0 8px 40px rgba(0,0,0,0.38), inset 0 1px 0 rgba(255,255,255,0.12); }
+  .bento-card:hover { border-color: rgba(255,255,255,0.12); }
   .bento-glow { position: absolute; top: 0; left: 0; right: 0; height: 2px; opacity: 0; transition: opacity 0.35s; }
   .bento-card:hover .bento-glow { opacity: 1; }
 
@@ -218,23 +200,14 @@
   /* ═══ PROJECTS ═══ */
   .featured-project {
     display: block; border-radius: 24px; padding: 36px 32px;
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(24px) saturate(1.8);
-    -webkit-backdrop-filter: blur(24px) saturate(1.8);
-    border: 1px solid rgba(255,255,255,0.13);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08);
-    position: relative; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06); position: relative; overflow: hidden;
     transition: all 0.4s cubic-bezier(.22,1,.36,1); text-decoration: none; color: #fff;
   }
   .proj-badge { padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.03em; }
   .projects-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(min(100%,260px),1fr)); gap: 14px; }
   .project-card {
     border-radius: 20px; padding: 24px 26px; position: relative; overflow: hidden;
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(24px) saturate(1.8);
-    -webkit-backdrop-filter: blur(24px) saturate(1.8);
-    border: 1px solid rgba(255,255,255,0.13);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.06);
     transition: all 0.35s cubic-bezier(.22,1,.36,1);
   }
 
@@ -261,80 +234,19 @@
   .stat-label { font-size: 14px; color: rgba(255,255,255,0.35); margin-top: 6px; font-weight: 500; }
 
   /* ═══ VALUES ═══ */
-  .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 8px; }
-  .values-grid > *, .projects-grid > * { height: 100%; }
-  .value-card, .project-card { height: 100%; }
+  .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 8px; align-items: start; }
   .value-card {
     border-radius: 20px;
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(24px) saturate(1.8);
-    -webkit-backdrop-filter: blur(24px) saturate(1.8);
-    border: 1px solid rgba(255,255,255,0.13);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08);
-    transition: border-color 0.35s, box-shadow 0.35s; overflow: visible;
+    background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.055);
+    transition: border-color 0.35s; overflow: visible;
   }
-  .value-card:hover { border-color: rgba(255,255,255,0.26); box-shadow: 0 8px 40px rgba(0,0,0,0.38), inset 0 1px 0 rgba(255,255,255,0.12); }
+  .value-card:hover { border-color: rgba(255,255,255,0.12); }
   .value-num { font-size: 44px; font-weight: 800; line-height: 1; }
-
-  /* ═══ ABOUT STORY ═══ */
-  .about-grid {
-    display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: center;
-    margin: 56px 0 56px;
-  }
-  .about-photo {
-    border-radius: 24px; overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    aspect-ratio: 4 / 5; width: 100%; max-width: 460px;
-    background: rgba(255,255,255,0.04);
-  }
-  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .about-story p {
-    font-size: clamp(15px, 1.35vw, 17px); line-height: 1.85;
-    color: rgba(255,255,255,0.78); margin-bottom: 18px;
-  }
-  .about-story p strong { color: #fff; font-weight: 600; }
-  .about-story p em { color: rgba(255,255,255,0.55); font-style: normal; font-size: 0.92em; }
-  .about-story p:last-child { margin-bottom: 0; }
-  body.kb-light .about-story p { color: rgba(15,17,64,0.7) !important; }
-  body.kb-light .about-story p strong { color: #0F1140 !important; }
-  body.kb-light .about-story p em { color: rgba(15,17,64,0.5) !important; }
-  body.kb-light .about-photo { border-color: rgba(15,17,64,0.1); box-shadow: 0 20px 60px rgba(15,17,64,0.18); }
-
-  /* ═══ HERO SPLIT ═══ */
-  .hero-split {
-    display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px;
-    align-items: center; width: 100%; max-width: 1200px; margin: 0 auto;
-  }
-  .hero-photo-col { display: flex; justify-content: center; align-items: center; }
-  .hero-portrait {
-    border-radius: 28px; overflow: hidden; width: 100%; max-width: 420px;
-    aspect-ratio: 3/4; border: 1px solid rgba(255,255,255,0.12);
-    box-shadow: 0 32px 80px rgba(0,0,0,0.6); position: relative;
-  }
-  .hero-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .hero-portrait-overlay {
-    position: absolute; inset: 0; pointer-events: none;
-    background: linear-gradient(180deg, transparent 55%, rgba(10,10,10,0.55) 100%);
-  }
-  body.kb-light .hero-portrait { border-color: rgba(15,17,64,0.12); box-shadow: 0 32px 80px rgba(15,17,64,0.2); }
-  body.kb-light .hero-portrait-overlay { background: linear-gradient(180deg, transparent 55%, rgba(240,240,255,0.45) 100%); }
-
-  /* ═══ CTA PHOTO ═══ */
-  .cta-inner { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; position: relative; }
-  .cta-photo-col {
-    width: 220px; border-radius: 20px; overflow: hidden;
-    aspect-ratio: 3/4; flex-shrink: 0;
-    box-shadow: 0 16px 48px rgba(0,0,0,0.55);
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-  .cta-photo-col img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  body.kb-light .cta-photo-col { box-shadow: 0 16px 48px rgba(15,17,64,0.2); border-color: rgba(15,17,64,0.08); }
 
   /* ═══ CTA ═══ */
   .cta-box {
-    max-width: 1000px; margin: 0 auto; border-radius: 28px;
-    padding: clamp(36px,5vw,72px) clamp(24px,4vw,56px);
+    max-width: 940px; margin: 0 auto; border-radius: 28px;
+    padding: clamp(48px,7vw,88px) clamp(24px,4vw,56px);
     border: 1px solid; position: relative; overflow: hidden;
   }
 
@@ -342,7 +254,7 @@
   .kb-footer { padding: 64px 24px 28px; border-top: 1px solid rgba(255,255,255,0.04); }
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
   .footer-heading { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.45); margin-bottom: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
-  .footer-link { font-size: 14px; color: rgba(255,255,255,0.42); transition: color 0.25s; }
+  .footer-link { font-size: 14px; color: rgba(255,255,255,0.28); transition: color 0.25s; }
   .footer-link:hover { color: rgba(255,255,255,0.7); }
   .footer-bottom {
     margin-top: 48px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.04);
@@ -367,7 +279,6 @@
     --kb-surface: rgba(15,17,64,0.03); --kb-surface-border: rgba(15,17,64,0.06);
   }
   body.kb-light::after { opacity: 0.008; }
-  body.kb-light::before { display: none; }
   body.kb-light ::selection { background: rgba(79,26,214,0.2); }
 
   body.kb-light .kb-nav-link { color: rgba(15,17,64,0.45); }
@@ -441,37 +352,14 @@
     .bento-grid { grid-template-columns: 1fr !important; }
     .bento-cell { grid-column: span 1 !important; }
     .projects-grid { grid-template-columns: 1fr; }
-    .process-grid { grid-template-columns: 1fr; gap: 48px; }
+    .process-grid { grid-template-columns: 1fr; gap: 40px; }
     .process-line-wrap { display: none; }
     .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-    .stats-row { gap: 32px; margin: 40px auto 32px; }
+    .stats-row { gap: 28px; }
     .kb-scroll-hint { display: none !important; }
-    .kb-hero-name { font-size: clamp(44px,13vw,78px) !important; }
+    .kb-hero-name { font-size: clamp(48px,14vw,80px) !important; }
     .featured-project { padding: 24px 20px; }
     .values-grid { grid-template-columns: 1fr; }
-    .about-grid { grid-template-columns: 1fr; gap: 32px; margin: 40px 0; }
-    .about-photo { max-width: 300px; margin: 0 auto; aspect-ratio: 4 / 5; }
-    .bento-content { padding: 20px !important; }
-    .bento-content h3 { font-size: 17px !important; }
-    .bento-content p { font-size: 13px !important; }
-    .hero-ctas { gap: 10px !important; }
-    .hero-ctas .kb-pill, .hero-ctas .kb-ghost { font-size: 12px !important; padding: 10px 14px !important; }
-    .hero-split { grid-template-columns: 1fr; gap: 0; }
-    .hero-text-col { text-align: center; }
-    .hero-text-col .kb-eyebrow { margin: 0 auto; }
-    .hero-text-col p { margin-left: auto; margin-right: auto; }
-    .hero-ctas { justify-content: center !important; }
-    .hero-photo-col { order: 1; margin-top: 40px; margin-bottom: 0; }
-    .hero-portrait { max-width: 260px; aspect-ratio: 3/4; margin: 0 auto; }
-    .cta-inner { grid-template-columns: 1fr; }
-    .cta-photo-col { display: none; }
-  }
-  @media (hover: none) {
-    .bento-card, .value-card, .project-card { transform: none !important; }
-    .bento-card:hover { border-color: rgba(255,255,255,0.13) !important; box-shadow: 0 4px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08) !important; }
-    .bento-card:hover .bento-glow { opacity: 0 !important; }
-    .value-card:hover { border-color: rgba(255,255,255,0.13) !important; box-shadow: 0 4px 24px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08) !important; }
-    .project-card:hover { transform: none !important; box-shadow: none !important; }
   }
   @media (min-width: 769px) and (max-width: 1024px) {
     .bento-grid { grid-template-columns: repeat(2,1fr); }
@@ -481,48 +369,11 @@
 </head>
 <body class="kb-dark">
 <div id="root"></div>
-<noscript>
-  <main>
-    <h1>קובי ברק — יזם, בונה מערכות AI ומוצרים דיגיטליים</h1>
-    <p>יזם ובונה מערכות AI ומוצרים דיגיטליים. מתמחה באוטומציה עסקית, סוכנים קוליים ו-SaaS.</p>
 
-    <h2>אודות</h2>
-    <p>הסיפור שלי לא התחיל ב-AI. ב-2019 נכנסתי לעולם הדיגיטל — שיווק, בניית אתרים בוורדפרס ואלמנטור, קמפיינים. שש שנים של למידה ועשייה ברצף. לפני כשנתיים פגשתי את עולם האוטומציות, הסוכנים החכמים והבינה המלאכותית — ולא הצלחתי לעצור. בגיל 45 הרגשתי בפעם הראשונה שמצאתי את הייעוד שלי: לבנות מערכות שעובדות בשביל אנשים, ולא ההפך.</p>
-
-    <h2>תחומי עשייה</h2>
-    <ul>
-      <li>מערכות AI — מידע, תהליכים, משתמשים במערכת אחת שעובדת</li>
-      <li>אוטומציה — חיבור בין הכלים שכבר יש</li>
-      <li>סוכנים קוליים — מענה 24/7 בכל ערוץ</li>
-      <li>מוצרים דיגיטליים — דשבורדים, SaaS ומערכות ניהול</li>
-      <li>ליווי ואסטרטגיה — מיפוי צרכים עד מערכת חיה</li>
-    </ul>
-
-    <h2>פרויקטים</h2>
-    <ul>
-      <li>Barak AI — מערכות AI מותאמות לעסקים, האתר מקדם את עצמו אוטונומית בגוגל — <a href="https://barak-ai.co.il">barak-ai.co.il</a></li>
-      <li>Garage-OS — מערכת תפעולית למוסכים: ניהול עבודה, לקוחות, מלאי ואוטומציות</li>
-      <li>Nadlan-OS — מערכת מלאה למתווכי נדל"ן: ניהול לידים, דפי נכס אוטומטיים, AI לקופי ולתרגום, וסוכן קולי</li>
-      <li>Ale Zahav LIVE — פלטפורמת תוכן לגיל השלישי: כושר, חדר כושר למוח, ספריית וידאו מסוננת ב-AI</li>
-      <li>MultiX Simulator — סימולטור הדמיה לממשקי מולטימדיה ברכב</li>
-    </ul>
-
-    <h2>למה אני</h2>
-    <ul>
-      <li>חיבור הכל להכל — לא מוכר כלי, בונה תשתית שעובדת מקצה לקצה</li>
-      <li>פתרונות יצירתיים — כשנתקעים, מוצא דרך אחרת</li>
-      <li>שירות ברמה אחרת — אתה לא לקוח, אתה שותף לדרך</li>
-      <li>אנגלית ברמת שפת אם — עבודה עם ספקים וכלים בינלאומיים ללא חיכוך</li>
-    </ul>
-
-    <p>יצירת קשר: <a href="https://barak-ai.co.il/contact">barak-ai.co.il/contact</a> | <a href="https://wa.me/972505552007">WhatsApp</a></p>
-  </main>
-</noscript>
-
-<script src="/assets/libs/react.production.min.js"></script>
-<script src="/assets/libs/react-dom.production.min.js"></script>
-<script src="/assets/libs/babel.min.js"></script>
-<script src="/assets/libs/lucide.min.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 
 <script type="text/babel">
 // ═══════════════════════════════════════════════════════════
@@ -803,65 +654,58 @@ function SiteNav({ accent, dark, onToggleTheme }) {
     { label: 'מה אני בונה', href: '#bento' },
     { label: 'פרויקטים', href: '#projects' },
     { label: 'אודות', href: '#about' },
-    { label: 'יצירת קשר', href: '#contact' },
+    { label: 'יצירת קשר', href: 'https://barak-ai.co.il/contact', ext: true },
   ];
   return (
-    <>
-      <nav className="kb-nav" style={{
-        background: s ? (dark ? 'rgba(6,6,6,0.8)' : 'rgba(247,248,255,0.82)') : 'transparent',
-        backdropFilter: s ? 'blur(20px) saturate(1.4)' : 'none',
-        WebkitBackdropFilter: s ? 'blur(20px) saturate(1.4)' : 'none',
-        borderBottom: s ? `1px solid ${dark ? 'rgba(255,255,255,0.04)' : 'rgba(15,17,64,0.06)'}` : '1px solid transparent',
-      }}>
-        <a href="#hero" className="kb-nav-logo">
-          <span style={{
-            background: `linear-gradient(135deg, ${dark ? '#fff' : '#0F1140'} 40%, ${accent})`,
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-            fontWeight: 800, fontSize: 17, letterSpacing: '0.04em', textTransform: 'uppercase',
-          }}>KOBIBARAK.COM</span>
-        </a>
+    <nav className="kb-nav" style={{
+      background: s ? (dark ? 'rgba(6,6,6,0.8)' : 'rgba(247,248,255,0.82)') : 'transparent',
+      backdropFilter: s ? 'blur(20px) saturate(1.4)' : 'none',
+      WebkitBackdropFilter: s ? 'blur(20px) saturate(1.4)' : 'none',
+      borderBottom: s ? `1px solid ${dark ? 'rgba(255,255,255,0.04)' : 'rgba(15,17,64,0.06)'}` : '1px solid transparent',
+    }}>
+      <a href="#hero" className="kb-nav-logo">
+        <span style={{
+          background: `linear-gradient(135deg, ${dark ? '#fff' : '#0F1140'} 40%, ${accent})`,
+          WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+          fontWeight: 800, fontSize: 17, letterSpacing: '0.04em', textTransform: 'uppercase',
+        }}>KOBIBARAK.COM</span>
+      </a>
 
-        <div className="kb-desktop-only" style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
-          {links.map(l => (
-            <a key={l.href} href={l.href} className="kb-nav-link" {...(l.ext ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>
-          ))}
-        </div>
+      <div className="kb-desktop-only" style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
+        {links.map(l => (
+          <a key={l.href} href={l.href} className="kb-nav-link" {...(l.ext ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>
+        ))}
+      </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <a href="/en/" style={{
-            fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 6,
-            border: `1px solid ${dark ? 'rgba(255,255,255,0.12)' : 'rgba(15,17,64,0.12)'}`,
-            color: dark ? 'rgba(255,255,255,0.45)' : 'rgba(15,17,64,0.45)',
-            transition: 'all 0.2s', letterSpacing: '0.02em',
-          }}>EN</a>
-          <button className="kb-theme-toggle" onClick={onToggleTheme} aria-label="מצב תצוגה">
-            {dark ? (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-              </svg>
-            ) : (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-              </svg>
-            )}
-          </button>
-          <MagneticWrap strength={0.2}>
-            <a href="https://barak-ai.co.il/contact" target="_blank" rel="noopener"
-              className="kb-desktop-only kb-pill"
-              style={{ background: accent, boxShadow: `0 0 22px ${accentAlpha(accent, 0.35)}` }}>
-              בואו נדבר
-            </a>
-          </MagneticWrap>
-          <button className="kb-mobile-only" onClick={() => setOpen(!open)} aria-label="תפריט"
-            style={{ background: 'none', border: 'none', color: dark ? 'white' : '#0F1140', cursor: 'pointer', padding: 6 }}>
-            <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round">
-              {open
-                ? <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></>
-                : <><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></>}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <button className="kb-theme-toggle" onClick={onToggleTheme} aria-label="מצב תצוגה">
+          {dark ? (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
             </svg>
-          </button>
-        </div>
-      </nav>
+          ) : (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          )}
+        </button>
+        <MagneticWrap strength={0.2}>
+          <a href="https://barak-ai.co.il/contact" target="_blank" rel="noopener"
+            className="kb-desktop-only kb-pill"
+            style={{ background: accent, boxShadow: `0 0 22px ${accentAlpha(accent, 0.35)}` }}>
+            בואו נדבר
+          </a>
+        </MagneticWrap>
+        <button className="kb-mobile-only" onClick={() => setOpen(!open)} aria-label="תפריט"
+          style={{ background: 'none', border: 'none', color: dark ? 'white' : '#0F1140', cursor: 'pointer', padding: 6 }}>
+          <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round">
+            {open
+              ? <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></>
+              : <><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></>}
+          </svg>
+        </button>
+      </div>
+
       {open && (
         <div className="kb-mobile-overlay" style={{
           background: dark ? 'rgba(5,5,5,0.97)' : 'rgba(247,248,255,0.97)',
@@ -881,7 +725,7 @@ function SiteNav({ accent, dark, onToggleTheme }) {
           </a>
         </div>
       )}
-    </>
+    </nav>
   );
 }
 
@@ -891,7 +735,6 @@ function SiteNav({ accent, dark, onToggleTheme }) {
 function HeroSection({ accent, dark }) {
   const scrollY = useScrollY();
   const heroOpacity = Math.max(0, 1 - scrollY / 700);
-  const heroPhotoOpacity = Math.max(0, 1 - Math.max(0, scrollY - (typeof window !== 'undefined' ? window.innerHeight * 0.55 : 400)) / 320);
   const fg = dark ? '#fff' : '#0F1140';
   const fg2 = dark ? 'rgba(255,255,255,0.7)' : 'rgba(15,17,64,0.65)';
   const fg3 = dark ? 'rgba(255,255,255,0.35)' : 'rgba(15,17,64,0.45)';
@@ -900,14 +743,14 @@ function HeroSection({ accent, dark }) {
     <section id="hero" style={{
       position: 'relative', minHeight: '100dvh',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      padding: '120px 32px 80px', overflow: 'hidden',
+      textAlign: 'center', padding: '140px 24px 100px', overflow: 'hidden',
     }}>
       {dark && <AuroraBg accent={accent} />}
       {dark && <FloatingShapes accent={accent} />}
       {dark && <ConstellationCanvas color={accentAlpha(accent, 0.5)} lineColor={accentAlpha(accent, 0.35)} count={55} />}
       {!dark && <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
-        background: `radial-gradient(ellipse 80% 60% at 30% 40%, ${accentAlpha(accent, 0.09)}, transparent 70%)`,
+        background: `radial-gradient(ellipse 60% 50% at 50% 40%, ${accentAlpha(accent, 0.08)}, transparent 70%)`,
       }} />}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
@@ -917,76 +760,59 @@ function HeroSection({ accent, dark }) {
         transform: `translateY(${scrollY * 0.06}px)`,
       }} />
 
-      <div className="hero-split" style={{ transform: `translateY(${scrollY * 0.08}px)` }}>
-
-        {/* TEXT — RIGHT in RTL */}
-        <div className="hero-text-col" style={{ position: 'relative', opacity: heroOpacity }}>
-          <FadeSlide delay={0}>
-            <div className="kb-eyebrow">
-              <span className="kb-eyebrow-dot" style={{ background: accent }} />
-              <span>יזם</span><span style={{ opacity: 0.4 }}>·</span><span>בונה מערכות AI</span><span style={{ opacity: 0.4 }}>·</span><span>Vibe Coder</span>
-            </div>
-          </FadeSlide>
-
-          <h1 className="kb-hero-name" style={{ position: 'relative' }}>
-            <StaggerWords text="קובי ברק" delay={0.3} style={{
-              background: `linear-gradient(135deg, ${fg} 30%, ${accentAlpha(accent, 0.7)} 80%, ${accentAlpha('#6FD3FF', 0.6)})`,
-              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-            }} />
-            <div style={{
-              position: 'absolute', top: '50%', right: '20%', transform: 'translateY(-50%)',
-              width: 'min(400px, 90%)', height: 120, borderRadius: '50%',
-              background: `radial-gradient(ellipse, ${accentAlpha(accent, dark ? 0.18 : 0.1)}, transparent 65%)`,
-              filter: 'blur(40px)', pointerEvents: 'none', zIndex: -1, animation: 'glowPulse 4s ease-in-out infinite',
-            }} />
-          </h1>
-
-          <div style={{ marginTop: 14 }}>
-            <StaggerWords text="בונה את העתיד, מערכת אחרי מערכת."
-              delay={0.7} style={{ fontSize: 'clamp(18px, 2.6vw, 36px)', fontWeight: 300, color: fg2 }} />
+      <div style={{
+        position: 'relative', maxWidth: 900, margin: '0 auto',
+        opacity: heroOpacity, transform: `translateY(${scrollY * 0.08}px)`,
+      }}>
+        <FadeSlide delay={0}>
+          <div className="kb-eyebrow">
+            <span className="kb-eyebrow-dot" style={{ background: accent }} />
+            יזם · בונה מערכות AI · מוצרים דיגיטליים
           </div>
+        </FadeSlide>
 
-          <FadeSlide delay={1.1}>
-            <p style={{ fontSize: 'clamp(14px, 1.4vw, 17px)', lineHeight: 1.75, color: fg3, maxWidth: 460, marginTop: 16 }}>
-              מתוך הבנה עמוקה של שטח, חשיבה מערכתית ובנייה שמייצרת תוצאות אמיתיות.
-            </p>
-          </FadeSlide>
+        <h1 className="kb-hero-name">
+          <StaggerWords text="קובי ברק" delay={0.3} style={{
+            background: `linear-gradient(135deg, ${fg} 30%, ${accentAlpha(accent, 0.7)} 80%, ${accentAlpha('#6FD3FF', 0.6)})`,
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+          }} />
+        </h1>
 
-          <FadeSlide delay={1.3}>
-            <div className="hero-ctas" style={{ display: 'flex', gap: 14, marginTop: 36, flexWrap: 'wrap' }}>
-              <MagneticWrap>
-                <a href="#projects" className="kb-ghost">הכירו את העבודה שלי</a>
-              </MagneticWrap>
-              <MagneticWrap>
-                <a href="https://barak-ai.co.il" target="_blank" rel="noopener" className="kb-pill"
-                  style={{ background: accent, boxShadow: `0 0 36px ${accentAlpha(accent, 0.4)}` }}>
-                  מעבר ל־Barak AI
-                </a>
-              </MagneticWrap>
-            </div>
-          </FadeSlide>
+        <div style={{ position: 'absolute', top: '32%', left: '50%', transform: 'translate(-50%, -50%)',
+          width: 'min(500px, 70vw)', height: 140, borderRadius: '50%',
+          background: `radial-gradient(ellipse, ${accentAlpha(accent, dark ? 0.15 : 0.08)}, transparent 65%)`,
+          filter: 'blur(40px)', pointerEvents: 'none', zIndex: -1, animation: 'glowPulse 4s ease-in-out infinite',
+        }} />
+
+        <div style={{ marginTop: 16 }}>
+          <StaggerWords text="בונה את העתיד, מערכת אחרי מערכת."
+            delay={0.7} style={{ fontSize: 'clamp(22px, 3.8vw, 44px)', fontWeight: 300, color: fg2 }} />
         </div>
 
-        {/* PHOTO — LEFT in RTL */}
-        <div className="hero-photo-col" style={{ opacity: heroPhotoOpacity }}>
-          <FadeSlide delay={0.5}>
-            <div className="hero-portrait" style={{
-              borderColor: accentAlpha(accent, 0.2),
-              boxShadow: `0 32px 80px rgba(0,0,0,0.65), 0 0 0 1px ${accentAlpha(accent, 0.12)}, 0 0 80px ${accentAlpha(accent, 0.07)}`,
-            }}>
-              <img
-                src="https://res.cloudinary.com/di0pjetew/image/upload/v1779231633/kobi-car_pavk4f.png"
-                alt="קובי ברק — יזם ובונה מערכות AI"
-                loading="eager"
-              />
-              <div className="hero-portrait-overlay" />
-            </div>
-          </FadeSlide>
-        </div>
-      </div>
+        <FadeSlide delay={1.1}>
+          <p style={{
+            fontSize: 'clamp(14px, 1.6vw, 18px)', lineHeight: 1.7, color: fg3,
+            maxWidth: 500, margin: '22px auto 0',
+          }}>
+            מתוך הבנה עמוקה של שטח, חשיבה מערכתית ובנייה שמייצרת תוצאות אמיתיות.
+          </p>
+        </FadeSlide>
 
-      <div className="kb-scroll-hint" style={{ position: 'absolute', bottom: 28, left: '50%', transform: 'translateX(-50%)' }}>
-        <div className="kb-scroll-line" />
+        <FadeSlide delay={1.3}>
+          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginTop: 44, flexWrap: 'wrap' }}>
+            <MagneticWrap>
+              <a href="#projects" className="kb-ghost">הכירו את העבודה שלי</a>
+            </MagneticWrap>
+            <MagneticWrap>
+              <a href="https://barak-ai.co.il" target="_blank" rel="noopener" className="kb-pill"
+                style={{ background: accent, boxShadow: `0 0 36px ${accentAlpha(accent, 0.4)}` }}>
+                מעבר ל־Barak AI
+              </a>
+            </MagneticWrap>
+          </div>
+        </FadeSlide>
+
+        <div className="kb-scroll-hint"><div className="kb-scroll-line" /></div>
       </div>
     </section>
   );
@@ -998,8 +824,8 @@ function HeroSection({ accent, dark }) {
 function StatementSection() {
   return (
     <section style={{
-      padding: 'clamp(40px, 8vw, 140px) 24px',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      padding: 'clamp(100px, 14vw, 200px) 24px',
+      display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '50vh',
     }}>
       <div style={{ maxWidth: 960 }}>
         <RevealText
@@ -1016,15 +842,16 @@ function StatementSection() {
 // ═══════════════════════════════════════════════════════════
 function BentoSection({ accent }) {
   const areas = [
-    { icon: 'cpu',      title: 'מערכות AI',          desc: 'מידע, תהליכים, משתמשים — במערכת אחת שעובדת.',  detail: 'אינטגרציות, API, דאטה בייס וממשק — הכל מחובר ועובד יחד בדיוק כמו שצריך.',  span: 'wide',   color: accent },
-    { icon: 'settings', title: 'אוטומציה',            desc: 'חיבור בין הכלים שכבר יש.',                      detail: 'Make, Zapier, n8n — כל תהליך ידני שגוזל זמן הופך לאוטומטי.',              span: 'normal', color: '#5B7BF7' },
-    { icon: 'mic',      title: 'סוכנים קוליים',       desc: 'מענה 24/7 בכל ערוץ.',                           detail: 'וואטסאפ, טלפון, אתר — הסוכן עונה, מזהה צורך ופותח ליד בשניות.',            span: 'normal', color: '#6FD3FF' },
-    { icon: 'monitor',  title: 'מוצרים דיגיטליים',   desc: 'דשבורדים, SaaS ומערכות ניהול.',                 detail: 'ממשקים מהירים וברורים, מותאמים בדיוק לצרכי העסק — לא לפי תבנית.',          span: 'normal', color: '#C04CE8' },
-    { icon: 'compass',  title: 'ליווי ואסטרטגיה',    desc: 'מיפוי צרכים עד מערכת חיה.',                    detail: 'מה בנוי, מה קודם, כמה עולה — תמונה שלמה לפני שמוציאים שקל.',               span: 'wide',   color: '#6C3FE0' },
+    { icon: 'cpu',      title: 'מערכות AI',          desc: 'מידע, תהליכים, משתמשים — במערכת אחת שעובדת.',  span: 'wide',   color: accent },
+    { icon: 'settings', title: 'אוטומציה',            desc: 'חיבור בין הכלים שכבר יש.',                      span: 'normal', color: '#5B7BF7' },
+    { icon: 'mic',      title: 'סוכנים קוליים',       desc: 'מענה 24/7 בכל ערוץ.',                           span: 'normal', color: '#6FD3FF' },
+    { icon: 'monitor',  title: 'מוצרים דיגיטליים',   desc: 'דשבורדים, SaaS ומערכות ניהול.',                 span: 'normal', color: '#C04CE8' },
+    { icon: 'wrench',   title: 'רכב ושירות',          desc: 'ניסיון מהשטח → מערכות דיגיטליות.',             span: 'normal', color: '#1BB78A' },
+    { icon: 'compass',  title: 'ליווי ואסטרטגיה',    desc: 'מיפוי צרכים עד מערכת חיה.',                    span: 'wide',   color: '#6C3FE0' },
   ];
 
   return (
-    <section id="bento" style={{ padding: 'clamp(100px, 12vw, 160px) 24px' }}>
+    <section id="bento" style={{ padding: 'clamp(60px, 8vw, 110px) 24px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <FadeSlide>
           <div className="kb-eyebrow">
@@ -1046,7 +873,7 @@ function BentoSection({ accent }) {
               className="bento-cell">
               <TiltCard className="bento-card" style={{ height: '100%' }}>
                 <div className="bento-glow" style={{ background: `linear-gradient(90deg, ${a.color}, ${accentAlpha(a.color, 0.15)})` }} />
-                <div className="bento-content" style={{ display: 'flex', flexDirection: 'column', gap: 14, height: '100%', padding: 28, position: 'relative' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 14, height: '100%', padding: 28, position: 'relative' }}>
                   <div style={{
                     width: 46, height: 46, borderRadius: 14, flexShrink: 0,
                     background: accentAlpha(a.color, 0.1), color: a.color,
@@ -1055,8 +882,7 @@ function BentoSection({ accent }) {
                     <LIcon name={a.icon} size={22} />
                   </div>
                   <h3 style={{ fontSize: 19, fontWeight: 600 }}>{a.title}</h3>
-                  <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.6)', marginBottom: 6 }}>{a.desc}</p>
-                  <p style={{ fontSize: 13, lineHeight: 1.6, color: 'rgba(255,255,255,0.35)' }}>{a.detail}</p>
+                  <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.4)' }}>{a.desc}</p>
                 </div>
               </TiltCard>
             </FadeSlide>
@@ -1094,8 +920,10 @@ function FeaturedProject({ p }) {
     <a href={p.link} target="_blank" rel="noopener"
       onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
       className="featured-project" style={{
-        background: hov ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.06)',
-        borderColor: hov ? accentAlpha(p.color, 0.55) : 'rgba(255,255,255,0.13)',
+        background: hov
+          ? `linear-gradient(135deg, ${accentAlpha(p.color, 0.1)} 0%, ${accentAlpha(p.color, 0.03)} 100%)`
+          : 'rgba(255,255,255,0.025)',
+        borderColor: hov ? accentAlpha(p.color, 0.25) : 'rgba(255,255,255,0.06)',
         transform: hov ? 'translateY(-4px)' : 'none',
         boxShadow: hov ? `0 24px 60px ${accentAlpha(p.color, 0.12)}` : 'none',
       }}>
@@ -1136,8 +964,8 @@ function ProjectCard({ p }) {
     <Wrap {...wrapProps}
       onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
       className="project-card" style={{
-        background: hov ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.06)',
-        borderColor: hov ? accentAlpha(p.color, 0.55) : 'rgba(255,255,255,0.13)',
+        background: hov ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.02)',
+        borderColor: hov ? accentAlpha(p.color, 0.22) : 'rgba(255,255,255,0.06)',
         transform: hov ? 'translateY(-4px)' : 'none',
         boxShadow: hov ? `0 16px 44px ${accentAlpha(p.color, 0.08)}` : 'none',
         display: 'block', textDecoration: 'none', color: 'inherit', cursor: p.link ? 'pointer' : 'default',
@@ -1159,7 +987,7 @@ function ProjectCard({ p }) {
           </div>
         )}
       </div>
-      <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6 }}>{p.desc}</p>
+      <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.4)', lineHeight: 1.6 }}>{p.desc}</p>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginTop: 14 }}>
         {p.tags.map(t => <span key={t} className="kb-chip" style={{ fontSize: 11, padding: '3px 10px' }}>{t}</span>)}
       </div>
@@ -1169,15 +997,15 @@ function ProjectCard({ p }) {
 
 function ProjectsSection({ accent }) {
   const projects = [
-    { name: 'Barak AI',         desc: 'מערכות AI מותאמות אישית לעסקים — אוטומציות, סוכנים קוליים, צ׳אטבוטים ואתרי SEO חכמים. האתר מקדם את עצמו אוטונומית בגוגל, ומופיע בעמוד הראשון בביטויים מובילים.', tags: ['AI', 'אוטומציות', 'SaaS'],              link: 'https://barak-ai.co.il',             color: '#4F1AD6', featured: true },
-    { name: 'Garage-OS',        desc: 'מערכת תפעולית למוסכים — ניהול עבודה, לקוחות, מלאי, ואוטומציות חכמות לתהליכים יומיומיים.', tags: ['Vertical AI', 'מוסכים', 'שירות'],      link: 'https://garage-os.co.il',            color: '#5B7BF7' },
-    { name: 'Nadlan-OS',        desc: 'מערכת מושלמת למתווכי נדל״ן — ניהול לידים, יצירה אוטומטית של דפי נכס, AI לשיפור קופי ולתרגום ל-4 שפות, וסוכן קולי שעונה ופותח לידים.', tags: ['Vertical AI', 'נדל״ן', 'CRM'],         link: 'https://nadlan-os.co.il',            color: '#6FD3FF' },
-    { name: 'MultiX Simulator', desc: 'סימולטור הדמיה לממשקי מולטימדיה ברכב — להדרכה, הצגה ובדיקות חוויית משתמש.',                       tags: ['רכב', 'סימולציה', 'UX'],               link: 'https://multix.barak-ai.co.il',      color: '#C04CE8' },
-    { name: 'Ale Zahav LIVE',   desc: 'פלטפורמה לתוכן והרצאות לגיל השלישי — שיעורי כושר, חדר כושר למוח, ספריית וידאו מסוננת ב-AI, ומשחקי חשיבה.',                         tags: ['קהילה', 'וידאו', 'CMS'],               link: 'https://live.ale-zahav.co.il',       color: '#1BB78A' },
+    { name: 'Barak AI',         desc: 'מערכות AI לעסקים — אוטומציות, סוכנים קוליים, צ׳אטבוטים ואתרים חכמים.', tags: ['AI', 'אוטומציות', 'SaaS'],              link: 'https://barak-ai.co.il',             color: '#4F1AD6', featured: true },
+    { name: 'Garage-OS',        desc: 'מערכת ניהול ייעודית לעולמות השירות והרכב.',                               tags: ['Vertical AI', 'מוסכים', 'שירות'],      link: 'https://garage-os.co.il',            color: '#5B7BF7' },
+    { name: 'Nadlan-OS',        desc: 'ניהול לידים, נכסים ותהליכי עבודה עבור אנשי נדל״ן.',                      tags: ['Vertical AI', 'נדל״ן', 'CRM'],         link: 'https://nadlan-os.co.il',            color: '#6FD3FF' },
+    { name: 'MultiX Simulator', desc: 'סימולטור אינטראקטיבי לממשקי מולטימדיה בעולם הרכב.',                       tags: ['רכב', 'סימולציה', 'UX'],               link: 'https://multix.barak-ai.co.il',      color: '#C04CE8' },
+    { name: 'Ale Zahav LIVE',   desc: 'פלטפורמה לשידורים חיים ותוכן עבור הגיל השלישי.',                         tags: ['קהילה', 'וידאו', 'CMS'],               link: 'https://live.ale-zahav.co.il',       color: '#1BB78A' },
   ];
 
   return (
-    <section id="projects" style={{ padding: 'clamp(100px, 12vw, 160px) 24px' }}>
+    <section id="projects" style={{ padding: 'clamp(60px, 8vw, 110px) 24px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <FadeSlide>
           <div className="kb-eyebrow">
@@ -1216,7 +1044,7 @@ function ProcessSection({ accent }) {
   const [lineRef, lineVis] = useInView();
 
   return (
-    <section id="process" style={{ padding: 'clamp(100px, 12vw, 160px) 24px' }}>
+    <section id="process" style={{ padding: 'clamp(60px, 8vw, 100px) 24px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <FadeSlide>
           <div className="kb-eyebrow">
@@ -1244,7 +1072,7 @@ function ProcessSection({ accent }) {
                     boxShadow: `0 0 28px ${accentAlpha(accent, 0.25)}, inset 0 1px 0 rgba(255,255,255,0.15)`,
                   }}>{i + 1}</div>
                   <h3 style={{ fontSize: 20, fontWeight: 600, margin: '18px 0 8px' }}>{s.title}</h3>
-                  <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.55)', maxWidth: 260, margin: '0 auto' }}>{s.desc}</p>
+                  <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.4)', maxWidth: 260, margin: '0 auto' }}>{s.desc}</p>
                 </div>
               </FadeSlide>
             ))}
@@ -1265,13 +1093,13 @@ function AboutSection({ accent }) {
     { num: 24,  suffix: '/7', label: 'סוכנים שעובדים' },
   ];
   const values = [
-    { n: '01', title: 'חיבור הכל להכל',   desc: 'לא מוכר לך כלי. בונה לך תשתית שעובדת מקצה לקצה.' },
-    { n: '02', title: 'פתרונות יצירתיים', desc: 'כשנתקעים, אני מוצא דרך אחרת. תמיד.' },
-    { n: '03', title: 'שירות ברמה אחרת',  desc: 'אתה לא רק לקוח. אתה שותף לדרך.' },
+    { n: '01', title: 'התאמה, לא תבנית',          desc: 'כל מערכת נבנית סביב העסק הספציפי.' },
+    { n: '02', title: 'טכנולוגיה בגובה העיניים',  desc: 'בעברית פשוטה. בלי ז׳רגון מיותר.' },
+    { n: '03', title: 'תוצאות מדידות',             desc: 'לידים, חיסכון בזמן, מספרים.' },
   ];
 
   return (
-    <section id="about" style={{ padding: 'clamp(100px, 12vw, 160px) 24px' }}>
+    <section id="about" style={{ padding: 'clamp(60px, 8vw, 110px) 24px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <FadeSlide>
           <div className="kb-eyebrow">
@@ -1280,28 +1108,11 @@ function AboutSection({ accent }) {
           </div>
         </FadeSlide>
         <FadeSlide delay={0.08}>
-          <h2 className="kb-h2">הסיפור שלי לא התחיל ב-AI.</h2>
+          <h2 className="kb-h2">הרקע שלי מהשטח,<br />הבנייה מהראש.</h2>
         </FadeSlide>
-
-        <div className="about-grid">
-          <FadeSlide delay={0.14}>
-            <div className="about-photo">
-              <img
-                src="https://res.cloudinary.com/di0pjetew/image/upload/v1779231635/kobi-desk_olsklp.png"
-                alt="קובי ברק — בונה מערכות AI לעסקים"
-                loading="lazy"
-              />
-            </div>
-          </FadeSlide>
-
-          <FadeSlide delay={0.2}>
-            <div className="about-story">
-              <p>ב-2019 נכנסתי לעולם הדיגיטל — שיווק, בניית אתרים בוורדפרס ואלמנטור, קמפיינים. שש שנים של למידה ועשייה ברצף.</p>
-              <p>לפני כשנתיים פגשתי את עולם האוטומציות, הסוכנים החכמים והבינה המלאכותית — ולא הצלחתי לעצור. בגיל 45 הרגשתי בפעם הראשונה שמצאתי את הייעוד שלי: <strong>לבנות מערכות שעובדות בשביל אנשים, ולא ההפך.</strong></p>
-              <p>זו לא עבודה. זו אובססיה בריאה — לכלים שמשתפרים כל יום, לעולם שמתחדש כל בוקר, ולתחושה שסוף סוף הטכנולוגיה במקום שבו תמיד דמיינתי אותה.</p>
-            </div>
-          </FadeSlide>
-        </div>
+        <FadeSlide delay={0.14}>
+          <p className="kb-sub">מעולמות השירות, הרכב, הדיגיטל והטכנולוגיה — מקומות שבהם תהליך לא טוב הופך מהר לבעיה עסקית.</p>
+        </FadeSlide>
 
         <div className="stats-row">
           {stats.map((s, i) => (
@@ -1325,11 +1136,11 @@ function AboutSection({ accent }) {
               <TiltCard className="value-card" intensity={4}>
                 <div style={{ padding: 28 }}>
                   <div className="value-num" style={{
-                    background: `linear-gradient(135deg, #fff 10%, ${accentAlpha(accent, 0.75)} 100%)`,
+                    background: `linear-gradient(135deg, ${accent}, ${accentAlpha(accent, 0.12)})`,
                     WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
                   }}>{v.n}</div>
                   <h3 style={{ fontSize: 18, fontWeight: 600, margin: '14px 0 8px' }}>{v.title}</h3>
-                  <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.55)' }}>{v.desc}</p>
+                  <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.4)' }}>{v.desc}</p>
                 </div>
               </TiltCard>
             </FadeSlide>
@@ -1345,7 +1156,7 @@ function AboutSection({ accent }) {
 // ═══════════════════════════════════════════════════════════
 function CTASection({ accent }) {
   return (
-    <section id="contact" style={{ padding: 'clamp(100px, 12vw, 160px) 24px' }}>
+    <section id="contact" style={{ padding: 'clamp(60px, 8vw, 110px) 24px' }}>
       <FadeSlide>
         <div className="cta-box" style={{
           background: `linear-gradient(135deg, ${accentAlpha(accent, 0.1)}, ${accentAlpha(accent, 0.02)})`,
@@ -1362,48 +1173,22 @@ function CTASection({ accent }) {
             animation: 'ctaPulse 9s ease-in-out infinite reverse', pointerEvents: 'none', borderRadius: '50%',
           }} />
 
-          <div className="cta-inner">
-            <div style={{ position: 'relative' }}>
-              <h2 style={{ fontSize: 'clamp(28px, 4vw, 46px)', fontWeight: 700 }}>
-                בואו נדבר.
-              </h2>
-              <p style={{
-                fontSize: 'clamp(14px, 1.5vw, 17px)', lineHeight: 1.7,
-                color: 'rgba(255,255,255,0.5)', maxWidth: 460, margin: '16px 0 32px',
-              }}>
-                יש לך שאלה, רעיון או פרויקט? שלח הודעה ישירה — בלי טפסים, בלי המתנה.
-              </p>
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
-                <MagneticWrap strength={0.18}>
-                  <a href="https://wa.me/972505552007" target="_blank" rel="noopener" className="kb-pill"
-                    style={{ background: '#25D366', boxShadow: '0 0 24px rgba(37,211,102,0.3)', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    WhatsApp
-                  </a>
-                </MagneticWrap>
-                <MagneticWrap strength={0.18}>
-                  <a href="https://www.linkedin.com/in/kobibarak79/" target="_blank" rel="noopener" className="kb-ghost"
-                    style={{ whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    LinkedIn
-                  </a>
-                </MagneticWrap>
-              </div>
-              <p style={{ marginTop: 20, fontSize: 13, color: 'rgba(255,255,255,0.3)' }}>
-                לפנייה עסקית מלאה —{' '}
-                <a href="https://barak-ai.co.il" target="_blank" rel="noopener"
-                  style={{ color: 'rgba(255,255,255,0.45)', textDecoration: 'underline', textUnderlineOffset: 3 }}>
-                  Barak AI
-                </a>
-              </p>
-            </div>
-            <div className="cta-photo-col">
-              <img
-                src="https://res.cloudinary.com/di0pjetew/image/upload/v1779231634/kobi-lobby-1_rwmxd0.png"
-                alt="קובי ברק"
-                loading="lazy"
-              />
-            </div>
+          <div style={{ position: 'relative', textAlign: 'center' }}>
+            <h2 style={{ fontSize: 'clamp(28px, 4.5vw, 48px)', fontWeight: 700 }}>
+              מחפשים פתרון <span style={{ color: accent }}>AI</span>?
+            </h2>
+            <p style={{
+              fontSize: 'clamp(14px, 1.6vw, 17px)', lineHeight: 1.65,
+              color: 'rgba(255,255,255,0.45)', maxWidth: 500, margin: '16px auto 40px',
+            }}>
+              את העבודה המסחרית שלי אני מרכז דרך Barak AI — שם אפשר לראות שירותים, פתרונות ודרכי התקשרות.
+            </p>
+            <MagneticWrap strength={0.18}>
+              <a href="https://barak-ai.co.il" target="_blank" rel="noopener" className="kb-pill"
+                style={{ background: accent, boxShadow: `0 0 24px ${accentAlpha(accent, 0.3)}`, whiteSpace: 'nowrap' }}>
+                מעבר ל־Barak AI
+              </a>
+            </MagneticWrap>
           </div>
         </div>
       </FadeSlide>
@@ -1419,13 +1204,12 @@ function SiteFooter({ accent }) {
     { label: 'Barak-AI.co.il',    href: 'https://barak-ai.co.il' },
     { label: 'SkyMarketing.co.il', href: 'https://skymarketing.co.il' },
     { label: 'WhatsApp',           href: 'https://wa.me/972505552007' },
-    { label: 'LinkedIn',           href: 'https://www.linkedin.com/in/kobibarak79/' },
   ];
   const nav = [
     { label: 'מה אני בונה', href: '#bento' },
     { label: 'פרויקטים',    href: '#projects' },
     { label: 'אודות',       href: '#about' },
-    { label: 'יצירת קשר',  href: '#contact' },
+    { label: 'יצירת קשר',  href: 'https://barak-ai.co.il/contact', ext: true },
   ];
   return (
     <footer className="kb-footer">
@@ -1638,5 +1422,8 @@ function App() {
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 </script>
+
+<!-- Vercel Web Analytics -->
+<script defer src="https://cdn.vercel-insights.com/v1/script.debug.js"></script>
 </body>
 </html>
