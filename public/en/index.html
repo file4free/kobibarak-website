@@ -484,6 +484,7 @@
   @media (min-width: 769px) and (max-width: 1024px) {
     .bento-grid { grid-template-columns: repeat(2,1fr); }
     .bento-cell[style*="span 2"] { grid-column: span 2; }
+    .bento-cell[style*="1 / -1"] { grid-column: 1 / -1; }
   }
 </style>
 </head>
@@ -1026,11 +1027,12 @@ function StatementSection() {
 // ═══════════════════════════════════════════════════════════
 function BentoSection({ accent }) {
   const areas = [
-    { icon: 'cpu',      title: 'AI Systems',          desc: 'Data, processes, users — in one system that works.',     detail: 'Integrations, APIs, databases and UI — all connected and running exactly as it should.',    span: 'wide',   color: accent },
-    { icon: 'settings', title: 'Automation',           desc: 'Connecting the tools you already have.',                 detail: 'Make, Zapier, n8n — every manual time-draining process becomes automatic.',               span: 'normal', color: '#5B7BF7' },
-    { icon: 'mic',      title: 'Voice Agents',         desc: '24/7 response across every channel.',                    detail: 'WhatsApp, phone, website — it answers, detects the need, and opens a lead in seconds.',    span: 'normal', color: '#6FD3FF' },
-    { icon: 'monitor',  title: 'Digital Products',     desc: 'Dashboards, SaaS and management systems.',               detail: 'Fast, clear interfaces built specifically for your business — not from a template.',         span: 'normal', color: '#C04CE8' },
-    { icon: 'compass',  title: 'Consulting & Strategy', desc: 'From mapping needs to a live system.',                  detail: "What's built, what comes first, what it costs — the full picture before spending a shekel.", span: 'wide',   color: '#6C3FE0' },
+    { icon: 'cpu',         title: 'AI Systems',           desc: 'Data, processes, users — in one system that works.',     detail: 'Integrations, APIs, databases and UI — all connected and running exactly as it should.',    span: 'wide',   color: accent },
+    { icon: 'settings',    title: 'Automation',            desc: 'Connecting the tools you already have.',                 detail: 'Make, Zapier, n8n — every manual time-draining process becomes automatic.',               span: 'normal', color: '#5B7BF7' },
+    { icon: 'mic',         title: 'Voice Agents',          desc: '24/7 response across every channel.',                    detail: 'WhatsApp, phone, website — it answers, detects the need, and opens a lead in seconds.',    span: 'normal', color: '#6FD3FF' },
+    { icon: 'monitor',     title: 'Digital Products',      desc: 'Dashboards, SaaS and management systems.',               detail: 'Fast, clear interfaces built specifically for your business — not from a template.',         span: 'normal', color: '#C04CE8' },
+    { icon: 'trending-up', title: 'SEO & Content',         desc: 'Content that ranks and converts.',                       detail: 'Automated SEO pages, AI copywriting, multilingual content at scale.',                       span: 'normal', color: '#1BB78A' },
+    { icon: 'compass',     title: 'Consulting & Strategy', desc: 'From mapping needs to a live system.',                  detail: "What's built, what comes first, what it costs — the full picture before spending a shekel.", span: 'full',   color: '#6C3FE0' },
   ];
 
   return (
@@ -1052,7 +1054,7 @@ function BentoSection({ accent }) {
         <div className="bento-grid">
           {areas.map((a, i) => (
             <FadeSlide key={a.title} delay={0.04 + i * 0.06}
-              style={{ gridColumn: a.span === 'wide' ? 'span 2' : 'span 1' }}
+              style={{ gridColumn: a.span === 'full' ? '1 / -1' : a.span === 'wide' ? 'span 2' : 'span 1' }}
               className="bento-cell">
               <TiltCard className="bento-card" style={{ height: '100%' }}>
                 <div className="bento-glow" style={{ background: `linear-gradient(90deg, ${a.color}, ${accentAlpha(a.color, 0.15)})` }} />

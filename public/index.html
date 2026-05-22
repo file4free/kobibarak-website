@@ -485,6 +485,7 @@
   @media (min-width: 769px) and (max-width: 1024px) {
     .bento-grid { grid-template-columns: repeat(2,1fr); }
     .bento-cell[style*="span 2"] { grid-column: span 2; }
+    .bento-cell[style*="1 / -1"] { grid-column: 1 / -1; }
   }
 </style>
 </head>
@@ -1027,11 +1028,12 @@ function StatementSection() {
 // ═══════════════════════════════════════════════════════════
 function BentoSection({ accent }) {
   const areas = [
-    { icon: 'cpu',      title: 'מערכות AI',          desc: 'מידע, תהליכים, משתמשים — במערכת אחת שעובדת.',  detail: 'אינטגרציות, API, דאטה בייס וממשק — הכל מחובר ועובד יחד בדיוק כמו שצריך.',  span: 'wide',   color: accent },
-    { icon: 'settings', title: 'אוטומציה',            desc: 'חיבור בין הכלים שכבר יש.',                      detail: 'Make, Zapier, n8n — כל תהליך ידני שגוזל זמן הופך לאוטומטי.',              span: 'normal', color: '#5B7BF7' },
-    { icon: 'mic',      title: 'סוכנים קוליים',       desc: 'מענה 24/7 בכל ערוץ.',                           detail: 'וואטסאפ, טלפון, אתר — הסוכן עונה, מזהה צורך ופותח ליד בשניות.',            span: 'normal', color: '#6FD3FF' },
-    { icon: 'monitor',  title: 'מוצרים דיגיטליים',   desc: 'דשבורדים, SaaS ומערכות ניהול.',                 detail: 'ממשקים מהירים וברורים, מותאמים בדיוק לצרכי העסק — לא לפי תבנית.',          span: 'normal', color: '#C04CE8' },
-    { icon: 'compass',  title: 'ליווי ואסטרטגיה',    desc: 'מיפוי צרכים עד מערכת חיה.',                    detail: 'מה בנוי, מה קודם, כמה עולה — תמונה שלמה לפני שמוציאים שקל.',               span: 'wide',   color: '#6C3FE0' },
+    { icon: 'cpu',          title: 'מערכות AI',          desc: 'מידע, תהליכים, משתמשים — במערכת אחת שעובדת.',  detail: 'אינטגרציות, API, דאטה בייס וממשק — הכל מחובר ועובד יחד בדיוק כמו שצריך.',  span: 'wide',   color: accent },
+    { icon: 'settings',     title: 'אוטומציה',            desc: 'חיבור בין הכלים שכבר יש.',                      detail: 'Make, Zapier, n8n — כל תהליך ידני שגוזל זמן הופך לאוטומטי.',              span: 'normal', color: '#5B7BF7' },
+    { icon: 'mic',          title: 'סוכנים קוליים',       desc: 'מענה 24/7 בכל ערוץ.',                           detail: 'וואטסאפ, טלפון, אתר — הסוכן עונה, מזהה צורך ופותח ליד בשניות.',            span: 'normal', color: '#6FD3FF' },
+    { icon: 'monitor',      title: 'מוצרים דיגיטליים',   desc: 'דשבורדים, SaaS ומערכות ניהול.',                 detail: 'ממשקים מהירים וברורים, מותאמים בדיוק לצרכי העסק — לא לפי תבנית.',          span: 'normal', color: '#C04CE8' },
+    { icon: 'trending-up',  title: 'SEO & תוכן',          desc: 'תוכן שמניע תנועה ומייצר לידים.',                detail: 'דפי SEO אוטומטיים, קופי ב-AI ותרגום ל-4 שפות — בסקייל.',                   span: 'normal', color: '#1BB78A' },
+    { icon: 'compass',      title: 'ליווי ואסטרטגיה',    desc: 'מיפוי צרכים עד מערכת חיה.',                    detail: 'מה בנוי, מה קודם, כמה עולה — תמונה שלמה לפני שמוציאים שקל.',               span: 'full',   color: '#6C3FE0' },
   ];
 
   return (
@@ -1053,7 +1055,7 @@ function BentoSection({ accent }) {
         <div className="bento-grid">
           {areas.map((a, i) => (
             <FadeSlide key={a.title} delay={0.04 + i * 0.06}
-              style={{ gridColumn: a.span === 'wide' ? 'span 2' : 'span 1' }}
+              style={{ gridColumn: a.span === 'full' ? '1 / -1' : a.span === 'wide' ? 'span 2' : 'span 1' }}
               className="bento-cell">
               <TiltCard className="bento-card" style={{ height: '100%' }}>
                 <div className="bento-glow" style={{ background: `linear-gradient(90deg, ${a.color}, ${accentAlpha(a.color, 0.15)})` }} />
