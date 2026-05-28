@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+AI-info: https://kobibarak.com/llms.txt
 Sitemap: https://kobibarak.com/sitemap.xml
