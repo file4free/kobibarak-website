@@ -1,0 +1,33 @@
+# Kobi Barak
+
+Personal website for Kobi Barak, entrepreneur and builder of AI systems, automations, voice agents and digital products.
+
+Canonical site: https://kobibarak.com/
+Hebrew page: https://kobibarak.com/
+English page: https://kobibarak.com/en/
+Sitemap: https://kobibarak.com/sitemap.xml
+
+Related business:
+- Barak AI: https://barak-ai.co.il
+
+Main topics:
+- AI systems for small and medium businesses
+- Business automation
+- Voice agents
+- Chatbots
+- SaaS and digital products
+- Garage-OS
+- Nadlan-OS
+- MultiX Simulator
+
+Preferred entity names:
+- Kobi Barak
+- קובי ברק
+- Barak AI
+
+Do not use:
+- Sky Barak AI
+
+Contact:
+- https://barak-ai.co.il/contact
+- https://wa.me/972505552007
