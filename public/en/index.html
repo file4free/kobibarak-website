@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kobi Barak | AI Builder & Entrepreneur</title>
-<meta name="description" content="Kobi Barak — entrepreneur and builder of AI systems and digital products. AI systems for businesses, automations, voice agents, SaaS and custom dashboards.">
+<title>Kobi Barak | AI Systems for Businesses · Founder of AutoConnect</title>
+<meta name="description" content="Kobi Barak builds AI systems, automations and agents that work for your business from day one. Founder of AutoConnect. A short WhatsApp chat — and a clear picture before you spend a shekel.">
 <meta name="keywords" content="Kobi Barak, AI systems, business automation, voice agents, chatbots, SaaS, AutoConnect, Barak AI, Garage-OS, Nadlan-OS, web development">
 <meta name="author" content="Kobi Barak">
 <meta name="robots" content="index, follow">
@@ -16,8 +16,8 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kobibarak.com/en/">
-<meta property="og:title" content="Kobi Barak | AI Builder & Entrepreneur">
-<meta property="og:description" content="AI systems for businesses, automations, voice agents and digital products. Problem first, system second.">
+<meta property="og:title" content="Kobi Barak | AI Systems for Businesses · Founder of AutoConnect">
+<meta property="og:description" content="AI systems, automations and agents that work for your business from day one. I built AutoConnect from scratch — now it's your turn.">
 <meta property="og:image" content="https://kobibarak.com/assets/kobi-og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -39,8 +39,8 @@
   "@type": "Person",
   "name": "Kobi Barak",
   "url": "https://kobibarak.com",
-  "jobTitle": "Entrepreneur and AI Systems Builder",
-  "description": "Entrepreneur and builder of AI systems and digital products. Specializing in business automation, voice agents and SaaS.",
+  "jobTitle": "AI Systems Builder · Founder of AutoConnect",
+  "description": "Builds AI systems, automations and agents that work for businesses from day one. Founder of AutoConnect — a SaaS product built from scratch.",
   "image": "https://kobibarak.com/assets/kobi-hero.jpg",
   "sameAs": ["https://www.linkedin.com/in/kobibarak79/", "https://kobibarak.com"],
   "owns": [
@@ -439,6 +439,17 @@
     transition-timing-function: ease;
   }
 
+  /* ═══ WHATSAPP FLOAT ═══ */
+  .kb-wa-float {
+    position: fixed; bottom: 22px; inset-inline-end: 22px; z-index: 90;
+    display: flex; align-items: center; gap: 10px; padding: 12px 18px 12px 14px;
+    border-radius: 999px; background: #25D366; color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 14px; box-shadow: 0 10px 30px rgba(37,211,102,0.35), 0 2px 8px rgba(0,0,0,0.3);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.3s;
+  }
+  .kb-wa-float:hover { box-shadow: 0 14px 40px rgba(37,211,102,0.5), 0 2px 8px rgba(0,0,0,0.3); transform: translateY(-2px) !important; }
+  @media (max-width: 768px) { .kb-wa-float { bottom: 16px; inset-inline-end: 16px; padding: 14px; } .kb-wa-float-label { display: none; } }
+
   /* ═══ THEME TOGGLE ═══ */
   .kb-theme-toggle {
     width: 38px; height: 38px; border-radius: 50%; border: none;
@@ -512,8 +523,8 @@
 <div id="root"></div>
 <noscript>
   <main>
-    <h1>Kobi Barak — Entrepreneur, AI Systems &amp; Digital Products Builder</h1>
-    <p>Entrepreneur and builder of AI systems and digital products. Specializing in business automation, voice agents and SaaS.</p>
+    <h1>Kobi Barak — AI Systems for Businesses, Founder of AutoConnect</h1>
+    <p>AI systems, automations and agents that work for your business from day one. I built AutoConnect from scratch — from an idea to a live SaaS with customers — and bring the same approach to every business: problem first, system second.</p>
 
     <h2>About</h2>
     <p>My story didn’t start with AI. In 2019 I stepped into the digital world — marketing, WordPress sites with Elementor, campaigns. Six years of constant learning and building. About two years ago I met the world of automations, smart agents and AI — and I couldn’t stop. At 45, for the first time, I felt I’d found my calling: to build systems that work for people, not the other way around.</p>
@@ -801,6 +812,22 @@ function MarqueeStrip({ items, speed = 35, reverse = false }) {
   </div>;
 }
 
+function WaIcon({ size = 18 }) {
+  return <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>;
+}
+
+function WhatsAppFloat({ label, href }) {
+  const scrollY = useScrollY();
+  const show = scrollY > 480;
+  return (
+    <a href={href} target="_blank" rel="noopener" className="kb-wa-float" aria-label={label}
+      style={{ opacity: show ? 1 : 0, transform: show ? 'translateY(0)' : 'translateY(16px)', pointerEvents: show ? 'auto' : 'none' }}>
+      <WaIcon size={22} />
+      <span className="kb-wa-float-label">{label}</span>
+    </a>
+  );
+}
+
 function Divider({ accent, width = 100 }) {
   const [ref, vis] = useInView();
   return <div ref={ref} style={{
@@ -832,10 +859,10 @@ function SiteNav({ accent, dark, onToggleTheme }) {
   const [open, setOpen] = useState(false);
   const s = scrollY > 40;
   const links = [
-    { label: 'What I Build', href: '#bento' },
-    { label: 'Projects', href: '#projects' },
+    { label: 'What You Get', href: '#bento' },
+    { label: 'Proof', href: '#projects' },
+    { label: 'How It Works', href: '#process' },
     { label: 'About', href: '#about' },
-    { label: 'Contact', href: '#contact' },
   ];
   return (
     <>
@@ -878,7 +905,7 @@ function SiteNav({ accent, dark, onToggleTheme }) {
             )}
           </button>
           <MagneticWrap strength={0.2}>
-            <a href="https://barak-ai.co.il/contact" target="_blank" rel="noopener"
+            <a href="https://wa.me/972505552007?text=Hi%20Kobi%2C%20I%20came%20from%20your%20website" target="_blank" rel="noopener"
               className="kb-desktop-only kb-pill"
               style={{ background: accent, boxShadow: `0 0 22px ${accentAlpha(accent, 0.35)}` }}>
               Let's Talk
@@ -907,9 +934,9 @@ function SiteNav({ accent, dark, onToggleTheme }) {
               {l.label}
             </a>
           ))}
-          <a href="https://barak-ai.co.il/contact" target="_blank" rel="noopener"
+          <a href="https://wa.me/972505552007?text=Hi%20Kobi%2C%20I%20came%20from%20your%20website" target="_blank" rel="noopener"
             className="kb-pill" style={{ background: accent, marginTop: 12 }}>
-            Let's Talk
+            Talk to me on WhatsApp
           </a>
         </div>
       )}
@@ -973,7 +1000,7 @@ function HeroSection({ accent, dark }) {
           <FadeSlide delay={0}>
             <div className="kb-eyebrow">
               <span className="kb-eyebrow-dot" style={{ background: accent }} />
-              Entrepreneur · AI Systems Builder · Vibe Coder
+              AI Systems for Businesses · Founder of AutoConnect
             </div>
           </FadeSlide>
 
@@ -991,26 +1018,27 @@ function HeroSection({ accent, dark }) {
           </h1>
 
           <div style={{ marginTop: 14 }}>
-            <StaggerWords text="Building the future, one system at a time."
+            <StaggerWords text="AI systems that work for your business — from day one."
               delay={0.7} style={{ fontSize: 'clamp(18px, 2.6vw, 36px)', fontWeight: 300, color: fg2 }} />
           </div>
 
           <FadeSlide delay={1.1}>
             <p style={{ fontSize: 'clamp(14px, 1.4vw, 17px)', lineHeight: 1.75, color: fg3, maxWidth: 460, marginTop: 16 }}>
-              From deep field understanding, systems thinking, and building that delivers real results.
+              I built AutoConnect from scratch — from an idea on paper to a live SaaS with customers. I bring the same approach to your business: problem first, system second, and always something that actually works.
             </p>
           </FadeSlide>
 
           <FadeSlide delay={1.3}>
             <div className="hero-ctas" style={{ display: 'flex', gap: 14, marginTop: 36, flexWrap: 'wrap' }}>
               <MagneticWrap>
-                <a href="#projects" className="kb-ghost">See My Work</a>
+                <a href="https://wa.me/972505552007?text=Hi%20Kobi%2C%20I%20came%20from%20your%20website" target="_blank" rel="noopener" className="kb-pill"
+                  style={{ background: '#25D366', boxShadow: '0 0 36px rgba(37,211,102,0.4)', display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <WaIcon size={18} />
+                  Talk to me on WhatsApp
+                </a>
               </MagneticWrap>
               <MagneticWrap>
-                <a href="https://barak-ai.co.il" target="_blank" rel="noopener" className="kb-pill"
-                  style={{ background: accent, boxShadow: `0 0 36px ${accentAlpha(accent, 0.4)}` }}>
-                  Visit Barak AI
-                </a>
+                <a href="#projects" className="kb-ghost">See what I've built</a>
               </MagneticWrap>
             </div>
           </FadeSlide>
@@ -1035,7 +1063,7 @@ function StatementSection() {
     }}>
       <div style={{ maxWidth: 960 }}>
         <RevealText
-          text="I don't come to AI from the hype side. I come from the side of processes, service, systems, people, and problems that need solving."
+          text="Most businesses don't need another tool. They need someone to connect what they already have — and make it work."
           style={{ fontSize: 'clamp(26px, 4.5vw, 50px)', fontWeight: 400, lineHeight: 1.55, textAlign: 'center' }}
         />
       </div>
@@ -1048,12 +1076,12 @@ function StatementSection() {
 // ═══════════════════════════════════════════════════════════
 function BentoSection({ accent }) {
   const areas = [
-    { icon: 'cpu',         title: 'AI Systems',           desc: 'Data, processes, users — in one system that works.',     detail: 'Integrations, APIs, databases and UI — all connected and running exactly as it should.',    span: 'wide',   color: accent },
-    { icon: 'settings',    title: 'Automation',            desc: 'Connecting the tools you already have.',                 detail: 'Make, Zapier, n8n — every manual time-draining process becomes automatic.',               span: 'normal', color: '#5B7BF7' },
-    { icon: 'mic',         title: 'Voice Agents',          desc: '24/7 response across every channel.',                    detail: 'WhatsApp, phone, website — it answers, detects the need, and opens a lead in seconds.',    span: 'normal', color: '#6FD3FF' },
-    { icon: 'monitor',     title: 'Digital Products',      desc: 'Dashboards, SaaS and management systems.',               detail: 'Fast, clear interfaces built specifically for your business — not from a template.',         span: 'normal', color: '#C04CE8' },
-    { icon: 'trending-up', title: 'SEO & Content',         desc: 'Content that ranks and converts.',                       detail: 'Automated SEO pages, AI copywriting, multilingual content at scale.',                       span: 'normal', color: '#1BB78A' },
-    { icon: 'compass',     title: 'Consulting & Strategy', desc: 'From mapping needs to a live system.',                  detail: "What's built, what comes first, what it costs — the full picture before spending a shekel.", span: 'full',   color: '#6C3FE0' },
+    { icon: 'cpu',         title: 'One system that runs the whole business', desc: 'Leads, customers, processes and data — in one place, no more chasing spreadsheets.', detail: 'I connect the tools you already have (or build new ones) so they all talk to each other and you see everything on one screen.', span: 'wide',   color: accent },
+    { icon: 'settings',    title: 'Processes that run themselves',  desc: 'Every repetitive task becomes automatic.',                detail: 'A lead comes in, an invoice goes out, a reminder is sent — without anyone touching a thing.',           span: 'normal', color: '#5B7BF7' },
+    { icon: 'mic',         title: 'Customers answered around the clock', desc: 'No inquiry falls through the cracks.',              detail: 'A voice or chat agent that answers on WhatsApp, phone and website — understands the need and opens a lead.', span: 'normal', color: '#6FD3FF' },
+    { icon: 'monitor',     title: 'Your own product — not a template', desc: 'A dashboard, SaaS or management system built for your business.', detail: 'Fast, clear, and shaped around how you actually work — not how the template wants you to.',      span: 'normal', color: '#C04CE8' },
+    { icon: 'trending-up', title: 'Customers who find you on Google', desc: 'Content that brings traffic and generates inquiries.', detail: 'Pages that write and promote themselves automatically — in Hebrew and other languages, without you writing a line.', span: 'normal', color: '#1BB78A' },
+    { icon: 'compass',     title: 'A clear picture before you spend a shekel', desc: 'What to build, what comes first, and what it will cost.', detail: "One conversation — and you know exactly what you're getting, when, and at what price. No surprises halfway through.", span: 'full',   color: '#6C3FE0' },
   ];
 
   return (
@@ -1062,14 +1090,14 @@ function BentoSection({ accent }) {
         <FadeSlide>
           <div className="kb-eyebrow">
             <span className="kb-eyebrow-dot" style={{ background: accent }} />
-            Areas of Work
+            What You Get
           </div>
         </FadeSlide>
         <FadeSlide delay={0.08}>
-          <h2 className="kb-h2" style={{ marginTop: 10 }}>What I Build</h2>
+          <h2 className="kb-h2" style={{ marginTop: 10 }}>Less manual work. More business.</h2>
         </FadeSlide>
         <FadeSlide delay={0.14}>
-          <p className="kb-sub" style={{ marginBottom: 48 }}>First understand the problem, then plan — and only then choose the tools.</p>
+          <p className="kb-sub" style={{ marginBottom: 48 }}>Every solution is built around a real problem of yours — not around the technology.</p>
         </FadeSlide>
 
         <div className="bento-grid">
@@ -1229,11 +1257,11 @@ function ProjectsSection({ accent }) {
         <FadeSlide>
           <div className="kb-eyebrow">
             <span className="kb-eyebrow-dot" style={{ background: accent }} />
-            Projects
+            Proof
           </div>
         </FadeSlide>
-        <FadeSlide delay={0.08}><h2 className="kb-h2">What I've Built.</h2></FadeSlide>
-        <FadeSlide delay={0.14}><p className="kb-sub" style={{ marginBottom: 48 }}>No generic templates. No off-the-shelf solutions.</p></FadeSlide>
+        <FadeSlide delay={0.08}><h2 className="kb-h2">Not slide decks. Systems that run.</h2></FadeSlide>
+        <FadeSlide delay={0.14}><p className="kb-sub" style={{ marginBottom: 48 }}>Everything here is live with real customers — including a SaaS product I built from scratch, from the idea to the billing.</p></FadeSlide>
 
         <FadeSlide delay={0.2}>
           <FeaturedProject p={projects[0]} />
@@ -1256,9 +1284,9 @@ function ProjectsSection({ accent }) {
 // ═══════════════════════════════════════════════════════════
 function ProcessSection({ accent }) {
   const steps = [
-    { icon: 'search', title: 'Understand the Problem', desc: 'Analysis, process mapping, bottleneck identification and goals.' },
-    { icon: 'layers', title: 'Plan',                   desc: 'Solution architecture, interfaces and data flow.' },
-    { icon: 'wrench', title: 'Build & Deploy',          desc: 'Development, testing, training — with close guidance.' },
+    { icon: 'message-circle', title: 'A short conversation',    desc: 'You tell me what hurts. I ask, listen, and understand the process behind the problem.' },
+    { icon: 'file-text',      title: 'A clear proposal',        desc: 'What we build, what it does for you, what it costs and when it\'s ready — in plain language, no surprises.' },
+    { icon: 'rocket',         title: 'Build, deploy, support',  desc: 'I build it, set it up in your business and train your team — and stay available after it goes live.' },
   ];
   const [lineRef, lineVis] = useInView();
 
@@ -1268,11 +1296,11 @@ function ProcessSection({ accent }) {
         <FadeSlide>
           <div className="kb-eyebrow">
             <span className="kb-eyebrow-dot" style={{ background: accent }} />
-            Process
+            How It Works
           </div>
         </FadeSlide>
         <FadeSlide delay={0.08}>
-          <h2 className="kb-h2">Problem first, system second.</h2>
+          <h2 className="kb-h2">From a WhatsApp message to a live system.</h2>
         </FadeSlide>
 
         <div ref={lineRef} style={{ position: 'relative', marginTop: 56 }}>
@@ -1306,15 +1334,10 @@ function ProcessSection({ accent }) {
 // ABOUT + STATS
 // ═══════════════════════════════════════════════════════════
 function AboutSection({ accent }) {
-  const stats = [
-    { num: 5,   suffix: '+', label: 'Independent Products' },
-    { num: 100, suffix: '%', label: 'Custom Built' },
-    { num: 24,  suffix: '/7', label: 'Agents Working' },
-  ];
   const values = [
-    { n: '01', title: 'Everything Connected',   desc: 'I don’t sell you a tool. I build you infrastructure that works end-to-end.' },
+    { n: '01', title: 'You talk to the person who builds', desc: 'No project manager in between. The one who understands your problem is the one who writes the solution.' },
     { n: '02', title: 'Creative Solutions',     desc: 'When things get stuck, I find another way. Always.' },
-    { n: '03', title: 'A Different Level of Service', desc: 'You’re not just a client. You’re a partner.' },
+    { n: '03', title: 'A partner, not a vendor', desc: 'You’re not just a client. I stay with you after the system goes live.' },
   ];
 
   return (
@@ -1333,9 +1356,9 @@ function AboutSection({ accent }) {
         <div className="about-grid">
           <FadeSlide delay={0.2}>
             <div className="about-story">
-              <p>In 2019 I stepped into the digital world — marketing, WordPress sites, Elementor, campaigns. Six years of constant learning and building.</p>
-              <p>About two years ago I met the world of automations, smart agents, and AI — and I couldn’t stop. At 45, for the first time, I felt I’d found my calling: <strong>to build systems that work for people, not the other way around.</strong></p>
-              <p>It’s not work. It’s a healthy obsession — with tools that improve every day, with a world that renews itself every morning, and with the feeling that technology is finally where I always imagined it would be.</p>
+              <p>I started in digital marketing and building websites for small businesses. Years of working closely with business owners taught me one thing: the problem is almost never the technology — it’s the process around it.</p>
+              <p>When I met the world of automation and AI, I couldn’t stop. I built systems for businesses, then built a product of my own — AutoConnect — from the idea to paying customers. <strong>Someone who has built a SaaS from scratch knows what breaks along the way, and how to build so it doesn’t break for you.</strong></p>
+              <p>It’s not work for me. It’s a healthy obsession — and you get all of it.</p>
             </div>
           </FadeSlide>
 
@@ -1350,23 +1373,7 @@ function AboutSection({ accent }) {
           </FadeSlide>
         </div>
 
-        <div className="stats-row">
-          {stats.map((s, i) => (
-            <FadeSlide key={s.label} delay={0.1 + i * 0.1}>
-              <div className="stat-item">
-                <div className="stat-num" style={{
-                  background: `linear-gradient(135deg, ${accent}, ${accentAlpha('#6FD3FF', 0.6)})`,
-                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                }}>
-                  <Counter to={s.num} suffix={s.suffix} />
-                </div>
-                <div className="stat-label">{s.label}</div>
-              </div>
-            </FadeSlide>
-          ))}
-        </div>
-
-        <div className="values-grid">
+        <div className="values-grid" style={{ marginTop: 48 }}>
           {values.map((v, i) => (
             <FadeSlide key={v.n} delay={0.1 + i * 0.08}>
               <TiltCard className="value-card" intensity={4}>
@@ -1412,13 +1419,13 @@ function CTASection({ accent }) {
           <div className="cta-inner">
             <div style={{ position: 'relative' }}>
               <h2 style={{ fontSize: 'clamp(28px, 4vw, 46px)', fontWeight: 700 }}>
-                Let's talk.
+                Got a process eating your time? Let's talk about it.
               </h2>
               <p style={{
                 fontSize: 'clamp(14px, 1.5vw, 17px)', lineHeight: 1.7,
                 color: 'rgba(255,255,255,0.5)', maxWidth: 460, margin: '16px 0 32px',
               }}>
-                Have a question, an idea, or a project in mind? Send a direct message — no forms, no waiting.
+                Send a WhatsApp message and tell me what hurts. No forms, no waiting — a reply from me, not a bot.
               </p>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
                 <MagneticWrap strength={0.18}>
@@ -1470,8 +1477,9 @@ function SiteFooter({ accent }) {
     { label: 'LinkedIn',           href: 'https://www.linkedin.com/in/kobibarak79/' },
   ];
   const nav = [
-    { label: 'What I Build', href: '#bento' },
-    { label: 'Projects',     href: '#projects' },
+    { label: 'What You Get', href: '#bento' },
+    { label: 'Proof',        href: '#projects' },
+    { label: 'How It Works', href: '#process' },
     { label: 'About',        href: '#about' },
     { label: 'Contact',      href: '#contact' },
   ];
@@ -1487,7 +1495,7 @@ function SiteFooter({ accent }) {
               }}>Kobi Barak</span>
             </div>
             <p style={{ fontSize: 14, lineHeight: 1.65, maxWidth: 300 }}>
-              Entrepreneur, AI systems &amp; digital products builder.
+              AI systems for businesses. Founder of AutoConnect.
             </p>
           </div>
           <div>
@@ -1673,6 +1681,7 @@ function App() {
       <AboutSection accent={accent} />
       <CTASection accent={accent} />
       <SiteFooter accent={accent} />
+      <WhatsAppFloat label="Let's talk" href="https://wa.me/972505552007?text=Hi%20Kobi%2C%20I%20came%20from%20your%20website" />
 
       <TweaksPanelMini title="Customize">
         <div className="twk-sect">Accent Color</div>
