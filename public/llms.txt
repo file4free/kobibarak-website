@@ -13,6 +13,8 @@ Related business:
 Products built by Kobi Barak:
 - AutoConnect (SaaS, live 2026): https://autoconnect.to — every lead from a website, Facebook, TikTok or calendar reaches the business WhatsApp within seconds and is saved to email, spreadsheet and CRM. 47 ready-made automations, 7 CRMs in one click, no code.
 
+- Ale Zahav members & classes system (live since 2026): https://app.ale-zahav.co.il — full management system for a senior-clubs nonprofit: registration, class catalog, recurring credit-card billing, receipts, automated WhatsApp, attendance, reports and accounting export.
+
 Main topics:
 - AutoConnect
 - AI systems for small and medium businesses
