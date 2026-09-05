@@ -10,7 +10,11 @@ Sitemap: https://kobibarak.com/sitemap.xml
 Related business:
 - Barak AI: https://barak-ai.co.il
 
+Products built by Kobi Barak:
+- AutoConnect (SaaS, live 2026): https://autoconnect.to — every lead from a website, Facebook, TikTok or calendar reaches the business WhatsApp within seconds and is saved to email, spreadsheet and CRM. 47 ready-made automations, 7 CRMs in one click, no code.
+
 Main topics:
+- AutoConnect
 - AI systems for small and medium businesses
 - Business automation
 - Voice agents
